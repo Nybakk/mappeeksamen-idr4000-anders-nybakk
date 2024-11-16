@@ -10,12 +10,19 @@ book:
   date: "2024-11-22"
   chapters:
     - index.qmd
-    - 03-stat-inf.qmd
+    - Oppgave-1.qmd
+    - Oppgave-2.qmd
+    - Oppgave-3.qmd
+    - Oppgave-4.qmd
+    - Oppgave-5.qmd
+    - Filosofihistore.qmd
+    - Labrapport.qmd
     - kilder.qmd
 
 bibliography:
-    - resources/references.bib
     - resources/ref2.bib
+    - resources/ref4.bib
+    - resources/ref5.bib
 
 csl: resources/citation-style.csl 
 

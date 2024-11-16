@@ -1,6 +1,0 @@
----
-title: "Statistisk inferens"
-
----
-
-add text [@schoenfeld2016]

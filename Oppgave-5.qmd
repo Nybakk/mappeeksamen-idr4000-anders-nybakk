@@ -1,0 +1,356 @@
+---
+title: "Analyse av gjentatte målte eksperiment"
+author: "Anders Nybakk"
+format: html
+code-fold: true
+execute:
+  warning: false  # Skjuler varselmeldinger
+editor_options: 
+  chunk_output_type: console
+bibliography: resources/ref5.bib
+---
+
+# Effekten av treningsvolum på hypertrofi og styrke
+
+## Introduksjon
+
+Menneskekroppen er relativt god til å tilpasse seg miljøet den lever i eller blir utsatt for. Ved økt treningsbelastning vil kroppen vår, særlig muskelen våre over tid tilpasse seg den økte belastningen ved å øke styrke og volum. Hvordan vi kan gjøre dette på mest mulig effektiv måte er ofte målet innenfor treningsfysiologisk forskning. Det er mange faktorer som spiller inn på hvordan og hvor raskt musklene våre tilpasser. Treningsvolum, antall sett, antall repetisjoner og pause mellom sett vil påvirke effekten av treningen. Det som vanligvis anbefales for hypertrofi er for eksempel moderat til høy motstand, høyt volum og korte pauser mellom sett. For å øke styrke er det vanlig å øke motstand, redusere volum og ha lengre pauser [@progress2009] [@schoenfeld2016]. Dette har trolig sammenheng med at trening med få repetisjoner til utmattelse kan bidra til bedre muskelaktivering [@ruple2023].
+
+Når det gjelder treningsvolum kan det se ut som at dette har en større betydning for hypertrofi enn for styrke. Ved trening av maksimal styrke vil man få stor effekt av relativt lavt treningsvolum. Økt treningsvolum vil føre til enda større økning i styrke, men ikke proposjonalt i forhold til treningsvolum. For hypertrofi er det derimot en mer proposjonal utvikling i forhold til treningsvolum [@schoenfeld2019]. Forkning gjort på godt trente idrettsutøvere tyder også på at større treningsvolum i styrketrening gir større økning i styrke, selv om dette ikke alltid er det lureste for konkurrende uttøvere på grunn av totalbelastningen [@naclerio2013].
+
+Som sagt gir også lavere treningsvolum gode resultater, og selv om det antagligvis er størst effekt med høyt treningsvolum er det i noen tilfeller er det vanskelig å bestemme hva som gir best resultat av høyt og lavt treningsvolum [@mitchell2012]. En metastudie fra 2019 foreslår at en enkelt set med 6-12 repetisjoner med motstand fra 70-85 % 1RM, 2-3 ganger per uke med høy intensitet (til utmattelse) kan over en periode på 8-12 uker gi en signifikant økning av maksimal styrke hos trente personer [@androulakis-korakakis2019].
+
+Målet med denne studien er å se hvordan forskjellig treningsvolum påvirker muskelhypertrofi og muskelstyrke hos relativt lite trente personer. Ut fra tidligere forskning osm jeg har presentert her vil det være naturlig å anta at trening med høyt volum vil gi bedre resultat enn trening med lavt volum. Det vil også være naturlig å anta at vi ser en større effekt på hypertrofi enn på muskulær styrke.
+
+## Metode
+
+### Etisk godkjenning
+
+Alle deltakerne ble informert om potensiell risiko og ubehag studien kunne medføre og gav informert bekreftelse og godkjenning av dette i forkant av studieopptaket. Studiedesign var forhåndsregistrert (ClinicalTrials.gov Identifier: NCT02179307), og godkjent av den lokale etikk-komiteen ved Høgskolen i innlandet Lillehammer, avdeling for idrettsvitenskap (no. 2013-11-22:2) og alle prosedyrende ble gjennomført i henhold til *Helsinki-erklæringen*
+
+### Deltakere
+
+41 menn og kvinner var med i denne studien. Alle deltakerne måtte være ikke-røykere mellom 18 og 40 år. For å kunne observere effekten av treningsintervensjonen best mulig kunne ikke deltakerne ha en treningshistorie med mer enn én økt med styrketrening per uke de siste 12 månedene opp til intervensjonen. Deltakerne kunne ikke ha redusert muskelstyrke som følge av tidligere eller nåværende skade av samme årsak, og de kunne ikke gå på faste medisiner da også disse kunne påvirke trenignseffekten.
+
+7 av deltakerne ble ekskludert fra data-analysen på grunn av at de ikke gjennomførte 85 % eller mer av de planlagte treningsøktene under intervensjonen. Årsakene var; ubehag eller smerte i underekstremitetene under trening (n = 5), skade urelatert til studiet (n = 1) og mislyktes i å følge protokollen (n = 1).
+
+Alle deltakerne meddelte tidligere erfaring med idrettsaktivitet (f.eks. lagsport, langrenn og turn). 20 av deltakerne meddelte at de jevnlig drev med fysisk aktivitet eller trening når de ble med i studien (ca. to ganger i uken), og 10 av disse utførte sporadiske styrketreningsøkter, men ikke mer enn en økt per uke.
+
+Deltakerne er beskrevet i @tbl-participants
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| label: tbl-participants
+#| tbl-cap: "Deltakeroversikt"
+
+
+library(tidyverse); library(exscidata); library(gt)
+
+exscidata::dxadata %>%
+  filter(time == "pre",
+         include == "incl") %>%
+  select(participant, sex, age, height, weight) %>%
+  pivot_longer(names_to = "variable",
+               values_to = "value",
+               cols = age:weight) %>%
+  summarise(.by = c(sex, variable),
+            m = mean(value),
+            s = sd(value),
+            n = n()) %>%
+  
+  mutate(sex = if_else(sex == "male", "Male", "Female"),
+         sex = paste0(sex, " n = ", n),
+         stat = paste0(round(m, 1),
+                       " (",
+                       round(s, 1),
+                       ")")) %>%
+  dplyr::select(sex, variable, stat) %>%
+  pivot_wider(names_from = variable,
+              values_from = stat) %>%
+  
+  gt() %>%
+  cols_label(sex = "",
+             age = "Age (years)",
+             weight = "Body mass (kg)",
+             height = "Stature (cm)")
+
+
+
+```
+
+### Studie design
+
+#### Mål av muskelmasse (mål av regional lean mass)
+
+Muskeltverrsnitt av knestrekkerne (MTK; vastus lateralis, medialis, intermedius og rectus femoris) ble målt før og etter treningsintervensjonen ved hjelp av "*magnetic resonance imaging*" (MRI) i samsvar med produsentens protocol (S-Scan, Esaote Europe B.V., Maastricht, the Netherlands). Bildene ble analysert blindt av den samme teknikkeren ved hjelp av OsiriX (v.5.6, Pixmeo Sarl, Bernex, Switzerland). Tverrsnittet ble tatt med samme avstand til kneleddet og ved bruk av minst fire sammenhengende bilder (5 mm tykkelse, 10 mm atskillelse) hos alle deltakerne. Kroppssammensetnging hos deltakerne ble målt før og etter intervensjonen ved hjelp av "*Dual-energy x-ray absorptiometry*" (DXA) (Lunar Prodigy, GE Healthcare, Oslo, Norway), også dette i henhold til protokoll. I forkant av MRI- og DXA-målingen ble deltakerne bedt om å faste i minimum to timer før testing, og unngå hard fysisk aktivitet 48 timer føt testing. Etter siste treningsøkt under intervensjonen var det to dager til post-målingene med MRI og DXA.
+
+#### Mål av maksimal styrke
+
+Testing av maksimal styrke i knestrekkerne ble gjort med en repetisjon maks (1RM) med etbeins beinpress. Test-økta ble standardisert for alle deltakerne med et spesifikt oppvarmingsprogram bestående av 10, 6 og 3 repetisjoner med belastning på 50, 75 og 85 % av forventet maksimal styrke. Etter dette ble 1RM funnet ved å gradvis øke motstanden i beinpress til deltakeren ikke klarte å fullføre bevegelsen i øvelsen på grunn av for høy vekt. Den høyeste vekten registrert med fullført bevegelse ble registrert som 1RM. Alle deltakerne fikk seks forsøk.
+
+#### Treningsprotokoll
+
+Intervensjonen bestod av 12 ukers standradisert styrketrening for hele kroppen. Alle øvelsene for bein ble utført med et bein om gangen for å få best tilpasset treningsvolum. Alle deltakerne utførte styrketrening som bestod av et enkelt sett (single set protokoll) og tre sett (multiple set protokoll). Hvilket av beina til deltakerne som skule brukes til hvilken protokoll ble tilfeldig trukket på forhånd.
+
+Oppvarmingen før alle treningsøktene bestod av følgende; 5 min sykling på ergometersykkel, etterfulgt av 10 repetisjoner av hver av kroppsvektøvelser (push-ups med tilpasset motstand for deltakernes nivå, sit-ups, rygg-hev og knebøy), og til slutt et sett med 10 repetsijoner av hver øvelse i økta med 50 % av 1RM.
+
+Styrkeøvelsene for bein ble utført i følgende rekkefølge; etbeins beinpress, beincurl og knestrekk. Øvelsene ble utført med et sett (single sets) eller tre sett (multiple sets) per øvelse. Single sets ble utført mellom andre og tredje sett i multiple sets protokollen. Deltakerne gjorde det samme med overkroppsøvelsene en hånds benkpress, pull-down og enten skulder-press eller sittende roing (annenhver gang) som en del av et utvidet forskningsprosjekt. Pauser mellom sett var på 90-180 s. Treningsintensiteten økte gradvis gjennom intervensjonen og startet med 10RM i uke 1-2, 8RM i uke 3-6 og 7RM uke 7-12. Treningsvolum økte også i løpet av intervensjonen ved at det ble flere økter per uke i snitt. Uke 1,3 og 5 hadde to økter og uke 2 og 4 hadde tre økter. Uke 6, 7 og 8 hadde alle tre økter, to økter i uke 9, tre økter i uke 10 og 11 og den 12 og siste uka hadde to økter. I ukene med tre økter ble en av øktene utført med litt redusert vekt (90 % av forrige økt med samme antall repetisjoner). Øktene med maksimal innsats ble atskilt med minimum 48 timer, og de submaksimale øktene (90 %) ble atskilt med minimum 24 timer. For å bidra til best mulig restutisjon fikk utøverne en standardisert drikk som inneholdt 0.15 g kg−1 protein, 11.2 g kg−1 karbohydrater and 0.5 g kg−1 fett.
+
+For å tilpasse studien til deltakernes hverdag kunne noen økter gjennomføres uten oppsyn, men i gjennomsnitt ble 91 % av øktene gjennomført med oppsyn. for å holde oversikt over øktene uten oppsyn måtte deltakerne føre detaljerte ligger som gjennpom intervensjonen ble sjekket av forsker-teamet sammen med deltakeren.
+
+### Dataanalyse og statestikk
+
+Alle data som blir presentert i denne rapporten er oppgitt i gjennomsnitt og standars avvik (mean (SD)) med mindre noe annet er spesifisert. For å se på hvordan forskjellig volum påvirker hypertrofi og styrke har vi regnet ut den gjennomsnitlige forskjellen i endring mellom singel-set-protokoll (SSP) og multiple-set-protokoll (MSP). Disse dataene blir også visualiser i modeller i resultatdelen. Modellene viser hva slags utvikling deltakerne hadde fra SSP og MSP.
+
+Testing mot null-hypotesen om at det ikke vil være noen forskjell på treningseffekten fra SSP og MSP ble gjort i R ved hjelp av lme4-pakken [@lme4]. Grensen for statistisk signifikans ble satt til α = 0.05. All data-analyse ble gjort i R [@R].
+
+## Resultat
+
+Av 41 deltakere i studiet gjennomførte 34 hele treningsopplegget og hvis resultater er med i følgende beregninger
+
+### Hypertrofi
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+
+library(tidyverse); library(exscidata); library(lme4)
+
+# Load data
+dat <- dxadata %>%
+  select(participant:include, lean.left_leg, lean.right_leg) %>%
+        
+        # Extract leg specific data
+  pivot_longer(names_to = "leg", 
+               values_to = "lean.mass", 
+               cols = lean.left_leg:lean.right_leg) %>%
+  mutate(leg = if_else(leg == "lean.left_leg", "L", "R"), 
+         sets = if_else(multiple == leg, "multiple", "single")) %>%
+  select(participant, time, sex, include, sets, leg, lean.mass) %>%
+        # Filter only included participants
+        filter(include == "incl") %>%
+        # Make data set wider by time 
+        
+        pivot_wider(names_from = "time", 
+                    values_from = "lean.mass") %>%
+        # Calculate change score
+        
+        mutate(change = post - pre) %>%
+        
+        # Keep change score and make it wider by sets
+        select(participant:sets, change) %>%
+        pivot_wider(names_from = sets, values_from = change) 
+  
+
+
+t_results <- with(dat, t.test(multiple, single, paired = TRUE)) 
+  
+
+
+
+####### 
+
+## write up the t-test
+
+pval <- round(t_results$p.value, 3)
+
+tval <- round(t_results$statistic, 2)
+
+df <- t_results$parameter
+
+cil <- round(t_results$conf.int[1], 1)
+ciu <- sprintf("%.1f", round(t_results$conf.int[2], 1))
+
+estimate <- round(t_results$estimate, 1)
+
+
+lean.mass.results <- paste0(estimate,
+                            "95g CI: [",
+                            cil,
+                            ",",
+                            ciu,
+                            "], *p*-value =",
+                            pval, 
+                            ", t<sub>",
+                            df, "</sub> =",
+                            tval, ")")
+
+```
+
+Etter 12 uker med styrketrening har det alt i alt vært en økning av muskelmasse og som forventet har det vært en større økning i muskelmasse vet bruk av flere sett under treningen (MSP) enn et enkelt sett (SSP). Den gjennomsnitlige forskjellen i muskelmasseendring i lår mellom sett-protokollene var `r lean.mass.results` (95% konfidensintertvall). 
+
+Tabellen @fig-lean-body-mass viser hva slags utvikling hver enkelt deltaker har hatt i løpet av intervensjonen og forskjellen på økning av muskelmasse mellom SSP og MSP. Her kan vi se at de fleste har fått en klart større økning i muskelmasse ved MSP enn SSP. Vi kan også se at for noen deltakere er det relativt liten forskjell i protokollene og for noen er det faktisk en klart mindre økning i muskelmasse ved MSP enn SSP.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-lean-body-mass
+#| fig-cap: "Forskjell på endring av muskelmasse under intervensjonen mellom SSP og MSP hos manlige og kvinnelige deltakere"
+
+
+library(ggtext)
+
+dat %>%
+  pivot_longer(names_to = "sets",
+               values_to = "lbm",
+               cols = multiple:single) %>%
+  
+  mutate(sets = factor(sets, levels = c("single", "multiple"))) %>%
+  
+  ggplot(aes(sets, lbm, group = participant, color = sex)) +
+  geom_line() +
+  geom_point() +
+  labs(x = "sets",
+       color = "kj&oslash;nn") +
+  theme(legend.title = element_markdown())
+
+
+```
+
+
+
+### Maksimal styrke
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
+
+## exploratory plot of strenght data
+
+str <- strengthvolume %>%
+  filter(include == "incl") %>%
+  filter(time == "pre" | time == "post") %>%
+  filter(exercise == "legpress") %>%
+  mutate(time = factor(time, levels = c("pre", "post"))) 
+
+  
+
+str_pre_post <- str %>%
+  mutate(time = if_else(time %in% c("pre", "session1"), "pre", time)) %>%
+ 
+  
+  filter(time %in% c("pre", "post")) %>% 
+    summarise(load = max(load, na.rm = TRUE),
+              .by = c(participant,
+                      sex,
+                      time,
+                      sets,
+                      exercise,
+                      leg)) %>%
+    filter_all(all_vars(!is.infinite(.))) 
+
+
+# view the summary data
+
+
+str_change <- str_pre_post %>%
+  pivot_wider(names_from = time, values_from = load) %>%
+  mutate(change = post - pre) %>%
+  
+  select(participant, sex, sets, exercise, change) %>%
+  pivot_wider(names_from = sets,
+              values_from = change) %>%
+  
+  mutate(diff = multiple - single) 
+  
+ 
+
+str_tst <- str_change %>%
+  filter(exercise == "legpress") %>%
+  select(participant, sex, single, multiple, diff) 
+
+
+
+
+t_results2 <- t.test(str_tst$multiple, str_tst$single, paired = TRUE)
+
+
+
+####### 
+
+## write up the t-test
+
+pval2 <- round(t_results2$p.value, 3)
+
+tval2 <- round(t_results2$statistic, 2)
+
+df2 <- t_results2$parameter
+
+cil2 <- round(t_results2$conf.int[1], 1)
+ciu2 <- sprintf("%.1f", round(t_results2$conf.int[2], 1))
+
+estimate2 <- round(t_results2$estimate, 1)
+
+
+strength.test.results <- paste0(estimate2,
+                            "95kg CI: [",
+                            cil2,
+                            ",",
+                            ciu2,
+                            "], *p*-value =",
+                            pval2, 
+                            ", t<sub>",
+                            df2, "</sub> =",
+                            tval2, ")")
+
+
+
+```
+
+Vi kan se en liknende tendens da det gjelder muskelstyrke. Den gjennomsnitlige forskjellen i muskelstyrkeendring i beinpress mellom sett-protokollene var `r strength.test.results` (95 % konfidensintervall). Også her er det i gjennomsnitt en større økning av 1RM ved MSP enn SSP. Men da vi ser på @fig-strength-test kan vi også her se at resultatene varierer hostetakerne. Her er det færre som har en klar fordel av MSP selv om det er en tendens til det. Også her kan vi se at det er noen som opplever en større økning ved SSP enn ved MSP. 
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-strength-test
+#| fig-cap: "Forskjell på endring i styrke i legpress under intervensjon mellom SSP og MSP hos mannlige og kvinnelige deltakere"
+
+
+library(ggtext)
+
+str_plot <- str_tst %>%
+  pivot_longer(names_to = "sets",
+               values_to = "strength",
+               cols = multiple:single) %>%
+  
+  mutate(sets = factor(sets, levels = c("single", "multiple"))) %>%
+  
+  ggplot(aes(sets, strength, group = participant, color = sex)) +
+  geom_line() +
+  geom_point() +
+  labs(x = "sets",
+       color = "kj&oslash;nn") +
+  theme(legend.title = element_markdown())
+
+str_plot
+
+```
+
+## Diskusjon
+
+I dette studiet fikk deltakerne en større økning i muskelmasse ved å følge treningsprotokoll med flere sett (MSP) enn med et enkelt sett (SSP). Dette stemmer over ens med anbefalingene fra [@progress2009] og funnene til [@schoenfeld2016]. Det som er overesakende i denne studien er at det ikke var stor nok forskjell til å si at funnet er statistisk signifikant med en *p*-verdi på 0.036. Fra tabellen kunne vi også se at noen deltakere ikke bare responderte like godt på SSP som MSP, men faktisk bedre. Selv om vi ser en tendens til at det i gjennomsnitt gir bedre effekt av MSP enn SSp kan vi altså ikke konkludere med dette ut fra denne studien. 
+
+Vi får litt samme resultat i resultane for muskelstyrkeøknin (1RM). Også her viser er det i gjennomsnitt en større økning i styrke ved MSP enn ved SSP, men *p*-verdien er enda lavere på 0,025, Så igjen er ikke funnene signifikante. På styrke kan vi se at det er enda mindre forskjell på effekten av SSP og MSP. Dette stemmer overens med studien til [@mitchell2012] om at det kan være vanskelig å si hva som gir best effekt av høyt og lavt treningsvolum.
+
+Selv om vi ser en tendens i denne studien til at det totale utbyttet av MSP er større enn SSP, er ikke forskjellen stor nok til å motbevise null-hypotesen om at det ikke er noen forksjell. Den tendensen vi kan se stemmer likevel med studien til [@schoenfeld2019], hvor de sier at treningsvolum er viktigere for hypertrofi enn for muskelstyrke. Så kan vi likevel bruke funnene? [@naclerio2013] sier i sin studie at selv om økt treningsvolum gir noe bedre effekt er ikke dette alltid anbefalt for konkurrenrende utøvere på grunn av det høye totalvolumet. Kanskje kan en liknende anbefaling gjelde for utrente personer slik som deltakerne i denne studien. Denne studien tyder på at lavt treningsvolum ikke har noen signifikant dårligere effekt en høyt treningsvolum. At et sett per øvelse gir nesten like godt resultat som tre vil være godt nytt for personer som sliter med motivasjon eller som ikke liker styrketrening. Dette kan være svært postitiv i et folkehelseperspektiv for å motivere flere til å trene og holde seg i form med litt trening. Dette stemmer også med meta-studien gjort av [@androulakis-korakakis2019].
+ 
+Vi kan altså ikke komme med noen klar konklusjon i denne studien. Det var noe overraskende at hypotesen ikke stemte, spesielt med tanke på hypertrofi. Det kan tenkes at det er en forskjell på trente og godt trente i en slik situasjon så mer forskning innenfor dette feltet er nok nødvendig. Selv om hypotesen ikke stemte kan det som sagt likevel være positivt med tanke på folkehelse.
+
+
+
+
+
+
+
+
+
+
