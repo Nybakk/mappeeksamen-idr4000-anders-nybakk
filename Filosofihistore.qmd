@@ -1,6 +1,6 @@
 ---
 title: "Filosofihistore"
-author: "AN"
+author: "Kandidatnymmer: 503"
 bibliography: resources/ref7.bib
 ---
 

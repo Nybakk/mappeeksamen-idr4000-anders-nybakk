@@ -6,7 +6,7 @@ project:
 
 book:
   title: "Mappeeksamen IDR4000"
-  author: "Anders Nybakk"
+  author: "Kandidatnymmer: 503"
   date: "2024-11-22"
   chapters:
     - index.qmd

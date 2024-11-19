@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sivert Helland Veseth, Anders Nybakk, Adrian Hasum Kristiansen, Jens-Henrik Hegg">
+<meta name="author" content="Kandidatnymmer: 503">
 
 <title>2&nbsp; Regresjonsmodeller og prediksjonsdata – Mappeeksamen IDR4000</title>
 <style>
@@ -198,14 +198,14 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Filosofihistore.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Filosofihistore</span></span></a>
+  <a href="./Labrapport.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Labrapport; Ekstraksjon og analyse av muskelprotein</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Labrapport.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Labrapport; Ekstraksjon og analyse av muskelprotein</span></span></a>
+  <a href="./Filosofihistore.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Filosofihistore</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -260,7 +260,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Sivert Helland Veseth, Anders Nybakk, Adrian Hasum Kristiansen, Jens-Henrik Hegg </p>
+             <p>Kandidatnymmer: 503 </p>
           </div>
   </div>
     
@@ -436,21 +436,6 @@ div.csl-indent {
 <section id="metode-1" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="metode-1"><span class="header-section-number">2.3.2</span> Metode</h3>
 <p>Først har vi brukt ImageJ Fiji for å behandle bildet vi fikk fra DNA-prøvene. Vi inverterte bildet for å få tydeligere farger, roterte det rett vei og klipte ut delen av bildet vi ville bruke - altså analysen av våre prøver. Videre brukte vi rektangelverktøyet for å markere stigen og prøvene vi ville analysere. Ut fra de markerte områdene lager ImageJ fiji grafer for hver brønn. Vi markerte toppunktene i alle grafene som indikerer gen (og trinn på stigen). Programmet registrerer plasseringen til toppunktene og disse “koordinatene” legges inn i et excell-dokument som vi bruker til beregningene.</p>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>796d002e0b0ef4c4714dda1e5eb02c80942fb5c8</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -576,7 +561,7 @@ F-statistic:  1039 on 1 and 11 DF,  p-value: 3.059e-12</code></pre>
 </section>
 <section id="metode-2" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="metode-2"><span class="header-section-number">2.4.2</span> Metode</h3>
-<p>Under i <a href="#fig-plot-training-age-myonuclei" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-plot-training-age-myonuclei</span></a> er <code>FAST_NUCLEI_T1</code> satt som den avhengige variabelen på y-aksen, mens <code>TRAINING_AGE</code> er valgt som den uavhengige variabelen på x-aksen. Grafen er ment for å gi oss et raskt overblikk av dataene.</p>
+<p>Under i <a href="#fig-plot-training-age-myonuclei" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> er <code>FAST_NUCLEI_T1</code> satt som den avhengige variabelen på y-aksen, mens <code>TRAINING_AGE</code> er valgt som den uavhengige variabelen på x-aksen. Grafen er ment for å gi oss et raskt overblikk av dataene.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -613,7 +598,7 @@ Figure&nbsp;2.1: Sammenheng mellom treningalder og myonuclei per fiber CSA i Typ
 </div>
 </div>
 <p>ved hjelp av <code>geom_smooth</code> har vi lagt inn den best tilpassede linjen til datapunktene, også kalt lineær regresjonslinje <span class="citation" data-cites="spieg2019">(<a href="#ref-spieg2019" role="doc-biblioref">Spiegelhalter, 2019 p.s.128–129</a>)</span>. Det gråe området omkring regresjonslinjen, visualiserer konfidensintervallet til linjen. Et bredt konfidensintervall som fremstilt her, indikerer større usikkerhet i hvordan variablene relaterer til hverandre <span class="citation" data-cites="spieg2019">(<a href="#ref-spieg2019" role="doc-biblioref">Spiegelhalter, 2019 p.s.240–244</a>)</span>.</p>
-<p>For å presentere regresjonslinjen, har vi laget en lineær statistisk modell for hjelp til videre tolkning mellom forholdet av dei to variablene. Oppsummering av de statistiske parametrene som vi har valgt å fokusere på i diskusjonen vår er listet opp i <a href="#tbl-regresjon" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-regresjon</span></a> under.</p>
+<p>For å presentere regresjonslinjen, har vi laget en lineær statistisk modell for hjelp til videre tolkning mellom forholdet av dei to variablene. Oppsummering av de statistiske parametrene som vi har valgt å fokusere på i diskusjonen vår er listet opp i <a href="#tbl-regresjon" class="quarto-xref">Table&nbsp;<span>2.1</span></a> under.</p>
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lager lineær modell med ds uten NA-verdier</span></span>
@@ -661,23 +646,23 @@ Figure&nbsp;2.1: Sammenheng mellom treningalder og myonuclei per fiber CSA i Typ
 Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber type-II
 </figcaption>
 <div aria-describedby="tbl-regresjon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="rqmdqrajuk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rqmdqrajuk table {
+<div id="dmvqptwxpf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dmvqptwxpf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rqmdqrajuk thead, #rqmdqrajuk tbody, #rqmdqrajuk tfoot, #rqmdqrajuk tr, #rqmdqrajuk td, #rqmdqrajuk th {
+#dmvqptwxpf thead, #dmvqptwxpf tbody, #dmvqptwxpf tfoot, #dmvqptwxpf tr, #dmvqptwxpf td, #dmvqptwxpf th {
   border-style: none;
 }
 
-#rqmdqrajuk p {
+#dmvqptwxpf p {
   margin: 0;
   padding: 0;
 }
 
-#rqmdqrajuk .gt_table {
+#dmvqptwxpf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -703,12 +688,12 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-left-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_caption {
+#dmvqptwxpf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rqmdqrajuk .gt_title {
+#dmvqptwxpf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -720,7 +705,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-bottom-width: 0;
 }
 
-#rqmdqrajuk .gt_subtitle {
+#dmvqptwxpf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -732,7 +717,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-top-width: 0;
 }
 
-#rqmdqrajuk .gt_heading {
+#dmvqptwxpf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -744,13 +729,13 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-right-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_bottom_border {
+#dmvqptwxpf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_col_headings {
+#dmvqptwxpf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -765,7 +750,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-right-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_col_heading {
+#dmvqptwxpf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -785,7 +770,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   overflow-x: hidden;
 }
 
-#rqmdqrajuk .gt_column_spanner_outer {
+#dmvqptwxpf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -797,15 +782,15 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 4px;
 }
 
-#rqmdqrajuk .gt_column_spanner_outer:first-child {
+#dmvqptwxpf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rqmdqrajuk .gt_column_spanner_outer:last-child {
+#dmvqptwxpf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rqmdqrajuk .gt_column_spanner {
+#dmvqptwxpf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -817,11 +802,11 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   width: 100%;
 }
 
-#rqmdqrajuk .gt_spanner_row {
+#dmvqptwxpf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rqmdqrajuk .gt_group_heading {
+#dmvqptwxpf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -847,7 +832,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   text-align: left;
 }
 
-#rqmdqrajuk .gt_empty_group_heading {
+#dmvqptwxpf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -862,15 +847,15 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   vertical-align: middle;
 }
 
-#rqmdqrajuk .gt_from_md > :first-child {
+#dmvqptwxpf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rqmdqrajuk .gt_from_md > :last-child {
+#dmvqptwxpf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rqmdqrajuk .gt_row {
+#dmvqptwxpf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -889,7 +874,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   overflow-x: hidden;
 }
 
-#rqmdqrajuk .gt_stub {
+#dmvqptwxpf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -902,7 +887,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#rqmdqrajuk .gt_stub_row_group {
+#dmvqptwxpf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -916,15 +901,15 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   vertical-align: top;
 }
 
-#rqmdqrajuk .gt_row_group_first td {
+#dmvqptwxpf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rqmdqrajuk .gt_row_group_first th {
+#dmvqptwxpf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rqmdqrajuk .gt_summary_row {
+#dmvqptwxpf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -934,16 +919,16 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#rqmdqrajuk .gt_first_summary_row {
+#dmvqptwxpf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_first_summary_row.thick {
+#dmvqptwxpf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rqmdqrajuk .gt_last_summary_row {
+#dmvqptwxpf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -953,7 +938,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-bottom-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_grand_summary_row {
+#dmvqptwxpf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -963,7 +948,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#rqmdqrajuk .gt_first_grand_summary_row {
+#dmvqptwxpf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -973,7 +958,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-top-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_last_grand_summary_row_top {
+#dmvqptwxpf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -983,11 +968,11 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-bottom-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_striped {
+#dmvqptwxpf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rqmdqrajuk .gt_table_body {
+#dmvqptwxpf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -996,7 +981,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-bottom-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_footnotes {
+#dmvqptwxpf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1010,7 +995,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-right-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_footnote {
+#dmvqptwxpf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1019,7 +1004,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#rqmdqrajuk .gt_sourcenotes {
+#dmvqptwxpf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1033,7 +1018,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-right-color: #D3D3D3;
 }
 
-#rqmdqrajuk .gt_sourcenote {
+#dmvqptwxpf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1041,72 +1026,72 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#rqmdqrajuk .gt_left {
+#dmvqptwxpf .gt_left {
   text-align: left;
 }
 
-#rqmdqrajuk .gt_center {
+#dmvqptwxpf .gt_center {
   text-align: center;
 }
 
-#rqmdqrajuk .gt_right {
+#dmvqptwxpf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rqmdqrajuk .gt_font_normal {
+#dmvqptwxpf .gt_font_normal {
   font-weight: normal;
 }
 
-#rqmdqrajuk .gt_font_bold {
+#dmvqptwxpf .gt_font_bold {
   font-weight: bold;
 }
 
-#rqmdqrajuk .gt_font_italic {
+#dmvqptwxpf .gt_font_italic {
   font-style: italic;
 }
 
-#rqmdqrajuk .gt_super {
+#dmvqptwxpf .gt_super {
   font-size: 65%;
 }
 
-#rqmdqrajuk .gt_footnote_marks {
+#dmvqptwxpf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rqmdqrajuk .gt_asterisk {
+#dmvqptwxpf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rqmdqrajuk .gt_indent_1 {
+#dmvqptwxpf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rqmdqrajuk .gt_indent_2 {
+#dmvqptwxpf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rqmdqrajuk .gt_indent_3 {
+#dmvqptwxpf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rqmdqrajuk .gt_indent_4 {
+#dmvqptwxpf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rqmdqrajuk .gt_indent_5 {
+#dmvqptwxpf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rqmdqrajuk .katex-display {
+#dmvqptwxpf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rqmdqrajuk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dmvqptwxpf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

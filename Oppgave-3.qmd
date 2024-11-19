@@ -1,6 +1,6 @@
 ---
 title: "Slutninger fra statistiske modeller og statistisk styrke"
-author: "Anders Nybakk"
+author: "Kandidatnymmer: 503"
 format: 
   html:
     code-fold: true

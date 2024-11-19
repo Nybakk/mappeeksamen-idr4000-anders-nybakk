@@ -1,6 +1,6 @@
 ---
 title: "Labrapport; Ekstraksjon og analyse av muskelprotein"
-author: "AN"
+author: "Kandidatnymmer: 503"
 bibliography: resources/ref6.bib 
 editor_options: 
   chunk_output_type: console

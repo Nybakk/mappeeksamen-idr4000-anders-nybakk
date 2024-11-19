@@ -1,6 +1,6 @@
 ---
 title: "Analyse av gjentatte målte eksperiment"
-author: "Anders Nybakk"
+author: "Kandidatnymmer: 503"
 format: html
 code-fold: true
 execute:

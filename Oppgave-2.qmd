@@ -1,7 +1,6 @@
 ---
 title: "Regresjonsmodeller og prediksjonsdata"
-author: "Sivert Helland Veseth, Anders Nybakk, 
-        Adrian Hasum Kristiansen, Jens-Henrik Hegg"
+author: "Kandidatnymmer: 503"
 format: 
   html:
     code-fold: true
@@ -149,8 +148,6 @@ I denne delen av oppgaven tar vi utgangspunkt i forsøket vi gjorde på molekyl�
 ### Metode
 
 Først har vi brukt ImageJ Fiji for å behandle bildet vi fikk fra DNA-prøvene. Vi inverterte bildet for å få tydeligere farger, roterte det rett vei og klipte ut delen av bildet vi ville bruke - altså analysen av våre prøver. Videre brukte vi rektangelverktøyet for å markere stigen og prøvene vi ville analysere. Ut fra de markerte områdene lager ImageJ fiji grafer for hver brønn. Vi markerte toppunktene i alle grafene som indikerer gen (og trinn på stigen). Programmet registrerer plasseringen til toppunktene og disse "koordinatene" legges inn i et excell-dokument som vi bruker til beregningene.
-
-> > > > > > > 796d002e0b0ef4c4714dda1e5eb02c80942fb5c8
 
 ```{r}
 
