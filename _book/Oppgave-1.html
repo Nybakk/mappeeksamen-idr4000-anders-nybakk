@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -271,98 +237,24 @@ div.csl-indent {
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="deltakere"><span class="header-section-number">1.2.1</span> Deltakere</h3>
 <p>Forsøket hadde i alt 14 deltakere mellom 20 og 40 år. Gruppen bestod av 3 kvinner og 11 menn. Treningsgrunnlaget til deltakerne var variert og selv om samtlige deltakere meddelte at de driver idrettsaktivitet jevnlig, er det noen som prmært trener styrketrening, ikke utholdenhet.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Vis kode</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Last inn nødvendige biblioteker</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Definer variablene som skal brukes</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"timepoint"</span>, <span class="st">"temperature"</span>, <span class="st">"humidity"</span>, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          <span class="st">"sex"</span>, <span class="st">"age"</span>, <span class="st">"height"</span>, <span class="st">"weight"</span>, <span class="st">"w.max"</span>, </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          <span class="st">"vo2.max"</span>, <span class="st">"vco2.max"</span>, <span class="st">"rer.max"</span>, <span class="st">"ve.max"</span>, </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>          <span class="st">"bf.max"</span>, <span class="st">"hr.max"</span>, <span class="st">"la.max"</span>, </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>          <span class="st">"borg.max"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Leser inn og kombinerer data fra flere Excel-filer</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_excel</span>(<span class="st">"data/g1.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data_excel"</span>, <span class="at">na =</span> <span class="st">"na"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"G1"</span>, <span class="at">id =</span> <span class="fu">paste0</span>(group, <span class="st">"_"</span>, id)),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_excel</span>(<span class="st">"data/g2.xlsx"</span>, <span class="at">na =</span> <span class="st">"na"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"G2"</span>, <span class="at">id =</span> <span class="fu">paste0</span>(group, <span class="st">"_"</span>, id)),</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_excel</span>(<span class="st">"data/g3.xlsx"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">timepoint =</span> <span class="fu">paste0</span>(<span class="st">"t"</span>, timepoint), <span class="at">group =</span> <span class="st">"G3"</span>, <span class="at">id =</span> <span class="fu">paste0</span>(group, <span class="st">"_"</span>, id)),</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_excel</span>(<span class="st">"data/g4.xlsx"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"G4"</span>, <span class="at">id =</span> <span class="fu">paste0</span>(group, <span class="st">"_"</span>, id))</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Oppsummer dataene</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(timepoint, age, height, weight) <span class="sc">%&gt;%</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(timepoint) <span class="sc">%&gt;%</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.age =</span> <span class="fu">sd</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.height =</span> <span class="fu">sd</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.weight =</span> <span class="fu">mean</span>(weight, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.weight =</span> <span class="fu">sd</span>(weight, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Lag tabellen med gt</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>summary_data <span class="sc">%&gt;%</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Oppsummering av Demografiske Data"</span>,</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Gjennomsnitt og standardavvik per tidsperiode"</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">timepoint =</span> <span class="st">"Tidspunkt"</span>,</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.age =</span> <span class="st">"Gj.sn. Alder"</span>,</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.age =</span> <span class="st">"SD Alder"</span>,</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.height =</span> <span class="st">"Gj.sn. H\u00F8yde"</span>,</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.height =</span> <span class="st">"SD H\u00F8yde"</span>,</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.weight =</span> <span class="st">"Gj.sn. Vekt"</span>,</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.weight =</span> <span class="st">"SD Vekt"</span>,</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="st">"Antall"</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">vars</span>(m.age, sd.age, m.height, sd.height, m.weight, sd.weight),</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">"Alle verdier er beregnet per tidsperiode."</span>,</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>())</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
-<div id="orvpjitowm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#orvpjitowm table {
+<div id="wvqaqmtvlf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wvqaqmtvlf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#orvpjitowm thead, #orvpjitowm tbody, #orvpjitowm tfoot, #orvpjitowm tr, #orvpjitowm td, #orvpjitowm th {
+#wvqaqmtvlf thead, #wvqaqmtvlf tbody, #wvqaqmtvlf tfoot, #wvqaqmtvlf tr, #wvqaqmtvlf td, #wvqaqmtvlf th {
   border-style: none;
 }
 
-#orvpjitowm p {
+#wvqaqmtvlf p {
   margin: 0;
   padding: 0;
 }
 
-#orvpjitowm .gt_table {
+#wvqaqmtvlf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -388,12 +280,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_caption {
+#wvqaqmtvlf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#orvpjitowm .gt_title {
+#wvqaqmtvlf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -405,7 +297,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#orvpjitowm .gt_subtitle {
+#wvqaqmtvlf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -417,7 +309,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#orvpjitowm .gt_heading {
+#wvqaqmtvlf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -429,13 +321,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_bottom_border {
+#wvqaqmtvlf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_col_headings {
+#wvqaqmtvlf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -450,7 +342,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_col_heading {
+#wvqaqmtvlf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -470,7 +362,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#orvpjitowm .gt_column_spanner_outer {
+#wvqaqmtvlf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -482,15 +374,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#orvpjitowm .gt_column_spanner_outer:first-child {
+#wvqaqmtvlf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#orvpjitowm .gt_column_spanner_outer:last-child {
+#wvqaqmtvlf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#orvpjitowm .gt_column_spanner {
+#wvqaqmtvlf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -502,11 +394,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#orvpjitowm .gt_spanner_row {
+#wvqaqmtvlf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#orvpjitowm .gt_group_heading {
+#wvqaqmtvlf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -532,7 +424,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#orvpjitowm .gt_empty_group_heading {
+#wvqaqmtvlf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -547,15 +439,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#orvpjitowm .gt_from_md > :first-child {
+#wvqaqmtvlf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#orvpjitowm .gt_from_md > :last-child {
+#wvqaqmtvlf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#orvpjitowm .gt_row {
+#wvqaqmtvlf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -574,7 +466,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#orvpjitowm .gt_stub {
+#wvqaqmtvlf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -587,7 +479,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#orvpjitowm .gt_stub_row_group {
+#wvqaqmtvlf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -601,15 +493,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#orvpjitowm .gt_row_group_first td {
+#wvqaqmtvlf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#orvpjitowm .gt_row_group_first th {
+#wvqaqmtvlf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#orvpjitowm .gt_summary_row {
+#wvqaqmtvlf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -619,16 +511,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#orvpjitowm .gt_first_summary_row {
+#wvqaqmtvlf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_first_summary_row.thick {
+#wvqaqmtvlf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#orvpjitowm .gt_last_summary_row {
+#wvqaqmtvlf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -638,7 +530,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_grand_summary_row {
+#wvqaqmtvlf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -648,7 +540,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#orvpjitowm .gt_first_grand_summary_row {
+#wvqaqmtvlf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -658,7 +550,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_last_grand_summary_row_top {
+#wvqaqmtvlf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -668,11 +560,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_striped {
+#wvqaqmtvlf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#orvpjitowm .gt_table_body {
+#wvqaqmtvlf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -681,7 +573,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_footnotes {
+#wvqaqmtvlf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -695,7 +587,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_footnote {
+#wvqaqmtvlf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -704,7 +596,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#orvpjitowm .gt_sourcenotes {
+#wvqaqmtvlf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -718,7 +610,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#orvpjitowm .gt_sourcenote {
+#wvqaqmtvlf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -726,72 +618,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#orvpjitowm .gt_left {
+#wvqaqmtvlf .gt_left {
   text-align: left;
 }
 
-#orvpjitowm .gt_center {
+#wvqaqmtvlf .gt_center {
   text-align: center;
 }
 
-#orvpjitowm .gt_right {
+#wvqaqmtvlf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#orvpjitowm .gt_font_normal {
+#wvqaqmtvlf .gt_font_normal {
   font-weight: normal;
 }
 
-#orvpjitowm .gt_font_bold {
+#wvqaqmtvlf .gt_font_bold {
   font-weight: bold;
 }
 
-#orvpjitowm .gt_font_italic {
+#wvqaqmtvlf .gt_font_italic {
   font-style: italic;
 }
 
-#orvpjitowm .gt_super {
+#wvqaqmtvlf .gt_super {
   font-size: 65%;
 }
 
-#orvpjitowm .gt_footnote_marks {
+#wvqaqmtvlf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#orvpjitowm .gt_asterisk {
+#wvqaqmtvlf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#orvpjitowm .gt_indent_1 {
+#wvqaqmtvlf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#orvpjitowm .gt_indent_2 {
+#wvqaqmtvlf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#orvpjitowm .gt_indent_3 {
+#wvqaqmtvlf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#orvpjitowm .gt_indent_4 {
+#wvqaqmtvlf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#orvpjitowm .gt_indent_5 {
+#wvqaqmtvlf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#orvpjitowm .katex-display {
+#wvqaqmtvlf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#orvpjitowm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wvqaqmtvlf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -915,89 +807,26 @@ div.csl-indent {
 </section>
 <section id="resultater" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="resultater"><span class="header-section-number">1.3</span> Resultater</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Vis kode</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sd_age_t4 <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">"t4"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sd_age =</span> <span class="fu">sd</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(sd_age)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#for å referere til standard avik til t4 i teksten</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <p>Vi valgte å se på laktat og RER i denne oppgaven. Når RER øker over 1.0 indikere det ofte at laktatproduksjonen øker. RER samfatter ofte med den anaerobe terskelen hvor laktatnivået begynner å stige raskt. Av de 14 deltakerne var det bare 8 (2 kvinner og 6 menn) som gjennomførte alle fire testene. Dette kom delvis som følge av at tidspunktene for t3 og t4 ble endret.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Vis kode</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Beregn oppsummering for laktat</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>laktat_summary <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(timepoint) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.la =</span> <span class="fu">mean</span>(la.max, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.la =</span> <span class="fu">sd</span>(la.max, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n.la =</span> <span class="fu">n</span>(),</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Beregn oppsummering for RER</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>rer_summary <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(timepoint) <span class="sc">%&gt;%</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.rer =</span> <span class="fu">mean</span>(rer.max, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.rer =</span> <span class="fu">sd</span>(rer.max, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">n.rer =</span> <span class="fu">n</span>(),</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Kombiner resultatene i én tabell</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>combined_summary <span class="ot">&lt;-</span> laktat_summary <span class="sc">%&gt;%</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(rer_summary, <span class="at">by =</span> <span class="st">"timepoint"</span>)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Lag tabellen med gt</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Lag tabellen med gt</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>combined_summary <span class="sc">%&gt;%</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Oppsummering av Laktat- og RER-målinger"</span>,</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Gjennomsnitt, standardavvik og antall per tidsperiode"</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">timepoint =</span> <span class="st">"Tidspunkt"</span>,</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.la =</span> <span class="st">"Gj.sn. Laktat"</span>,</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.la =</span> <span class="st">"SD Laktat"</span>,</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">n.la =</span> <span class="st">"Antall Laktat"</span>,</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.rer =</span> <span class="st">"Gj.sn. RER"</span>,</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd.rer =</span> <span class="st">"SD RER"</span>,</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">n.rer =</span> <span class="st">"Antall RER"</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(m.la, sd.la, m.rer, sd.rer),</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">"Alle verdier er beregnet per tidsperiode."</span>,</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>())</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
-<div id="fhvqfdkgsf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fhvqfdkgsf table {
+<div id="qahrxjtncp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qahrxjtncp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fhvqfdkgsf thead, #fhvqfdkgsf tbody, #fhvqfdkgsf tfoot, #fhvqfdkgsf tr, #fhvqfdkgsf td, #fhvqfdkgsf th {
+#qahrxjtncp thead, #qahrxjtncp tbody, #qahrxjtncp tfoot, #qahrxjtncp tr, #qahrxjtncp td, #qahrxjtncp th {
   border-style: none;
 }
 
-#fhvqfdkgsf p {
+#qahrxjtncp p {
   margin: 0;
   padding: 0;
 }
 
-#fhvqfdkgsf .gt_table {
+#qahrxjtncp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1023,12 +852,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_caption {
+#qahrxjtncp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fhvqfdkgsf .gt_title {
+#qahrxjtncp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1040,7 +869,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#fhvqfdkgsf .gt_subtitle {
+#qahrxjtncp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1052,7 +881,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#fhvqfdkgsf .gt_heading {
+#qahrxjtncp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1064,13 +893,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_bottom_border {
+#qahrxjtncp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_col_headings {
+#qahrxjtncp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1085,7 +914,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_col_heading {
+#qahrxjtncp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1105,7 +934,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#fhvqfdkgsf .gt_column_spanner_outer {
+#qahrxjtncp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1117,15 +946,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#fhvqfdkgsf .gt_column_spanner_outer:first-child {
+#qahrxjtncp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fhvqfdkgsf .gt_column_spanner_outer:last-child {
+#qahrxjtncp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fhvqfdkgsf .gt_column_spanner {
+#qahrxjtncp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1137,11 +966,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#fhvqfdkgsf .gt_spanner_row {
+#qahrxjtncp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fhvqfdkgsf .gt_group_heading {
+#qahrxjtncp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1167,7 +996,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#fhvqfdkgsf .gt_empty_group_heading {
+#qahrxjtncp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1182,15 +1011,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#fhvqfdkgsf .gt_from_md > :first-child {
+#qahrxjtncp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fhvqfdkgsf .gt_from_md > :last-child {
+#qahrxjtncp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fhvqfdkgsf .gt_row {
+#qahrxjtncp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1209,7 +1038,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#fhvqfdkgsf .gt_stub {
+#qahrxjtncp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1222,7 +1051,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fhvqfdkgsf .gt_stub_row_group {
+#qahrxjtncp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1236,15 +1065,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#fhvqfdkgsf .gt_row_group_first td {
+#qahrxjtncp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fhvqfdkgsf .gt_row_group_first th {
+#qahrxjtncp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fhvqfdkgsf .gt_summary_row {
+#qahrxjtncp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1254,16 +1083,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fhvqfdkgsf .gt_first_summary_row {
+#qahrxjtncp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_first_summary_row.thick {
+#qahrxjtncp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fhvqfdkgsf .gt_last_summary_row {
+#qahrxjtncp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1273,7 +1102,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_grand_summary_row {
+#qahrxjtncp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1283,7 +1112,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fhvqfdkgsf .gt_first_grand_summary_row {
+#qahrxjtncp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1293,7 +1122,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_last_grand_summary_row_top {
+#qahrxjtncp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1303,11 +1132,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_striped {
+#qahrxjtncp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fhvqfdkgsf .gt_table_body {
+#qahrxjtncp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1316,7 +1145,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_footnotes {
+#qahrxjtncp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1330,7 +1159,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_footnote {
+#qahrxjtncp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1339,7 +1168,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fhvqfdkgsf .gt_sourcenotes {
+#qahrxjtncp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1353,7 +1182,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#fhvqfdkgsf .gt_sourcenote {
+#qahrxjtncp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1361,72 +1190,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fhvqfdkgsf .gt_left {
+#qahrxjtncp .gt_left {
   text-align: left;
 }
 
-#fhvqfdkgsf .gt_center {
+#qahrxjtncp .gt_center {
   text-align: center;
 }
 
-#fhvqfdkgsf .gt_right {
+#qahrxjtncp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fhvqfdkgsf .gt_font_normal {
+#qahrxjtncp .gt_font_normal {
   font-weight: normal;
 }
 
-#fhvqfdkgsf .gt_font_bold {
+#qahrxjtncp .gt_font_bold {
   font-weight: bold;
 }
 
-#fhvqfdkgsf .gt_font_italic {
+#qahrxjtncp .gt_font_italic {
   font-style: italic;
 }
 
-#fhvqfdkgsf .gt_super {
+#qahrxjtncp .gt_super {
   font-size: 65%;
 }
 
-#fhvqfdkgsf .gt_footnote_marks {
+#qahrxjtncp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fhvqfdkgsf .gt_asterisk {
+#qahrxjtncp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fhvqfdkgsf .gt_indent_1 {
+#qahrxjtncp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fhvqfdkgsf .gt_indent_2 {
+#qahrxjtncp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fhvqfdkgsf .gt_indent_3 {
+#qahrxjtncp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fhvqfdkgsf .gt_indent_4 {
+#qahrxjtncp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fhvqfdkgsf .gt_indent_5 {
+#qahrxjtncp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fhvqfdkgsf .katex-display {
+#qahrxjtncp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fhvqfdkgsf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qahrxjtncp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1499,26 +1328,6 @@ div.csl-indent {
 </div>
 <p>I tabellen over vises gjennomsnittsverdiene for laktat og RER på hver av de fire testene samt SD for disse med variasjonskoeffisientene for laktat på: 7.6%, og 1.6% for RER.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Vis kode</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dat,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> la.max,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> timepoint,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> id)) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Laktatmålinger"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Grafen viser de forskjellige laktatmålingene til hver enkelt deltaker, og forandring mellom målingene."</span>,</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Laktate max (mmol)"</span>,</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tidspunkt (testnummer)"</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1528,24 +1337,6 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell">
-<details class="code-fold">
-<summary>Vis kode</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dat,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> rer.max,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> timepoint,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> id)) <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"RER-målinger"</span>,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Grafen viser de forskjellige RER-målingene til hver enkelt deltaker, og forandring mellom målingene"</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"RER max"</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"tidspunkt (testnummer)"</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

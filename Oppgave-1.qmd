@@ -29,6 +29,10 @@ Målet med forsøket er å lære seg å lede VO<sub>2max</sub>-tester på en rel
 Forsøket hadde i alt 14 deltakere mellom 20 og 40 år. Gruppen bestod av 3 kvinner og 11 menn. Treningsgrunnlaget til deltakerne var variert og selv om samtlige deltakere meddelte at de driver idrettsaktivitet jevnlig, er det noen som prmært trener styrketrening, ikke utholdenhet. 
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
 # Last inn nødvendige biblioteker
 library(readxl)
 library(dplyr)
@@ -267,6 +271,10 @@ cv_percentRER <- round(cv$cv,1)
 
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 sd_age_t4 <- dat %>%
   filter(timepoint == "t4") %>%
   summarise(sd_age = sd(age, na.rm = TRUE)) %>%
@@ -279,6 +287,11 @@ sd_age_t4 <- dat %>%
 Vi valgte å se på laktat og RER i denne oppgaven. Når RER øker over 1.0 indikere det ofte at laktatproduksjonen øker. RER samfatter ofte med den anaerobe terskelen hvor laktatnivået begynner å stige raskt. Av de 14 deltakerne var det bare 8 (2 kvinner og 6 menn) som gjennomførte alle fire testene. Dette kom delvis som følge av at tidspunktene for t3 og t4 ble endret.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
 # Beregn oppsummering for laktat
 laktat_summary <- dat %>%
   group_by(timepoint) %>%
@@ -336,6 +349,10 @@ I tabellen over vises gjennomsnittsverdiene for laktat og RER på hver av de fir
 
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 library(ggplot2)
 
 ggplot(data = dat,
@@ -357,6 +374,9 @@ ggplot(data = dat,
 ```
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
 
 ggplot(data = dat,
        aes(y = rer.max,
