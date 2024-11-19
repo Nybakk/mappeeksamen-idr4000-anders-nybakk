@@ -15,14 +15,18 @@ book:
     - Oppgave-3.qmd
     - Oppgave-4.qmd
     - Oppgave-5.qmd
-    - Filosofihistore.qmd
     - Labrapport.qmd
+    - Filosofihistore.qmd
     - kilder.qmd
 
 bibliography:
+    - resources/ref1.bib
     - resources/ref2.bib
+    - resources/ref3.bib
     - resources/ref4.bib
     - resources/ref5.bib
+    - resources/ref6.bib
+    - resources/ref7.bib
 
 csl: resources/citation-style.csl 
 

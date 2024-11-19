@@ -1,10 +1,16 @@
 ---
 title: "Studiedesign"
 author: "Anders Nybakk"
+format: html
+code-fold: true
+execute:
+  warning: false  # Skjuler varselmeldinger
+editor_options: 
+  chunk_output_type: console
 bibliography: resources/ref4.bib
 ---
 
-# Indroduksjon
+## Indroduksjon
 
 I denne oppgaven skal jeg analysere og sammenlikne fem forskningsartikkler som undersøker samme tema. Tema jeg har valg er *"Blokkperiodisering og VO*<sub>2max</sub>". Jeg skal forsøke å bruke QALMRI-metoden for å analysere og sammenlikne artiklene på en systematisk og god måte. QALMRI står for "Questions", "Alternatives", "Logic", "Method", "Results", "Inferences", og handler om å systematisk analysere hva forfatterne ønsker å finne ut av, hva de torr vil skje, logikken bak hypotesen, metodene de har brukt i forskningen, resultatene og hva de betyr [@brosowsky2020].
 
@@ -18,9 +24,9 @@ Artiklene jeg har valgt er:
 
 Det skal sies at ikke alle artiklene jeg har valgt i denne oppgaven ser spesifikt på sammenhengen mellom bolkperiodisering og VO<sub>2max</sub>. De fleste av studiene ser på den generelle effekten bolkperiodisering har på prestasjonsevnen til utøverne. Ettersom VO<sub>2max</sub> er svært viktig for utholdenhetsidretter har jeg likevel valgt å fokusere på dette. Tester som går på andre egenskaper kommer jeg derfor ikke til å fokusere så mye på her.
 
-# Hoveddel
+## Hoveddel
 
-## Grunnlag for studiene
+### Grunnlag for studiene
 
 Hovedfokuset til studiene jeg har valgt er å se på effekten av blokkperiodisert trening, med fokus på utholdenhet. Fire av artiklene ser spesifikt på hvordan effekten er for syklister, mens den siste tar for seg alpinister. [@rønnestad2012], [@rønnestad2012a] og [@almquist2022] sammenlikner i sine artikler effekten av blokkbasert trening (BP) med tradisjonell periodisering (TP). [@javaloyes2020] sammenlikner effekten av BP med *"heart rate variability guided training"* (HRV). [@breil2010] som forskjer på alpinister skiller seg også ut fra dette fordi de sammenlikner ikke BP med en annen form for periodisering. De forskjer utelukkende på hva en blokk med høyintensitetsintervaller (HIT) gjør med den aerobe kapasiteten til junior-alpinister.
 
@@ -30,7 +36,7 @@ Hovedfokuset til studiene jeg har valgt er å se på effekten av blokkperiodiser
 
 [@javaloyes2020] har ingen klar hypotese i sin artikkel men viser til annen forskning som viser at HRV kan gi en mer pålitelig formening om en utøvers evne til å trene. Ut fra utøverens HRV-score før trening kan man bestemme hva slags intensitet treningsøkten skal ha. Høy HRV-score = høy intensitet og motsatt.Dette kan altså være en måte å få optimalisert treningen for hver utøver individuelt ut fra dagsfor slik at treningen også blir optimal [@walker2024]. Det blir ikke skrevet eksplisitt, men det virker som om de har en hypotese om at HRV kan være en bedre måte å periodisere treningen etter enn BP.
 
-## Sudiedesign og forskningsmetoder
+### Sudiedesign og forskningsmetoder
 
 Jeg synes det er vanskelig å si hva slags studiedesign som blir brukt i studiene. Alle studiene har som mål å finne ut om en form for periodisering er mer effektiv enn en annen. I de fleste studiene jeg har valgt er det BP som undersøkes med en kontrollgruppe som har TP, men unntak av studien til [@javaloyes2020] som sammenlikner HRV med BP. Dette kan likne på det [@hulley2013] kaller *"Case Controll Studies"*, men passer samtidig ikke helt fordi det beskrives som en forskningsmetode som brukes for å finne ut hvordan en bestemt diagnose påvirker en gruppe, men "diagnosen" kan kanskje byttes ut med treningsmetode.
 
@@ -44,12 +50,12 @@ Alle studiene har forsøkt å standardisere så mye som mulig. Utøverne har få
 
 Det har blitt brukt veldig like former for statistisk analyse i studiene. Utregning av standard avvik blir gjort i alle studiene og blir oppgitt som en del av resultatene. De fleste studiene med unntak av [@almquist2022] understreker at det blir gjort en ANOVA-analyse for å sammenlikne gruppene. T-test blir gjennomført av [@breil2010], [@rønnestad2012] og [@rønnestad2012a], mens [@almquist2022] og [@javaloyes2020] bruker *"Shapiro-Wilks-test"*. Sistnevnte bruker også en *"Levene's-test"*. Alle studeiene regner en p-verdi \< 0,05 som statistisk signifikant.
 
-## Resultat og konklusjon
+### Resultat og konklusjon
 
 I samtlige studier var BP den formen for periodisering som gav mest framgang på VO<sub>2max</sub>. Spesielt i studiene til [@breil2010], [@rønnestad2012] og [@rønnestad2012a] kommer BP godt ut, og har signifikan resultat - noe TD ikke har. I studien til [@almquist2022] er forskjellen vesentlig mindre. Her har BP fortsatt en fordel fremfor TP, men mmye mindre enn resultatene fra de andre studiene sier. En mulig forklaring på dette i følge forfatterne kan være den store spredningen i prestasjonsnivå. I denne studien varierer deltakerne fra nivå 2-5 [@pauw2013], så individuell framgang som følge av økning i treningsbelastining kan skjule eventuelle forskjeller mellom BP og TP. BP har også bedre effekt på VO<sub>2max</sub>. enn HRV i følge resultatene i studien til [@javaloyes2020], men også her er forskjellene mindre enn de tre første studiene.
 
 Studiene til [@breil2010], [@rønnestad2012] og [@rønnestad2012a] konkluderer med at BP *kan* være fordelaktig for å forbedre aerob kapasitet. Spesielt [@breil2010] er positive til BP, men dette er også en av de korteste studiene, og også den studien som tydeligst hadde fokus på VO<sub>2max</sub>. Selv om de er positive til BP stiller de fortsatt et spørsmålstegn til hvor viktig VO<sub>2max</sub> er for alpinister - selv om tidligere studier viser at alpinister har høyere VO<sub>2max</sub> enn gjennomsnittet i populasjonen. [@rønnestad2012] og [@rønnestad2012a] viser som sagt også til at disse studiene tyder på at BP kan være fordelaktig i forhold til TP, men er tydelige på at det er vanskelig å si hva som er den beste måten å legge opp treningen på for syklister. [@almquist2022] konkluderer med at deres data ikke støtter hypotesen om at BP er en bedre metode for trente syklister enn TD. Resultatene viser at det er litt forskjell på treningsutbyttet, men at den ikke er signifikant. Studien til [@javaloyes2020] skiller seg litt ut fra resten i og med at den har som mål å finne ut om HRV er et valid og reliabelt verktøy for å periodisere treningen. Derfor er det ikke fokus på hva som er mest effektivt av HRV og BP, men de konkluderer med at HRV er et godt hjelpemiddel og at man kan stole på det i trenignsplanleggingen.
 
-# Avslutning
+## Avslutning
 
 I denne oppgaven har jeg sett på frm forskjellige studier som handler om blokkperiodisering og VO<sub>2max</sub>. Jeg har forsåkt å analysere artiklene til disse studiene og se på hva slagt studiedesign de har brukt, hva slags statistiske metoder de har brukt og hva forskerne har funnet ut og konkludert med i studiene. Det siste punktet var litt vanskelig ettersom det bare var et av studiene jeg fant som forsket spesifikt på BP sin effekt på VO<sub>2max</sub>. Resten av studiene hadde mer generelt fokus på prestasjonsforbedring innenfor sykling hvor VO<sub>2max</sub> bare var en av mange variabler de forsket på. Jeg synes likevel det var spennende å se hvordan [@rønnestad2012a] og [@almquist2022] fikk forskjellige resultat. Disse studiene var veldig like, og Rønnestad var med i begge studiene, så det var interessant at resultatene ble såpass ulike. Alt i alt synes jeg alle artiklene var gode, og de virker svært seriøse, så det at resultatene ble ulike tyder bare på at det trengs mer forskning på feltet.

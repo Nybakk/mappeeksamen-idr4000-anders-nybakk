@@ -13,13 +13,13 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Introduksjon
+## Introduksjon
 
 I vår studie har vi gjennomført VO2 max-tester over fire forskjellige dager for å vurdere påliteligheten av de innsamlede dataene. Formålet med disse testene var å undersøke hvor konsistente resultatene er under kontrollerte forhold. For å oppnå dette har vi forsøkt å standardisere flere variabler, inkludert treningsnivå og matinntak dagen før testene. Ifølge @halperin2015 er det avgjørende å bruke standardiserte protokoller for å oppnå pålitelige resultater i fysiologiske tester. I tillegg har vi målt laktatnivåer umiddelbart etter avslutningen av hver test for å vurdere den fysiologiske responsen. Tidligere forskning har vist at laktatnivåer kan gi verdifull informasjon om anaerob kapasitet og treningsintensitet, noe som er viktig for å forstå atletisk ytelse (@hopkins2000; @tanner2012). Ved å kontrollere for disse variablene håper vi å oppnå en høy grad av reproduserbarhet i våre resultater.
 
 I denne rapporten velger vi å fokusere på lakta-max og RER. Vi vil sammenlikne disse, regne ut standard avvik.
 
-# Protokoll
+## Protokoll
 
 Protokoll VO2maks-test
 
@@ -29,15 +29,15 @@ En VO2maks-test går ut på å måle hvor mange ml en person evner å ta opp og 
 
 Maksimalt oksygenopptak beskrives enten i absolutte tall (ml/min) eller som relative tall i forhold til kroppsvekt (ml/kg/min).
 
-## Metode:
+### Metode:
 
 VO2maks-testen ble gjennomført som en trappetrinnstest der motstanden økte med 20W hvert minutt til utmattelse, eller når RPM \< 60. Det registreres målinger av VO2maks ved hvert 30 sek. Deltakerne startet testen på en watt tilsvarende fysisk form og erfaring med sykkel. Etter testene var ferdige ble informasjonen innhentet og plottet i et ferdig formatert Excel-dokument.
 
 Da en tydelig protokoll ble fulgt for å etterstrebe så sikre og reliable tester som mulig, er det flere forhold som må tas underveis. Matinntak og koffeininntak fra samme dag og kvelden før ble registrert ved første test, og skulle være likt ved de påfølgende testene. Trening dagen før test ble også registrert, men lyktes ikke i å reprodusere dette da trening dagen før test 2 ble gårsdagens VO2maks-test. Vi hadde også føringer om at man skulle etterstrebe lik søvn på dagene før test. For å sikre lik grad av formuleringer og verbal instruks samt grad av engasjement og heiing, hadde hver deltaker samme testleder ved hver test.
 
-## Protokoll
+### Protokoll
 
-### Før test:
+#### Før test:
 
 1.  Starte laktatmaskin
 2.  Bytte standard hvis den er tom (finnes i kjøleskap)
@@ -93,7 +93,7 @@ Da en tydelig protokoll ble fulgt for å etterstrebe så sikre og reliable teste
 8.  Laktatmåling 1 min etter test – stikk i fingeren
 9.  Vifte?
 
-### Etter test:
+#### Etter test:
 
 1.  Avslutte test på begge PC
 2.  Spørre om Borg skala
@@ -107,7 +107,7 @@ Da en tydelig protokoll ble fulgt for å etterstrebe så sikre og reliable teste
 4.  Lagre i rett mappe på minnepenn
 5.  Overføre til One Drive på labbPCn
 
-## Standardisering:
+### Standardisering:
 
 I dette forsøket valgte vi å standardisere matinntak og koffeininntak i forkant av testen. Vi ønsket at testdeltakerne skulle spise det samme de tre siste måltidene før testen, og ha likt koffeininntak samme dag som testen.
 
@@ -115,7 +115,7 @@ Vi kunne også ha valgt å standardisere trening, men på grunn av forskjellig t
 
 Standardisering av tidspunkt ble gjort for oss med reservasjon av laboratorium 2. Helt standardisert blir det likevel ikke fordi i testuke 1 er testdagene rett etter hverandre, mens i testuke to er det en hviledag mellom testene.
 
-# Resultater
+## Resultater
 
 ```{r}
 # Last inn nødvendige biblioteker
@@ -163,11 +163,11 @@ read_excel("data/g4.xlsx") %>%
 
 ```
 
-## Tabeller 
+### Tabeller 
 
 *(n = antall deltagere).*
 
-### Tabell over demografiske variabler .
+#### Tabell over demografiske variabler .
 
 ```{r}
 dat %>%
@@ -187,7 +187,7 @@ dat %>%
 
 ```
 
-### Tabell over demografiske variabler fordelt etter kjønn.
+#### Tabell over demografiske variabler fordelt etter kjønn.
 
 ```{r}
 
@@ -209,7 +209,7 @@ dat %>%
 
 variasjon eller reliabilitetstallet til den la.max, så den rer.max. sammenlikne til slutt
 
-### Standard avvik:
+#### Standard avvik:
 
 **laktat**
 
@@ -273,7 +273,7 @@ dat %>%
 
 ```
 
-### Graf over laktatmålingene
+#### Graf over laktatmålingene
 
 ```{r}
 
@@ -292,7 +292,7 @@ ggplot(data = dat,
 
 ```
 
-### Graf over RER-målingene
+#### Graf over RER-målingene
 
 ```{r}
 
@@ -311,9 +311,9 @@ ggplot(data = dat,
 
 ```
 
-# Utregning av variasjonskoeffisient
+## Utregning av variasjonskoeffisient
 
-## Laktat maks
+### Laktat maks
 
 ```{r}
 cv <- dat %>%
@@ -337,7 +337,7 @@ cv_percent <- round(cv$cv,1)
 
 Variasjonskoeffisienten for laktat maks var `r cv_percent`%
 
-## RER maks
+### RER maks
 
 ```{r}
 
@@ -363,9 +363,9 @@ cv_percentRER <- round(cv$cv,1)
 Variasjonskoeffisienten for RER maks var `r cv_percentRER`%
 
 
-# Avvik og feilkilder
+## Avvik og feilkilder
 
-## Standardisering
+### Standardisering
 
 **Livsstil**
 
@@ -403,7 +403,7 @@ På t4 manglet det også stoppeklokke på laboratoriumet. Vi løste dette med å
 
 I denne rapporten har vi også brukt data fra de andre gruppene i klassen vår. Dette gjør at vi har et bredere datautvalg som vi kan benytte oss av. Problemet med dette er at vi ikke har kontroll på andre gruppers protokoll, avvik, nøyaktighet osv. I datasettet var det for eksempel en plottefeil mellom rer.max og ve.max som vi ikke fikk endret på. Dette førte igjen til en feil i utregning av standard avvik, og at en eventuell tabell ikke ble brukbar. Det var også plottet ulikt på kjønn, da noen skrev "f","F","k" eller "kvinne" for kvinner, og "m", "M" eller "mann" for menn. Dette fikset vi ved å gå inn i exelarket og erstatte alle med "f" og "m" på de korresponderende kjønnene.
 
-# Resultat
+## Resultat
 ```{r}
 sd_age_t4 <- dat %>%
   filter(timepoint == "t4") %>%

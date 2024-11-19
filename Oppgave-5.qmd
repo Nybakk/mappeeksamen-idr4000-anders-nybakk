@@ -10,9 +10,9 @@ editor_options:
 bibliography: resources/ref5.bib
 ---
 
-# Effekten av treningsvolum på hypertrofi og styrke
+## Effekten av treningsvolum på hypertrofi og styrke
 
-## Introduksjon
+### Introduksjon
 
 Menneskekroppen er relativt god til å tilpasse seg miljøet den lever i eller blir utsatt for. Ved økt treningsbelastning vil kroppen vår, særlig muskelen våre over tid tilpasse seg den økte belastningen ved å øke styrke og volum. Hvordan vi kan gjøre dette på mest mulig effektiv måte er ofte målet innenfor treningsfysiologisk forskning. Det er mange faktorer som spiller inn på hvordan og hvor raskt musklene våre tilpasser. Treningsvolum, antall sett, antall repetisjoner og pause mellom sett vil påvirke effekten av treningen. Det som vanligvis anbefales for hypertrofi er for eksempel moderat til høy motstand, høyt volum og korte pauser mellom sett. For å øke styrke er det vanlig å øke motstand, redusere volum og ha lengre pauser [@progress2009] [@schoenfeld2016]. Dette har trolig sammenheng med at trening med få repetisjoner til utmattelse kan bidra til bedre muskelaktivering [@ruple2023].
 
@@ -22,13 +22,13 @@ Som sagt gir også lavere treningsvolum gode resultater, og selv om det antaglig
 
 Målet med denne studien er å se hvordan forskjellig treningsvolum påvirker muskelhypertrofi og muskelstyrke hos relativt lite trente personer. Ut fra tidligere forskning osm jeg har presentert her vil det være naturlig å anta at trening med høyt volum vil gi bedre resultat enn trening med lavt volum. Det vil også være naturlig å anta at vi ser en større effekt på hypertrofi enn på muskulær styrke.
 
-## Metode
+### Metode
 
-### Etisk godkjenning
+#### Etisk godkjenning
 
 Alle deltakerne ble informert om potensiell risiko og ubehag studien kunne medføre og gav informert bekreftelse og godkjenning av dette i forkant av studieopptaket. Studiedesign var forhåndsregistrert (ClinicalTrials.gov Identifier: NCT02179307), og godkjent av den lokale etikk-komiteen ved Høgskolen i innlandet Lillehammer, avdeling for idrettsvitenskap (no. 2013-11-22:2) og alle prosedyrende ble gjennomført i henhold til *Helsinki-erklæringen*
 
-### Deltakere
+#### Deltakere
 
 41 menn og kvinner var med i denne studien. Alle deltakerne måtte være ikke-røykere mellom 18 og 40 år. For å kunne observere effekten av treningsintervensjonen best mulig kunne ikke deltakerne ha en treningshistorie med mer enn én økt med styrketrening per uke de siste 12 månedene opp til intervensjonen. Deltakerne kunne ikke ha redusert muskelstyrke som følge av tidligere eller nåværende skade av samme årsak, og de kunne ikke gå på faste medisiner da også disse kunne påvirke trenignseffekten.
 
@@ -80,17 +80,17 @@ exscidata::dxadata %>%
 
 ```
 
-### Studie design
+#### Studie design
 
-#### Mål av muskelmasse (mål av regional lean mass)
+##### Mål av muskelmasse (mål av regional lean mass)
 
 Muskeltverrsnitt av knestrekkerne (MTK; vastus lateralis, medialis, intermedius og rectus femoris) ble målt før og etter treningsintervensjonen ved hjelp av "*magnetic resonance imaging*" (MRI) i samsvar med produsentens protocol (S-Scan, Esaote Europe B.V., Maastricht, the Netherlands). Bildene ble analysert blindt av den samme teknikkeren ved hjelp av OsiriX (v.5.6, Pixmeo Sarl, Bernex, Switzerland). Tverrsnittet ble tatt med samme avstand til kneleddet og ved bruk av minst fire sammenhengende bilder (5 mm tykkelse, 10 mm atskillelse) hos alle deltakerne. Kroppssammensetnging hos deltakerne ble målt før og etter intervensjonen ved hjelp av "*Dual-energy x-ray absorptiometry*" (DXA) (Lunar Prodigy, GE Healthcare, Oslo, Norway), også dette i henhold til protokoll. I forkant av MRI- og DXA-målingen ble deltakerne bedt om å faste i minimum to timer før testing, og unngå hard fysisk aktivitet 48 timer føt testing. Etter siste treningsøkt under intervensjonen var det to dager til post-målingene med MRI og DXA.
 
-#### Mål av maksimal styrke
+##### Mål av maksimal styrke
 
 Testing av maksimal styrke i knestrekkerne ble gjort med en repetisjon maks (1RM) med etbeins beinpress. Test-økta ble standardisert for alle deltakerne med et spesifikt oppvarmingsprogram bestående av 10, 6 og 3 repetisjoner med belastning på 50, 75 og 85 % av forventet maksimal styrke. Etter dette ble 1RM funnet ved å gradvis øke motstanden i beinpress til deltakeren ikke klarte å fullføre bevegelsen i øvelsen på grunn av for høy vekt. Den høyeste vekten registrert med fullført bevegelse ble registrert som 1RM. Alle deltakerne fikk seks forsøk.
 
-#### Treningsprotokoll
+##### Treningsprotokoll
 
 Intervensjonen bestod av 12 ukers standradisert styrketrening for hele kroppen. Alle øvelsene for bein ble utført med et bein om gangen for å få best tilpasset treningsvolum. Alle deltakerne utførte styrketrening som bestod av et enkelt sett (single set protokoll) og tre sett (multiple set protokoll). Hvilket av beina til deltakerne som skule brukes til hvilken protokoll ble tilfeldig trukket på forhånd.
 
@@ -100,17 +100,17 @@ Styrkeøvelsene for bein ble utført i følgende rekkefølge; etbeins beinpress,
 
 For å tilpasse studien til deltakernes hverdag kunne noen økter gjennomføres uten oppsyn, men i gjennomsnitt ble 91 % av øktene gjennomført med oppsyn. for å holde oversikt over øktene uten oppsyn måtte deltakerne føre detaljerte ligger som gjennpom intervensjonen ble sjekket av forsker-teamet sammen med deltakeren.
 
-### Dataanalyse og statestikk
+#### Dataanalyse og statestikk
 
 Alle data som blir presentert i denne rapporten er oppgitt i gjennomsnitt og standars avvik (mean (SD)) med mindre noe annet er spesifisert. For å se på hvordan forskjellig volum påvirker hypertrofi og styrke har vi regnet ut den gjennomsnitlige forskjellen i endring mellom singel-set-protokoll (SSP) og multiple-set-protokoll (MSP). Disse dataene blir også visualiser i modeller i resultatdelen. Modellene viser hva slags utvikling deltakerne hadde fra SSP og MSP.
 
 Testing mot null-hypotesen om at det ikke vil være noen forskjell på treningseffekten fra SSP og MSP ble gjort i R ved hjelp av lme4-pakken [@lme4]. Grensen for statistisk signifikans ble satt til α = 0.05. All data-analyse ble gjort i R [@R].
 
-## Resultat
+### Resultat
 
 Av 41 deltakere i studiet gjennomførte 34 hele treningsopplegget og hvis resultater er med i følgende beregninger
 
-### Hypertrofi
+#### Hypertrofi
 
 ```{r}
 #| echo: false
@@ -214,7 +214,7 @@ dat %>%
 
 
 
-### Maksimal styrke
+#### Maksimal styrke
 
 ```{r}
 #| echo: false
@@ -335,7 +335,7 @@ str_plot
 
 ```
 
-## Diskusjon
+### Diskusjon
 
 I dette studiet fikk deltakerne en større økning i muskelmasse ved å følge treningsprotokoll med flere sett (MSP) enn med et enkelt sett (SSP). Dette stemmer over ens med anbefalingene fra [@progress2009] og funnene til [@schoenfeld2016]. Det som er overesakende i denne studien er at det ikke var stor nok forskjell til å si at funnet er statistisk signifikant med en *p*-verdi på 0.036. Fra tabellen kunne vi også se at noen deltakere ikke bare responderte like godt på SSP som MSP, men faktisk bedre. Selv om vi ser en tendens til at det i gjennomsnitt gir bedre effekt av MSP enn SSp kan vi altså ikke konkludere med dette ut fra denne studien. 
 
