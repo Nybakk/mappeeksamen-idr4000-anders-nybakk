@@ -1,6 +1,6 @@
 ---
 title: "Studiedesign"
-author: "Kandidatnymmer: 503"
+author: "Kandidatnummer: 503"
 format: html
 code-fold: true
 execute:
@@ -38,9 +38,9 @@ Hovedfokuset til studiene jeg har valgt er å se på effekten av blokkperiodiser
 
 ### Sudiedesign og forskningsmetoder
 
-Jeg synes det er vanskelig å si hva slags studiedesign som blir brukt i studiene. Alle studiene har som mål å finne ut om en form for periodisering er mer effektiv enn en annen. I de fleste studiene jeg har valgt er det BP som undersøkes med en kontrollgruppe som har TP, men unntak av studien til [@javaloyes2020] som sammenlikner HRV med BP. Dette kan likne på det [@hulley2013] kaller *"Case Controll Studies"*, men passer samtidig ikke helt fordi det beskrives som en forskningsmetode som brukes for å finne ut hvordan en bestemt diagnose påvirker en gruppe, men "diagnosen" kan kanskje byttes ut med treningsmetode.
+Alle studiene har som mål å finne ut om en form for periodisering er mer effektiv enn en annen. I de fleste studiene jeg har valgt er det BP som undersøkes med en kontrollgruppe som har TP, men unntak av studien til [@javaloyes2020] som sammenlikner HRV med BP. Dette kan likne på det [@hulley2013] kaller *"Case Controll Studies"*, men passer samtidig ikke helt fordi det beskrives som en forskningsmetode som brukes for å finne ut hvordan en bestemt diagnose påvirker en gruppe, men "diagnosen" kan kanskje byttes ut med treningsmetode.
 
-Studiene kan også minne om *"Randomized blinded trial"* som brukes for å finne ut om en behandling faktisk virker. Disse studiene blir blindet som vil si at deltakerne ikke vet om de er med i intervensjonsgruppen eller kontrollgruppen - derfor passer dette heller ikke helt. Kanskje er det designformen *"Randomiserte kontrollerte studier"* som passer best hvor man deler utvalget tilfeldig, slik at eventuelle ulikheter i gruppene også blir tilfeldig. Alle studiene deler i hvert fall utvalget i to grupper: intervensjonsgruppe (BP eller HRV i [@javaloyes2020] sitt stude) og en kontrollgruppe (TP eller BP i [@javaloyes2020] sitt studie).
+Studiene kan også minne om *"Randomized blinded trial"* som brukes for å finne ut om en behandling faktisk virker. Disse studiene blir blindet som vil si at deltakerne ikke vet om de er med i intervensjonsgruppen eller kontrollgruppen - derfor passer dette heller ikke helt. Alt i alt er det nok designformen *"Randomiserte kontrollerte studier"* som passer best hvor man deler utvalget tilfeldig, slik at eventuelle ulikheter i gruppene også blir tilfeldig. Alle studiene deler i hvert fall utvalget i to grupper: intervensjonsgruppe (BP eller HRV i [@javaloyes2020] sitt stude) og en kontrollgruppe (TP eller BP i [@javaloyes2020] sitt studie).
 
 Alle studiene har utvalg med godt trente utøvere. I studien til [@breil2010] består utvalget av eliteutævere på juniornivå. I de fire sykkelstudiene er utøverne alle godt trente syklister som enten konkurrerer aktivt eller som har bakgrunn fra konkurransesykling. Ut ifra tallene som blir presentert for VO<sub>2max</sub> er de fleste utøverne i studiene er på prestasjonsnivå 3 etter modellen til [@pauw2013], og noen på nivå 2 (men dette er hovedsaklig alpinister hvor VO<sub>2max</sub> ikke er like viktig som for syklister). Noen utøvere er også på nivå 4 og 5 i følge [@almquist2022].
 

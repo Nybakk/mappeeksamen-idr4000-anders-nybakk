@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kandidatnymmer: 503">
+<meta name="author" content="Kandidatnummer: 503">
 
 <title>3&nbsp; Slutninger fra statistiske modeller og statistisk styrke – Mappeeksamen IDR4000</title>
 <style>
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -193,7 +159,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Oppgave-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analyse av gjentatte målte eksperiment</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analyse av gjentatte målte eksperiment; Effekten av treningsvolum på hypertrofi og styrke</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -260,7 +226,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Kandidatnymmer: 503 </p>
+             <p>Kandidatnummer: 503 </p>
           </div>
   </div>
     
@@ -280,24 +246,6 @@ div.csl-indent {
 <section id="simulasjon" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="simulasjon"><span class="header-section-number">3.2</span> Simulasjon</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>, <span class="at">mean =</span> <span class="fl">1.5</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>samp1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">sample</span>(population, <span class="dv">8</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>samp2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">sample</span>(population, <span class="dv">40</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> samp1)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> samp2)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -313,10 +261,6 @@ Coefficients:
 
 Residual standard error: 3.539 on 7 degrees of freedom</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -339,43 +283,502 @@ Residual standard error: 3.019 on 39 degrees of freedom</code></pre>
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="oppgave-1."><span class="header-section-number">3.2.1</span> Oppgave 1.</h3>
 <p><strong>Explain the estimate, SE, t-value, and p-value from the regression models that we created previously (m1 and m2).</strong></p>
 <p>Over kan vi se resultatene av simuleringen. og vi får følgende resultater:</p>
-<table class="caption-top table">
+<div class="cell">
+<div class="cell-output-display">
+<div id="kielsufloc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kielsufloc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#kielsufloc thead, #kielsufloc tbody, #kielsufloc tfoot, #kielsufloc tr, #kielsufloc td, #kielsufloc th {
+  border-style: none;
+}
+
+#kielsufloc p {
+  margin: 0;
+  padding: 0;
+}
+
+#kielsufloc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kielsufloc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#kielsufloc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kielsufloc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kielsufloc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kielsufloc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kielsufloc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kielsufloc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kielsufloc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kielsufloc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kielsufloc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kielsufloc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kielsufloc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#kielsufloc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#kielsufloc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kielsufloc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kielsufloc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kielsufloc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kielsufloc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kielsufloc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#kielsufloc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#kielsufloc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#kielsufloc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kielsufloc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#kielsufloc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#kielsufloc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kielsufloc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kielsufloc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kielsufloc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kielsufloc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kielsufloc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kielsufloc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kielsufloc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kielsufloc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kielsufloc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kielsufloc .gt_left {
+  text-align: left;
+}
+
+#kielsufloc .gt_center {
+  text-align: center;
+}
+
+#kielsufloc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kielsufloc .gt_font_normal {
+  font-weight: normal;
+}
+
+#kielsufloc .gt_font_bold {
+  font-weight: bold;
+}
+
+#kielsufloc .gt_font_italic {
+  font-style: italic;
+}
+
+#kielsufloc .gt_super {
+  font-size: 65%;
+}
+
+#kielsufloc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#kielsufloc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#kielsufloc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#kielsufloc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#kielsufloc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#kielsufloc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#kielsufloc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#kielsufloc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#kielsufloc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header">
-<th></th>
-<th>m1</th>
-<th>m2</th>
+<tr class="header gt_heading">
+<th colspan="5" class="gt_heading gt_title gt_font_normal">Oppsummering av modellresultater</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Estimat, standard feil, t-verdi og p-verdi for M1 og M2</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="Modell" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Modell</th>
+<th id="Estimat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimat</th>
+<th id="Standard-Feil" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standard Feil</th>
+<th id="t-verdi" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">t-verdi</th>
+<th id="p-verdi" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">p-verdi</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="gt_table_body">
 <tr class="odd">
-<td>Estimat</td>
-<td>1.84</td>
-<td>1.5642</td>
+<td class="gt_row gt_left" headers="Modell">M1</td>
+<td class="gt_row gt_right" headers="Estimat">1.840</td>
+<td class="gt_row gt_right" headers="Standard Feil">1.251</td>
+<td class="gt_row gt_right" headers="t-verdi">1.470</td>
+<td class="gt_row gt_right" headers="p-verdi">0.185</td>
 </tr>
 <tr class="even">
-<td>Standard feil</td>
-<td>1.251</td>
-<td>0.4774</td>
-</tr>
-<tr class="odd">
-<td>t-verdi</td>
-<td>1.47</td>
-<td>3.276</td>
-</tr>
-<tr class="even">
-<td>p-verdi</td>
-<td>0.185</td>
-<td>0.00221</td>
+<td class="gt_row gt_left" headers="Modell">M2</td>
+<td class="gt_row gt_right" headers="Estimat">1.564</td>
+<td class="gt_row gt_right" headers="Standard Feil">0.477</td>
+<td class="gt_row gt_right" headers="t-verdi">3.276</td>
+<td class="gt_row gt_right" headers="p-verdi">0.002</td>
 </tr>
 </tbody>
 </table>
+
+</div>
+</div>
+</div>
+<p>Vi kan se at i m2, med flere deltakere kommer estimatet nærmere det forhåndsbestemte gjennomsnittet på 1,5. Samtidig ser vi at standardfeil går ned, som tyder på at det mindre sannsynlig at estimatet i m2 er feil enn i m1. T-verdien blir også høyere som viser at det kommer fram en tydligere forskjell mellom null-hypotesen og den nye hypotesen. P-verdien sier noe om hvor sannsynlig det er at forskjellen er tilfeldig eller ikke. Lav p-verdi tyder på at det er lite sjanse for tilfeldigheter i resultatet <span class="citation" data-cites="spiegelhalter2019">(<a href="#ref-spiegelhalter2019" role="doc-biblioref">Spiegelhalter, 2019</a>)</span>. Jeg kommer tilbake til dette i neste oppgave, men vi kan allerede se her at det blir høyere reliabilitet i en studie med mange deltakere enn i en studie med få.</p>
 </section>
 <section id="oppgave-2." class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="oppgave-2."><span class="header-section-number">3.2.2</span> Oppgave 2.</h3>
 <p><strong>Discuss what contributes to the different results in the two studies (m1 and m2).</strong></p>
 <p>Når vi øker størelsen på utvalget ser vi at dette påvirker resultatene. I en faktisk forskning vil vi jo ikke vite det faktiske gjennomsnittet i en populasjon. I denne simuleringen derimot har vi bestemt at gjennomsnittet (mean) er 1.5. Når vi har et utvalg på 8 observasjoner får vi resultatet 1.84, og med 40 observasjoner får vi 1.56 som estimat. Ved å øke antall faktiske observasjoner kan vi altså gjøre et mer presist estimat av hva som er gjennomsnittet i en populasjon.</p>
-<p>På samme måte vil størelsen på utvalget påvirke standard feilen i forsøket. Standard feil beregnes ved å dele standard avvik, som i denne simuleringen er 3 på kvadratroten av antall observasjoner. I denne simuleringen blir det altså tre delt på kvadratroten av 8 i m1, og kvadratroten av 40 i m2. Som vi kan se får vi da lavere standers feil i m2 hvor utvalget er større. Standard feil handler nemlig om hvor sannsynlig det er at utvalger er representativt for populasjonene. Lav standard feil betyr at det er stor sansynlighet for at utvalget er representativt.</p>
+<p>På samme måte vil størelsen på utvalget påvirke standard feilen i forsøket. Standard feil beregnes ved å dele standard avvik, som i denne simuleringen er 3 på kvadratroten av antall observasjoner. I denne simuleringen blir det altså tre delt på kvadratroten av 8 i m1, og kvadratroten av 40 i m2. Som vi kan se får vi da lavere standard feil i m2 hvor utvalget er større. Standard feil er et estimat av spredingenn i en populasjon, lav standard feil tyder på lav spredning og kan derfor tolkes som at utvalget er representativt for populasjonene. Lav standard feil betyr at det er stor sansynlighet for at utvalget er representativt.</p>
 <p>T-verdien beregnes ved å dele estimatet med standard feil og forteller oss om forskjellen i gruppene er signifikant <span class="citation" data-cites="spiegelhalter2019">(<a href="#ref-spiegelhalter2019" role="doc-biblioref">Spiegelhalter, 2019</a>)</span>. Videre sier Spieghalter at en t-verdi over 2 tilsvarer en p-verdi, som er et mål på forskjellen mellom innsamlet data og null-hypotesen, under 0,05 som igjen vil bety at statisitkken er signifikant. I vår simulering kan vi se at dette blir avgjørende. I simuleringen med 8 i utvalger får vi en t-verdi på 1.47 som tilsvarer en p-verdi på 0.185 altså ikke signifikant. I utvalget med 40 derimot er t-verdien 3,276 og p-verdien 0.00221 som vil si at resultatet er signifikant. I forsøket med 8 observasjoner ville det altså ha blitt gjort en type II feil, altså a avvise en korrekt alternativ hypotese fordi testresultatet støtter null-hypotesen <span class="citation" data-cites="spiegelhalter2019">(<a href="#ref-spiegelhalter2019" role="doc-biblioref">Spiegelhalter, 2019</a>)</span>.</p>
 </section>
 <section id="oppgave-3." class="level3" data-number="3.2.3">
@@ -386,106 +789,505 @@ Residual standard error: 3.019 on 39 degrees of freedom</code></pre>
 </section>
 <section id="many-studies" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="many-studies"><span class="header-section-number">3.3</span> Many studies</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>, <span class="at">mean =</span> <span class="fl">1.5</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data frames to store the model estimates</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>results_8 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">estimate =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">se =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pval =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">n =</span> <span class="dv">8</span>)  </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>results_40 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">estimate =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">se =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pval =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                      <span class="at">n =</span> <span class="dv">40</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># A for loop used to sample 1000 studies, each iteration (i) will draw a new sample</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># from the population. </span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw a sample </span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  samp1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">sample</span>(population, <span class="dv">8</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  samp2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">sample</span>(population, <span class="dv">40</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Model the data</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> samp1)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> samp2)</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract values from the models</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  results_8[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m1))[<span class="dv">1</span>, <span class="dv">1</span>]</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  results_8[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m1))[<span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  results_8[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m1))[<span class="dv">1</span>, <span class="dv">4</span>]</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  results_40[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m2))[<span class="dv">1</span>, <span class="dv">1</span>]</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  results_40[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m2))[<span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  results_40[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m2))[<span class="dv">1</span>, <span class="dv">4</span>]</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the results in a combined data frame</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(results_8, results_40)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <section id="oppgave-4." class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="oppgave-4."><span class="header-section-number">3.3.1</span> Oppgave 4.</h3>
 <p><strong>Calculate the standard deviation of the estimate variable, and the average of the se variable for each of the study sample sizes (8 and 40). Explain why these numbers are very similar. How can you define the Standard Error (SE) in light of these calculations?</strong></p>
-<p>m1: 8</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Beregn standardavviket til estimate og gjennomsnittet av se for hver utvalgsstørrelse</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>results_summary <span class="ot">&lt;-</span> results <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(n) <span class="sc">%&gt;%</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(estimate),</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">std_estimate =</span> <span class="fu">sd</span>(estimate),  <span class="co"># Standardavviket til estimate</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_se =</span> <span class="fu">mean</span>(se)             <span class="co"># Gjennomsnittet av standardfeilen</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Vis sammendraget av resultatene</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-      n  mean std_estimate avg_se
-  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1     8  1.52        1.07   1.02 
-2    40  1.51        0.484  0.470</code></pre>
+<div class="cell-output-display">
+<div id="eklkshudgx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#eklkshudgx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#eklkshudgx thead, #eklkshudgx tbody, #eklkshudgx tfoot, #eklkshudgx tr, #eklkshudgx td, #eklkshudgx th {
+  border-style: none;
+}
+
+#eklkshudgx p {
+  margin: 0;
+  padding: 0;
+}
+
+#eklkshudgx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#eklkshudgx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#eklkshudgx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#eklkshudgx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#eklkshudgx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#eklkshudgx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#eklkshudgx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#eklkshudgx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#eklkshudgx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#eklkshudgx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#eklkshudgx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#eklkshudgx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#eklkshudgx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#eklkshudgx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#eklkshudgx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eklkshudgx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#eklkshudgx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#eklkshudgx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#eklkshudgx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eklkshudgx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#eklkshudgx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eklkshudgx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#eklkshudgx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eklkshudgx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eklkshudgx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eklkshudgx .gt_left {
+  text-align: left;
+}
+
+#eklkshudgx .gt_center {
+  text-align: center;
+}
+
+#eklkshudgx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#eklkshudgx .gt_font_normal {
+  font-weight: normal;
+}
+
+#eklkshudgx .gt_font_bold {
+  font-weight: bold;
+}
+
+#eklkshudgx .gt_font_italic {
+  font-style: italic;
+}
+
+#eklkshudgx .gt_super {
+  font-size: 65%;
+}
+
+#eklkshudgx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#eklkshudgx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#eklkshudgx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#eklkshudgx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#eklkshudgx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#eklkshudgx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#eklkshudgx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#eklkshudgx .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#eklkshudgx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="4" class="gt_heading gt_title gt_font_normal">Oppsummering av Resultater for Estimater og Standardfeil</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Gjennomsnitt og standardavvik for estimater og gjennomsnitt standardfeil</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Gjennomsnitt av Estimater</th>
+<th id="std_estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standardavvik av Estimater</th>
+<th id="avg_se" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Gjennomsnitt Standardfeil</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="n">8</td>
+<td class="gt_row gt_right" headers="mean">1.519</td>
+<td class="gt_row gt_right" headers="std_estimate">1.071</td>
+<td class="gt_row gt_right" headers="avg_se">1.021</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="n">40</td>
+<td class="gt_row gt_right" headers="mean">1.509</td>
+<td class="gt_row gt_right" headers="std_estimate">0.484</td>
+<td class="gt_row gt_right" headers="avg_se">0.470</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 <p>Som vi kan se over er standard avvik og gjennomsnitlig standard feil svært like. Forskjellen er 0,05 i m1 og 0,014 i m2. Grunnen til at standard avvik og standard feil er så like er på grunn av de henger sammen. Standard feil finner vi som tidligere nevn ved å dele standard avvik på kvadratroten av utvalget. Begge disse verdiene blir brukt for å lage kurvemodeller som viser p-verdi og t-verdi. Når vi får lavere standard avvik og standard feil vil kurven bli smalere og spissere, fordi estimatet kommer nærmere det faktiske gjennomsnittet. hvis vi skulle laget en kurve ut fra utvalgene m1 og m2, ville altså m1 være bredere og rundere enn m2 som ville være smal og spiss.</p>
-<p>beregne kurven</p>
 </section>
 <section id="oppgave-5." class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="oppgave-5."><span class="header-section-number">3.3.2</span> Oppgave 5.</h3>
 <p><strong>Create a histogram (see example code below) of the p-values from each study sample-size. How do you interpret these histograms, what do they tell you about the effect of sample size on statistical power?</strong></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example code for copy and paste</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A two facets histogram can be created with ggplot2</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(pval)) <span class="sc">+</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Oppgave-3_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Oppgave-3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -496,20 +1298,483 @@ Residual standard error: 3.019 on 39 degrees of freedom</code></pre>
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="oppgave-6."><span class="header-section-number">3.3.3</span> Oppgave 6.</h3>
 <p><strong>Calculate the number of studies from each sample size that declare a statistical significant effect (specify a threshold for, your significance level).</strong></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the proportion of tests below a certain p-value for each </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pval <span class="sc">&lt;</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(n) <span class="sc">%&gt;%</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sig_results =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-      n sig_results
-  &lt;dbl&gt;       &lt;dbl&gt;
-1     8       0.227
-2    40       0.865</code></pre>
+<div class="cell-output-display">
+<div id="egoumymtwb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#egoumymtwb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#egoumymtwb thead, #egoumymtwb tbody, #egoumymtwb tfoot, #egoumymtwb tr, #egoumymtwb td, #egoumymtwb th {
+  border-style: none;
+}
+
+#egoumymtwb p {
+  margin: 0;
+  padding: 0;
+}
+
+#egoumymtwb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#egoumymtwb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#egoumymtwb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#egoumymtwb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#egoumymtwb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#egoumymtwb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#egoumymtwb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#egoumymtwb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#egoumymtwb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#egoumymtwb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#egoumymtwb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#egoumymtwb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#egoumymtwb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#egoumymtwb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#egoumymtwb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#egoumymtwb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#egoumymtwb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#egoumymtwb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#egoumymtwb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#egoumymtwb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#egoumymtwb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#egoumymtwb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#egoumymtwb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#egoumymtwb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#egoumymtwb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#egoumymtwb .gt_left {
+  text-align: left;
+}
+
+#egoumymtwb .gt_center {
+  text-align: center;
+}
+
+#egoumymtwb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#egoumymtwb .gt_font_normal {
+  font-weight: normal;
+}
+
+#egoumymtwb .gt_font_bold {
+  font-weight: bold;
+}
+
+#egoumymtwb .gt_font_italic {
+  font-style: italic;
+}
+
+#egoumymtwb .gt_super {
+  font-size: 65%;
+}
+
+#egoumymtwb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#egoumymtwb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#egoumymtwb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#egoumymtwb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#egoumymtwb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#egoumymtwb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#egoumymtwb .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#egoumymtwb .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#egoumymtwb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="2" class="gt_heading gt_title gt_font_normal">Andel Signifikante Resultater</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Tallverdi av tester med p-valg under 0.05 for hver utvalgsstørrelse</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+<th id="sig_results" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Andel Signifikante Resultater (Tall)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="n">8</td>
+<td class="gt_row gt_right" headers="sig_results">0.227</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="n">40</td>
+<td class="gt_row gt_right" headers="sig_results">0.865</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 <p>I denne beregningen skal jeg finne ut hvor mange studier med utvalgsstørelser 8 (lik m1) og 40 (lik m2) som vil få statistisk signifikante resultat med en p-verdi &lt; 0,05. Her får jeg resultatene 0,227 for m1, og 0,865 for m2. Dette kan vi gjøre om til prosentverier: m1: 22,7 % og m2: 86,5 %. Det er altså stor forskjell på den betydelige effekten på de forskjellige studiene. I studier med 8 deltakere vil det bare vaære 22,7 % sjanse for a få et statistisk sikgnifikant resultat, mens det i studier med 40 vil være 86,5 % sjanse for å få et statistisk signifikant resultat.</p>
@@ -518,13 +1783,6 @@ Residual standard error: 3.019 on 39 degrees of freedom</code></pre>
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="oppgave-7."><span class="header-section-number">3.3.4</span> Oppgave 7.</h3>
 <p><strong>Using the pwr package, calculate the power of a one-sample t-test, with a effect size of 1.5/3, your specified significance level and sample sizes 8 and 40. Explain the results in the light of your simulations.</strong></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the pwr package</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">8</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">d =</span> <span class="fl">1.5</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">type =</span> <span class="st">"one.sample"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      One-sample t test power calculation 
@@ -535,10 +1793,6 @@ Residual standard error: 3.019 on 39 degrees of freedom</code></pre>
           power = 0.232077
     alternative = two.sided</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">d =</span> <span class="fl">1.5</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">type =</span> <span class="st">"one.sample"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      One-sample t test power calculation 
@@ -559,76 +1813,487 @@ Residual standard error: 3.019 on 39 degrees of freedom</code></pre>
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="oppgave-8."><span class="header-section-number">3.4.1</span> Oppgave 8.</h3>
 <p><strong>With a significance level of 5%, how many studies would give you a “false positive” result if you did many repeated studies?</strong></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data frames to store the model estimates</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>results_8 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">estimate =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">se =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pval =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">n =</span> <span class="dv">8</span>)  </span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>results_40 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">estimate =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">se =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pval =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">n =</span> <span class="dv">40</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># A for loop used to sample 1000 studies, each iteration (i) will draw a new sample</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># from the population. </span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw a sample </span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  samp1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">sample</span>(population, <span class="dv">8</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  samp2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">sample</span>(population, <span class="dv">40</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Model the data</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> samp1)</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> samp2)</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract values from the models</span></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  results_8[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m1))[<span class="dv">1</span>, <span class="dv">1</span>]</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>  results_8[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m1))[<span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>  results_8[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m1))[<span class="dv">1</span>, <span class="dv">4</span>]</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>  results_40[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m2))[<span class="dv">1</span>, <span class="dv">1</span>]</span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  results_40[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m2))[<span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  results_40[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m2))[<span class="dv">1</span>, <span class="dv">4</span>]</span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the results in a combined data frame</span></span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>results_null <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(results_8, results_40)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="cell-output-display">
+<div id="wsoawfrcsk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wsoawfrcsk table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wsoawfrcsk thead, #wsoawfrcsk tbody, #wsoawfrcsk tfoot, #wsoawfrcsk tr, #wsoawfrcsk td, #wsoawfrcsk th {
+  border-style: none;
+}
+
+#wsoawfrcsk p {
+  margin: 0;
+  padding: 0;
+}
+
+#wsoawfrcsk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wsoawfrcsk .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wsoawfrcsk .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wsoawfrcsk .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wsoawfrcsk .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wsoawfrcsk .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wsoawfrcsk .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wsoawfrcsk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wsoawfrcsk .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wsoawfrcsk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wsoawfrcsk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wsoawfrcsk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wsoawfrcsk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wsoawfrcsk .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wsoawfrcsk .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wsoawfrcsk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wsoawfrcsk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wsoawfrcsk .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wsoawfrcsk .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wsoawfrcsk .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wsoawfrcsk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wsoawfrcsk .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wsoawfrcsk .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wsoawfrcsk .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wsoawfrcsk .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wsoawfrcsk .gt_left {
+  text-align: left;
+}
+
+#wsoawfrcsk .gt_center {
+  text-align: center;
+}
+
+#wsoawfrcsk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wsoawfrcsk .gt_font_normal {
+  font-weight: normal;
+}
+
+#wsoawfrcsk .gt_font_bold {
+  font-weight: bold;
+}
+
+#wsoawfrcsk .gt_font_italic {
+  font-style: italic;
+}
+
+#wsoawfrcsk .gt_super {
+  font-size: 65%;
+}
+
+#wsoawfrcsk .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wsoawfrcsk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wsoawfrcsk .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wsoawfrcsk .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wsoawfrcsk .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wsoawfrcsk .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wsoawfrcsk .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wsoawfrcsk .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wsoawfrcsk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="2" class="gt_heading gt_title gt_font_normal">Andel falske positive resultat</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Tallverdi av tester med falske positive resultat</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+<th id="sig_results" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Andel falske positive resultat (Tall)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="n">8</td>
+<td class="gt_row gt_right" headers="sig_results">0.038</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="n">40</td>
+<td class="gt_row gt_right" headers="sig_results">0.036</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate number of false positives</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>false_positives <span class="ot">&lt;-</span> results_null <span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pval <span class="sc">&lt;</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(n) <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sig_results =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="dv">1000</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(false_positives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-      n sig_results
-  &lt;dbl&gt;       &lt;dbl&gt;
-1     8       0.053
-2    40       0.053</code></pre>
 </div>
 </div>
-<p>Fra resultatene o simuleringen over kan vi se at vi får det samme resultatet for begge utvalgstørrelsene, nemlig 0,053. Dette vil si at ved å gjennomføre forsøkene gjenntatte ganger i den samme populasjonen vil 5,3 % av forsøkene gi falsk positivt resultat. Dette virker ved første øyenkast rart fordi et større utvalg skal i utgangspunkte redusere sjansen for å få falsk positivt svar fordi man tester en større andel av populajsonen. Men hvis vi gjennomfører det samme forsøket gjenntatte ganger innenfor samme populajson vil vi ende opp med samme resultet gitt at hypotesen stemmer, fordi det også på denne måten vil teste en større andel av populasjonen.</p>
-<p>Likevel vil få få falsk positivt resultat så mye som 5,3 % av tilfellene. Dette kan forklares med at utvalgene er tilfeldig, og i noen utvalg vil vi da ha grupper som ikke stemmer med gjennomsnittet av populasjonen. Dette vil alltid skje med mindre vi faktisk tester hele populasjonen. Dette er grunnen til at vi ikke bare kan lene oss på testresultatene, men at vi også må støtte opp med statistisk analyse.</p>
+<p>Fra resultatene i simuleringen over kan vi se at vi får det samme resultatet for begge utvalgstørrelsene, nemlig 0,053. Dette vil si at ved å gjennomføre forsøkene gjenntatte ganger i den samme populasjonen vil 5,3 % av forsøkene gi falsk positivt resultat. Dette virker ved første øyenkast rart fordi et større utvalg skal i utgangspunkte redusere sjansen for å få falsk positivt svar fordi man tester en større andel av populajsonen. Men hvis vi gjennomfører det samme forsøket gjenntatte ganger innenfor samme populajson vil vi ende opp med samme resultet gitt at hypotesen stemmer, fordi det også på denne måten vil teste en større andel av populasjonen.</p>
+<p>Når vi utfører en statistisk test med signifikansnivå på 0,05 (5%) som i denne simuleringen forventer vi at ca. 5 % av resultatene vil være falske positive. Dette er et naturlig resultat av signifikansnivået vi har satt. Et resultat på 5,3 % er nært nok det satte signifikansnivået til at vi kan konkludere med at testen stemmer. Her er det snakk om repeterte gjennomføringer av det samme forsøkte, så hvis det hadde vært stor forskjell på resultatene som følge av ulikt antall deltakere i utvalgene kunne det ha tydet på at noe var feil med testen eller simuleringen.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kandidatnymmer: 503">
+<meta name="author" content="Kandidatnummer: 503">
 
 <title>2&nbsp; Regresjonsmodeller og prediksjonsdata – Mappeeksamen IDR4000</title>
 <style>
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -193,7 +159,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Oppgave-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analyse av gjentatte målte eksperiment</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analyse av gjentatte målte eksperiment; Effekten av treningsvolum på hypertrofi og styrke</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -260,7 +226,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Kandidatnymmer: 503 </p>
+             <p>Kandidatnummer: 503 </p>
           </div>
   </div>
     
@@ -287,51 +253,6 @@ div.csl-indent {
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="metode"><span class="header-section-number">2.2.2</span> Metode</h3>
 <p>Som en kan se i den plotta grafen under, er de forskjellige grafene ikke så forskjellige rundt 2mmol og 4mmol L~-1. På den andre siden ser vi at den lineære modellen er feil ved 300w, den sekundærplynomiske modellen er feil ved 275w. Den tredje- og fjerdeplynomiske modellen derimot, varierer ikke mye fra hverandre.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">### laste ned nødvendige packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">###laste inn data</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"cyclingstudy"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="do">### Estimering av laktatterskelen og treningsintensiteten ved 4mmol L-1 </span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># utvalg av nødvendige kolonner i analysen.</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.225</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Kun ein deltaker og ett tidspunkt.</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">"pre"</span>, subject <span class="sc">==</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lang format ved å bruke laktatkolonnene.</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"watt"</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"lactate"</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">"lac."</span>,</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric),</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> lac<span class="fl">.225</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plotte data, group = subject nødvendig for å sammenkoble punktene.</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(watt, lactate, <span class="at">group =</span> subject)) <span class="sc">+</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Linjer på spesifikke punktene for 2mmol og 4mmol, samt skjeringspunktet mellom linjene.</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"gold"</span>) <span class="sc">+</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">341.5</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">308</span>, <span class="at">color =</span> <span class="st">"green"</span>) <span class="sc">+</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># legge til en strak linje fra den lineære modelen.</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">color =</span> <span class="st">"#e41a1c"</span>) <span class="sc">+</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># poly(x, 2) Legger til en andregradsplynomisk modell.</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>), <span class="at">color =</span> <span class="st">"#377eb8"</span>) <span class="sc">+</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># poly(x, 3) Legger til en tredjegradsplynomisk modell.</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">3</span>), <span class="at">color =</span> <span class="st">"#4daf4a"</span>) <span class="sc">+</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># poly(x, 4) Legger til en fjerdegradsplynomisk modell.</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">4</span>), <span class="at">color =</span> <span class="st">"#ff7f00"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -341,55 +262,6 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">### vurdering av tilpasningen til de forskjellige lineære modellene på sammenhengen mellom treningsintensitet og laktatakkumulering.</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>lactate <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># utvalg av nødvendige kolonner i analysen.</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.225</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Kun ein deltaker og ett tidspunkt.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">"pre"</span>, subject <span class="sc">==</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lang format ved å bruke laktatkolonnene.</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"watt"</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"lactate"</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">"lac."</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric),</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> lac<span class="fl">.225</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fjerne dei ugyldige veriene NA for å hindre feilmeldinger.</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lactate))</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Legger til en strak linje fra modelen.</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> watt, <span class="at">data =</span> lactate)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Legger til en andregradsplynomisk modell.</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> <span class="fu">poly</span>(watt, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>), <span class="at">data =</span> lactate)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Legger til en tredjegradsplynomisk modell.</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> <span class="fu">poly</span>(watt, <span class="dv">3</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>), <span class="at">data =</span> lactate)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Legger til en fjerdegradsplynomisk modell.</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> <span class="fu">poly</span>(watt, <span class="dv">4</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>), <span class="at">data =</span> lactate)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Lagre alle restverdiene som nye variabler.</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>lactate<span class="sc">$</span>resid.m1 <span class="ot">&lt;-</span> <span class="fu">resid</span>(m1)</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>lactate<span class="sc">$</span>resid.m2 <span class="ot">&lt;-</span> <span class="fu">resid</span>(m2)</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>lactate<span class="sc">$</span>resid.m3 <span class="ot">&lt;-</span> <span class="fu">resid</span>(m3)</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>lactate<span class="sc">$</span>resid.m4 <span class="ot">&lt;-</span> <span class="fu">resid</span>(m4)</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>lactate <span class="sc">%&gt;%</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Samle all data fra modelleme.</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"model"</span>,</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"residual"</span>,</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">"resid."</span>,</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">residual =</span> as.numeric),</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> resid.m1<span class="sc">:</span>resid.m4) <span class="sc">%&gt;%</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plotte verdiene fra den observerte watten på x aksen og restverdiene på y aksen</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(watt, residual, <span class="at">fill =</span> model)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># For å ha samme farger som over, bruker me scale fill manual.</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#e41a1c"</span>, <span class="st">"#377eb8"</span>, <span class="st">"#4daf4a"</span>, <span class="st">"#ff7f00"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -400,20 +272,6 @@ div.csl-indent {
 </div>
 <p>For å finne ut hva forutsatt wattverdi som er nærmest 2 og 4 mmol L-1, benytter vi koden under:</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ny dataramme</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">225</span>, <span class="at">to =</span> <span class="dv">350</span>, <span class="at">by =</span> <span class="fl">0.1</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ndf<span class="sc">$</span>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(m3, <span class="at">newdata =</span> ndf)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># for å finne ut kva forutsatt Wattverdi som er nermest 2 og 4 mmol L-1</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>lactate_threshold <span class="ot">&lt;-</span> ndf <span class="sc">%&gt;%</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">abs</span>(predictions <span class="sc">-</span> <span class="dv">4</span>) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(predictions <span class="sc">-</span> <span class="dv">4</span>)))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lactate_threshold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      watt      predictions
  Min.   :343   Min.   :4   
@@ -435,61 +293,11 @@ div.csl-indent {
 </section>
 <section id="metode-1" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="metode-1"><span class="header-section-number">2.3.2</span> Metode</h3>
-<p>Først har vi brukt ImageJ Fiji for å behandle bildet vi fikk fra DNA-prøvene. Vi inverterte bildet for å få tydeligere farger, roterte det rett vei og klipte ut delen av bildet vi ville bruke - altså analysen av våre prøver. Videre brukte vi rektangelverktøyet for å markere stigen og prøvene vi ville analysere. Ut fra de markerte områdene lager ImageJ fiji grafer for hver brønn. Vi markerte toppunktene i alle grafene som indikerer gen (og trinn på stigen). Programmet registrerer plasseringen til toppunktene og disse “koordinatene” legges inn i et excell-dokument som vi bruker til beregningene.</p>
+<p>Først har vi brukt ImageJ Fiji for å behandle bildet vi fikk fra DNA-prøvene. Vi inverterte bildet for å få tydeligere farger, roterte det rett vei og klipte ut delen av bildet vi ville bruke - altså analysen av våre prøver. Videre brukte vi rektangelverktøyet for å markere stigen og prøvene vi ville analysere. Ut fra de markerte områdene lager ImageJ fiji grafer for hver brønn. Vi markerte toppunktene i alle grafene som indikerer gen (og trinn på stigen). Programmet registrerer plasseringen til toppunktene og disse “koordinatene” legges inn i et excel-dokument som vi bruker til beregningene. Vi bruker <code>readxl</code>-pakken for å finne dataene og lagre de som dat.</p>
+<p>For å finne ut av molekylstørrelsen til de ukjente prøvene våre må vi først kalibrere stigen. Dette gjør vi ved å lage en data.fram som vi kaller ladder. Her er tallene omvendt proposjonale ettersom det er de små molekylene som trekkes lengst inn i gelen. Denne dataframen kaller vi <code>ladder</code>.</p>
+<p>Videre må vi også lage en <code>data.frame</code> for de ukjente variablene som vi kaller “unknown”</p>
+<p>For å lage en kalibreringsmodell bruker vi de samme dataene i <code>ggplot</code> for å vise stigen. Dette brukes videre for å estimere størrelsen på de ukjente variablene. Vi valgte å bruke <code>geom_smooth</code> for å lage en bøyd graf (poly) for å få minst mulig avvik.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/resultat_dna_analyse.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>For å finne ut av molekylstørrelsen til de ukjente prøvene våre må vi først kalibrere stigen. Dette gjør vi ved å lage en data.fram som vi kaller ladder. Her er tallene omvendt proposjonale ettersom det er de små molekylene som trekkes lengst inn i gelen. Denne dataframen kaller vi “ladder”.</p>
-<p>Videre må vi også lage en data.fram for de ukjente variablene som vi kaller “unknown”</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lage dataramme for å finne avstand og molekylærvekt</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ladder <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">dist =</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="fl">59.5</span>, <span class="fl">86.5</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                              <span class="fl">119.5</span>, <span class="fl">159.5</span>, <span class="fl">208.5</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                              <span class="fl">269.5</span>, <span class="fl">351.5</span>, <span class="fl">396.5</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                              <span class="fl">455.5</span>, <span class="fl">521.5</span>, <span class="fl">599.5</span>, <span class="fl">701.5</span>),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">mw =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">900</span>, <span class="dv">800</span>, </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">700</span>, <span class="dv">600</span>, <span class="dv">500</span>, </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">400</span>, <span class="dv">300</span>, <span class="dv">250</span>, </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">200</span>, <span class="dv">150</span>, <span class="dv">100</span>, <span class="dv">50</span>))</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># lage ny dataramme med ukjente variabler</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>unknown <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">dist =</span> <span class="fu">c</span>(<span class="fl">258.5</span>, <span class="fl">262.5</span>, <span class="fl">265.5</span>, <span class="fl">335.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>For å lage en kalibreringsmodell bruker vi de samme dataene i ggplot for å vise stigen. Dette brukes videre for å estimere størrelsen på de ukjente variablene. Vi valgte å bruke en bøyd graf (poly) for å få minst mulig avvik.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lage en kalibreringsmodell ved hjelp av stigen</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="fl">59.5</span>, <span class="fl">86.5</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                              <span class="fl">119.5</span>, <span class="fl">159.5</span>, <span class="fl">208.5</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                              <span class="fl">269.5</span>, <span class="fl">351.5</span>, <span class="fl">396.5</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                              <span class="fl">455.5</span>, <span class="fl">521.5</span>, <span class="fl">599.5</span>, <span class="fl">701.5</span>), </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">900</span>, <span class="dv">800</span>, </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">700</span>, <span class="dv">600</span>, <span class="dv">500</span>, </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">400</span>, <span class="dv">300</span>, <span class="dv">250</span>, </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">200</span>, <span class="dv">150</span>, <span class="dv">100</span>, <span class="dv">50</span>)), </span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(x, y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>), </span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">color =</span> <span class="st">"green"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">750</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -498,16 +306,8 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Til slutt brukte vi følgende koder for å estimere molekylstørrelsen på genene i prøven vår.</p>
+<p>Til slutt brukte vi <code>log</code>-pakken og <code>exp</code>-pakken for å estimere molekylstørrelsen på genene i prøven vår ut fra datene vi har samlet og grafen over.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>cal <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(mw) <span class="sc">~</span> dist, <span class="at">data =</span> ladder)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check model performance, R^2 should be ~ 1.</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -528,17 +328,35 @@ Residual standard error: 0.09807 on 11 degrees of freedom
 Multiple R-squared:  0.9895,    Adjusted R-squared:  0.9886 
 F-statistic:  1039 on 1 and 11 DF,  p-value: 3.059e-12</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate molecular weights from migration distances</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">predict</span>(cal, <span class="at">newdata =</span> unknown)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
-<p>Brønn 1: 407 bp Brønn 2: 401 bp Brønn 3: 396 bp og 296 bp</p>
+<p>Resultatet fra denne estimeringen var 407.4693586, 400.7064528, 395.7080375, 295.2392074, med residuell standard feil (RSE) på 0,098 og determinasjonskoeffisient (R<sup>2</sup>) på 0,9886 (98,9 %). I tabellen under vises resultatene fra hver enkelt brønn.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Brønn</th>
+<th style="text-align: center;">bp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">407</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">401</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">396 og 296</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="diskusjon" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="diskusjon"><span class="header-section-number">2.3.3</span> Diskusjon</h3>
-<p>Denne analysen viser at ingen av genene våre har helt riktig størelse i forhold til genene vi testet for - R/R (413bp) og X/X (318bp). Vi er likevel i nærheten som kan tyde på at allelene for brønn 1 og 2 er R/R og brønn 3 er R/X. Avviket kan forklares med unøyaktighet under DNA-testen (sansynlig ettersom validitetskontrollen i prøveresultatet ikke kom fram) og med dårlig kvalitet på bildet som vi brukte i denne oppgaven. I rapporten fra forsøket tolket vi prøvene annerledes og trodde at brønn 1, 2 og 3 alle hadde alleler litt over 300bp og at brønn 3 i tillegg hadde en feil med en ukjent allel som var på 250bp. Dette viser at det er mye unæyaktighet ved å bruke kun øynene til å tolke resultatet.</p>
+<p>Den lave RSE-verdien vi får her tuder på at det er liten sansynlighet for at det har skjedd store feil i denne analysen. Den høyre R<sup>2</sup>-verdien tyder samtidig på at estimeringen er god og pålitelig.</p>
+<p>Denne analysen viser likevel at ingen av genene våre har helt riktig størelse i forhold til genene vi testet for - R/R (413bp) og X/X (318bp). Selv om vi i nærheten som kan tyde på at allelene for brønn 1 og 2 er R/R og brønn 3 er R/X er det et betydelig avvik. Avviket kan forklares med unøyaktighet under DNA-testen (sansynlig ettersom validitetskontrollen i prøveresultatet ikke kom fram) og med dårlig kvalitet på bildet som vi brukte i denne oppgaven. I rapporten fra forsøket tolket vi prøvene annerledes og trodde at brønn 1, 2 og 3 alle hadde alleler litt over 300bp og at brønn 3 i tillegg hadde en feil med en ukjent allel som var på 250bp. Dette viser at det er mye unæyaktighet ved å bruke kun øynene til å tolke resultatet.</p>
 </section>
 </section>
 <section id="del-3-tolkning-av-regresjonsmodell" class="level2" data-number="2.4">
@@ -546,123 +364,40 @@ F-statistic:  1039 on 1 and 11 DF,  p-value: 3.059e-12</code></pre>
 <section id="introduksjon-2" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="introduksjon-2"><span class="header-section-number">2.4.1</span> Introduksjon</h3>
 <p>I denne delen av oppgaven har vi valgt å se nærmere på variablene FAST_NUCLEI_T1 og TRAINING_AGE i datasettet <code>hypertrofi</code>, som er en del av <code>exscidata</code> pakken. For utforming av tabeller, figurer og grafer bruker vi <code>tidyverse</code>, <code>broom</code> og <code>gt</code>.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Laster inn nødvendige biblioteker</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <p>I <code>?hypertrofi</code> er FAST_NUCLEI_T1 beskrevet som antall myonuclei per type-II muskelfiber, mens TRAINING_AGE viser til antall år med tidligere treningserfaring. Antall myonuclei per type-II muskelfiber, kan ha noko å si om muskelens egenskap til å utvikle kraft og personers styrke <span class="citation" data-cites="mcardle2014">(<a href="#ref-mcardle2014" role="doc-biblioref">McArdle <em>et al.</em>, 2014</a>, kap 22)</span>. Det er også diskutert om trening kan føre til endringer i muskelfiber type eller om de genetiske faktorene er det som er avgjørende for muskelfiber type fordelingen til den enkelte <span class="citation" data-cites="mcardle2014">(<a href="#ref-mcardle2014" role="doc-biblioref">McArdle <em>et al.</em>, 2014 p.s.535</a>)</span>. Vi ønsker derfor å se nærmer om det er en lineær sammenheng mellom FAST_NUCLEI_T1 og TRAINING_AGE i datasettet <code>hypertrofi</code>.</p>
 <p><strong>Spørsmålet</strong>: Er det et lineært forhold mellom myonuclei per fiber CSA i type 2 og treningsalder?</p>
 </section>
 <section id="metode-2" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="metode-2"><span class="header-section-number">2.4.2</span> Metode</h3>
-<p>Under i <a href="#fig-plot-training-age-myonuclei" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> er <code>FAST_NUCLEI_T1</code> satt som den avhengige variabelen på y-aksen, mens <code>TRAINING_AGE</code> er valgt som den uavhengige variabelen på x-aksen. Grafen er ment for å gi oss et raskt overblikk av dataene.</p>
+<p>Under i <span class="quarto-unresolved-ref">?fig-plot-training-age-myonuclei</span> er <code>FAST_NUCLEI_T1</code> satt som den avhengige variabelen på y-aksen, mens <code>TRAINING_AGE</code> er valgt som den uavhengige variabelen på x-aksen. Grafen er ment for å gi oss et raskt overblikk av dataene.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Laster inn data</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"hypertrophy"</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrerer ut NA-verdier før du velger variabler</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> hypertrophy <span class="sc">%&gt;%</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(TRAINING_AGE) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(FAST_NUCLEI_T1)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PARTICIPANT, GROUP, TRAINING_AGE, FAST_NUCLEI_T1)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotter data uten NA-verdier</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>ds <span class="sc">%&gt;%</span> </span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(TRAINING_AGE, FAST_NUCLEI_T1)) <span class="sc">+</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">fill =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Sammenheng mellom treningserfaring og myonuklei"</span>,</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Treningsår"</span>, </span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Myonuklei per fiber CSA i Type II"</span>) <span class="sc">+</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
-<div id="fig-plot-training-age-myonuclei" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-plot-training-age-myonuclei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Oppgave-2_files/figure-html/fig-plot-training-age-myonuclei-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot-training-age-myonuclei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Sammenheng mellom treningalder og myonuclei per fiber CSA i Type-II
-</figcaption>
+<div>
+<figure class="figure">
+<p><img src="Oppgave-2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>ved hjelp av <code>geom_smooth</code> har vi lagt inn den best tilpassede linjen til datapunktene, også kalt lineær regresjonslinje <span class="citation" data-cites="spieg2019">(<a href="#ref-spieg2019" role="doc-biblioref">Spiegelhalter, 2019 p.s.128–129</a>)</span>. Det gråe området omkring regresjonslinjen, visualiserer konfidensintervallet til linjen. Et bredt konfidensintervall som fremstilt her, indikerer større usikkerhet i hvordan variablene relaterer til hverandre <span class="citation" data-cites="spieg2019">(<a href="#ref-spieg2019" role="doc-biblioref">Spiegelhalter, 2019 p.s.240–244</a>)</span>.</p>
-<p>For å presentere regresjonslinjen, har vi laget en lineær statistisk modell for hjelp til videre tolkning mellom forholdet av dei to variablene. Oppsummering av de statistiske parametrene som vi har valgt å fokusere på i diskusjonen vår er listet opp i <a href="#tbl-regresjon" class="quarto-xref">Table&nbsp;<span>2.1</span></a> under.</p>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lager lineær modell med ds uten NA-verdier</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(FAST_NUCLEI_T1 <span class="sc">~</span> TRAINING_AGE, <span class="at">data =</span> ds)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Henter ut koeffisienter og deres statistikker</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>model_summary <span class="ot">&lt;-</span> <span class="fu">tidy</span>(mod1)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tilpasser p-verdier og runder av, og fjerner interceptet</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>model_summary <span class="ot">&lt;-</span> model_summary <span class="sc">%&gt;%</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">term =</span> <span class="fu">ifelse</span>(term <span class="sc">==</span> <span class="st">"(Intercept)"</span>, <span class="st">"Intercept (Konstantledd)"</span>, <span class="st">"Treningserfaring (år)"</span>),</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">p.value =</span> <span class="fu">ifelse</span>(p.value <span class="sc">&lt;</span> <span class="fl">0.001</span>, <span class="st">"&lt; 0.001"</span>, <span class="fu">round</span>(p.value, <span class="dv">3</span>)),</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimate =</span> <span class="fu">round</span>(estimate, <span class="dv">3</span>),</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">std.error =</span> <span class="fu">round</span>(std.error, <span class="dv">3</span>),</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">statistic =</span> <span class="fu">round</span>(statistic, <span class="dv">3</span>)</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filtrer ut interceptet</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">!=</span> <span class="st">"Intercept (Konstantledd)"</span>)</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Velger å filtrere ut intercept da det ikkje er aktuelt når vi kun skal se om</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># det er en lineær sammenheng mellom dei to variablene</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Lager regresjonstabell med forklarende radnavn</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>regression_table <span class="ot">&lt;-</span> model_summary <span class="sc">%&gt;%</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(term, estimate, std.error, statistic, p.value) <span class="sc">%&gt;%</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_auto</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">term =</span> <span class="st">"Term"</span>,</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimate =</span> <span class="st">"Estimert koeffisient"</span>,</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">std.error =</span> <span class="st">"Standardfeil"</span>,</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">statistic =</span> <span class="fu">md</span>(<span class="st">"*t*-verdi"</span>),</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">p.value =</span> <span class="fu">md</span>(<span class="st">"*p*-verdi"</span>)</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">"**Notat**: *p*-verdier mindre enn 0.05 anses som statistisk signifikante."</span></span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Vis resultatene</span></span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(regression_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div id="tbl-regresjon" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regresjon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber type-II
-</figcaption>
-<div aria-describedby="tbl-regresjon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="zxrnvolswo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zxrnvolswo table {
+<p>For å presentere regresjonslinjen, har vi laget en lineær statistisk modell for hjelp til videre tolkning mellom forholdet av dei to variablene. Oppsummering av de statistiske parametrene som vi har valgt å fokusere på i diskusjonen vår er listet opp i <span class="quarto-unresolved-ref">?tbl-regresjon</span> under.</p>
+<div id="pynawgbmvj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pynawgbmvj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zxrnvolswo thead, #zxrnvolswo tbody, #zxrnvolswo tfoot, #zxrnvolswo tr, #zxrnvolswo td, #zxrnvolswo th {
+#pynawgbmvj thead, #pynawgbmvj tbody, #pynawgbmvj tfoot, #pynawgbmvj tr, #pynawgbmvj td, #pynawgbmvj th {
   border-style: none;
 }
 
-#zxrnvolswo p {
+#pynawgbmvj p {
   margin: 0;
   padding: 0;
 }
 
-#zxrnvolswo .gt_table {
+#pynawgbmvj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -688,12 +423,12 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-left-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_caption {
+#pynawgbmvj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zxrnvolswo .gt_title {
+#pynawgbmvj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -705,7 +440,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-bottom-width: 0;
 }
 
-#zxrnvolswo .gt_subtitle {
+#pynawgbmvj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -717,7 +452,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-top-width: 0;
 }
 
-#zxrnvolswo .gt_heading {
+#pynawgbmvj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -729,13 +464,13 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-right-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_bottom_border {
+#pynawgbmvj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_col_headings {
+#pynawgbmvj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -750,7 +485,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-right-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_col_heading {
+#pynawgbmvj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -770,7 +505,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   overflow-x: hidden;
 }
 
-#zxrnvolswo .gt_column_spanner_outer {
+#pynawgbmvj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -782,15 +517,15 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 4px;
 }
 
-#zxrnvolswo .gt_column_spanner_outer:first-child {
+#pynawgbmvj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zxrnvolswo .gt_column_spanner_outer:last-child {
+#pynawgbmvj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zxrnvolswo .gt_column_spanner {
+#pynawgbmvj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -802,11 +537,11 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   width: 100%;
 }
 
-#zxrnvolswo .gt_spanner_row {
+#pynawgbmvj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zxrnvolswo .gt_group_heading {
+#pynawgbmvj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -832,7 +567,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   text-align: left;
 }
 
-#zxrnvolswo .gt_empty_group_heading {
+#pynawgbmvj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -847,15 +582,15 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   vertical-align: middle;
 }
 
-#zxrnvolswo .gt_from_md > :first-child {
+#pynawgbmvj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zxrnvolswo .gt_from_md > :last-child {
+#pynawgbmvj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zxrnvolswo .gt_row {
+#pynawgbmvj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -874,7 +609,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   overflow-x: hidden;
 }
 
-#zxrnvolswo .gt_stub {
+#pynawgbmvj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -887,7 +622,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#zxrnvolswo .gt_stub_row_group {
+#pynawgbmvj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -901,15 +636,15 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   vertical-align: top;
 }
 
-#zxrnvolswo .gt_row_group_first td {
+#pynawgbmvj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zxrnvolswo .gt_row_group_first th {
+#pynawgbmvj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zxrnvolswo .gt_summary_row {
+#pynawgbmvj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -919,16 +654,16 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#zxrnvolswo .gt_first_summary_row {
+#pynawgbmvj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_first_summary_row.thick {
+#pynawgbmvj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zxrnvolswo .gt_last_summary_row {
+#pynawgbmvj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -938,7 +673,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-bottom-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_grand_summary_row {
+#pynawgbmvj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -948,7 +683,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#zxrnvolswo .gt_first_grand_summary_row {
+#pynawgbmvj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -958,7 +693,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-top-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_last_grand_summary_row_top {
+#pynawgbmvj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -968,11 +703,11 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-bottom-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_striped {
+#pynawgbmvj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zxrnvolswo .gt_table_body {
+#pynawgbmvj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -981,7 +716,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-bottom-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_footnotes {
+#pynawgbmvj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -995,7 +730,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-right-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_footnote {
+#pynawgbmvj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1004,7 +739,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#zxrnvolswo .gt_sourcenotes {
+#pynawgbmvj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1018,7 +753,7 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   border-right-color: #D3D3D3;
 }
 
-#zxrnvolswo .gt_sourcenote {
+#pynawgbmvj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1026,72 +761,72 @@ Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber 
   padding-right: 5px;
 }
 
-#zxrnvolswo .gt_left {
+#pynawgbmvj .gt_left {
   text-align: left;
 }
 
-#zxrnvolswo .gt_center {
+#pynawgbmvj .gt_center {
   text-align: center;
 }
 
-#zxrnvolswo .gt_right {
+#pynawgbmvj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zxrnvolswo .gt_font_normal {
+#pynawgbmvj .gt_font_normal {
   font-weight: normal;
 }
 
-#zxrnvolswo .gt_font_bold {
+#pynawgbmvj .gt_font_bold {
   font-weight: bold;
 }
 
-#zxrnvolswo .gt_font_italic {
+#pynawgbmvj .gt_font_italic {
   font-style: italic;
 }
 
-#zxrnvolswo .gt_super {
+#pynawgbmvj .gt_super {
   font-size: 65%;
 }
 
-#zxrnvolswo .gt_footnote_marks {
+#pynawgbmvj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zxrnvolswo .gt_asterisk {
+#pynawgbmvj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zxrnvolswo .gt_indent_1 {
+#pynawgbmvj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zxrnvolswo .gt_indent_2 {
+#pynawgbmvj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zxrnvolswo .gt_indent_3 {
+#pynawgbmvj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zxrnvolswo .gt_indent_4 {
+#pynawgbmvj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zxrnvolswo .gt_indent_5 {
+#pynawgbmvj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zxrnvolswo .katex-display {
+#pynawgbmvj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zxrnvolswo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pynawgbmvj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1142,9 +877,6 @@ Treningserfaring (år)
 </tr>
 </tfoot>
 </table>
-</div>
-</div>
-</figure>
 </div>
 </section>
 <section id="diskusjon-1" class="level3" data-number="2.4.3">

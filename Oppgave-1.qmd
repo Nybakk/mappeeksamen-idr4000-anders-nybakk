@@ -1,6 +1,6 @@
 ---
 title: "Reliabilitet og verktøy for reproduserbar vitenskapelig data"
-Author: "Kandidatnymmer: 503"
+Author: "Kandidatnummer: 503"
 format: 
   html:
     code-fold: true
@@ -88,11 +88,11 @@ summary_data %>%
   ) %>%
   cols_label(
     timepoint = "Tidspunkt",
-    m.age = "Gj.sn. Alder",
+    m.age = "Alder",
     sd.age = "SD Alder",
-    m.height = "Gj.sn. H\u00F8yde",
+    m.height = "H\u00F8yde",
     sd.height = "SD H\u00F8yde",
-    m.weight = "Gj.sn. Vekt",
+    m.weight = "Vekt",
     sd.weight = "SD Vekt",
     n = "Antall"
   ) %>%
@@ -101,7 +101,7 @@ summary_data %>%
     decimals = 2
   ) %>%
   tab_footnote(
-    footnote = "Alle verdier er beregnet per tidsperiode.",
+    footnote = "Alle verdier er gjennomsnitt av utvalget og beregnet per tidsperiode.",
     locations = cells_column_labels(columns = everything())
   )
 
@@ -326,10 +326,10 @@ combined_summary %>%
   ) %>%
   cols_label(
     timepoint = "Tidspunkt",
-    m.la = "Gj.sn. Laktat",
+    m.la = "Laktat",
     sd.la = "SD Laktat",
-    n.la = "Antall Laktat",
-    m.rer = "Gj.sn. RER",
+    n.la = "Ant. Laktat",
+    m.rer = "RER",
     sd.rer = "SD RER",
     n.rer = "Antall RER"
   ) %>%
@@ -338,7 +338,7 @@ combined_summary %>%
     decimals = 2
   ) %>%
   tab_footnote(
-    footnote = "Alle verdier er beregnet per tidsperiode.",
+    footnote = "Laktat- og RER-verdiene er gjennomsnittet for utvalget. Alle verdier er beregnet per tidsperiode.",
     locations = cells_column_labels(columns = everything())
   )
 

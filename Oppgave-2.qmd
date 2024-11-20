@@ -1,6 +1,6 @@
 ---
 title: "Regresjonsmodeller og prediksjonsdata"
-author: "Kandidatnymmer: 503"
+author: "Kandidatnummer: 503"
 format: 
   html:
     code-fold: true
@@ -26,6 +26,10 @@ Laktat terskel er en variabel som er godt brukt for å forutsi prestasjon innenf
 Som en kan se i den plotta grafen under, er de forskjellige grafene ikke så forskjellige rundt 2mmol og 4mmol L\~-1. På den andre siden ser vi at den lineære modellen er feil ved 300w, den sekundærplynomiske modellen er feil ved 275w. Den tredje- og fjerdeplynomiske modellen derimot, varierer ikke mye fra hverandre.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 ### laste ned nødvendige packages
 library(tidyr)
 library(tidyverse)
@@ -72,6 +76,10 @@ cyclingstudy %>%
 ```
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 ### vurdering av tilpasningen til de forskjellige lineære modellene på sammenhengen mellom treningsintensitet og laktatakkumulering.
 
 lactate <- cyclingstudy %>%
@@ -123,6 +131,9 @@ lactate %>%
 For å finne ut hva forutsatt wattverdi som er nærmest 2 og 4 mmol L-1, benytter vi koden under:
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
 
 # Ny dataramme
 ndf <- data.frame(watt = seq(from = 225, to = 350, by = 0.1))
@@ -147,9 +158,12 @@ I denne delen av oppgaven tar vi utgangspunkt i forsøket vi gjorde på molekyl�
 
 ### Metode
 
-Først har vi brukt ImageJ Fiji for å behandle bildet vi fikk fra DNA-prøvene. Vi inverterte bildet for å få tydeligere farger, roterte det rett vei og klipte ut delen av bildet vi ville bruke - altså analysen av våre prøver. Videre brukte vi rektangelverktøyet for å markere stigen og prøvene vi ville analysere. Ut fra de markerte områdene lager ImageJ fiji grafer for hver brønn. Vi markerte toppunktene i alle grafene som indikerer gen (og trinn på stigen). Programmet registrerer plasseringen til toppunktene og disse "koordinatene" legges inn i et excell-dokument som vi bruker til beregningene.
+Først har vi brukt ImageJ Fiji for å behandle bildet vi fikk fra DNA-prøvene. Vi inverterte bildet for å få tydeligere farger, roterte det rett vei og klipte ut delen av bildet vi ville bruke - altså analysen av våre prøver. Videre brukte vi rektangelverktøyet for å markere stigen og prøvene vi ville analysere. Ut fra de markerte områdene lager ImageJ fiji grafer for hver brønn. Vi markerte toppunktene i alle grafene som indikerer gen (og trinn på stigen). Programmet registrerer plasseringen til toppunktene og disse "koordinatene" legges inn i et excel-dokument som vi bruker til beregningene. Vi bruker `readxl`-pakken for å finne dataene og lagre de som dat.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
 
 library(readxl)
 
@@ -157,11 +171,15 @@ dat <- read_excel("data/resultat_dna_analyse.xlsx")
 
 ```
 
-For å finne ut av molekylstørrelsen til de ukjente prøvene våre må vi først kalibrere stigen. Dette gjør vi ved å lage en data.fram som vi kaller ladder. Her er tallene omvendt proposjonale ettersom det er de små molekylene som trekkes lengst inn i gelen. Denne dataframen kaller vi "ladder".
+For å finne ut av molekylstørrelsen til de ukjente prøvene våre må vi først kalibrere stigen. Dette gjør vi ved å lage en data.fram som vi kaller ladder. Her er tallene omvendt proposjonale ettersom det er de små molekylene som trekkes lengst inn i gelen. Denne dataframen kaller vi `ladder`.
 
-Videre må vi også lage en data.fram for de ukjente variablene som vi kaller "unknown"
+Videre må vi også lage en `data.frame` for de ukjente variablene som vi kaller "unknown"
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 # lage dataramme for å finne avstand og molekylærvekt
 
 ladder <- data.frame(dist = c(36, 59.5, 86.5,
@@ -180,9 +198,13 @@ unknown <- data.frame(dist = c(258.5, 262.5, 265.5, 335.5))
 
 ```
 
-For å lage en kalibreringsmodell bruker vi de samme dataene i ggplot for å vise stigen. Dette brukes videre for å estimere størrelsen på de ukjente variablene. Vi valgte å bruke en bøyd graf (poly) for å få minst mulig avvik.
+For å lage en kalibreringsmodell bruker vi de samme dataene i `ggplot` for å vise stigen. Dette brukes videre for å estimere størrelsen på de ukjente variablene. Vi valgte å bruke `geom_smooth` for å lage en bøyd graf (poly) for å få minst mulig avvik.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 # lage en kalibreringsmodell ved hjelp av stigen
 
 library(tidyverse)
@@ -205,9 +227,13 @@ ggplot(data = data.frame(x = c(36, 59.5, 86.5,
   scale_x_continuous(limits = c(0, 750))
 ```
 
-Til slutt brukte vi følgende koder for å estimere molekylstørrelsen på genene i prøven vår.
+Til slutt brukte vi `log`-pakken og `exp`-pakken for å estimere molekylstørrelsen på genene i prøven vår ut fra datene vi har samlet og grafen over.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 # Fit the model
 cal <- lm(log(mw) ~ dist, data = ladder)
 
@@ -220,11 +246,21 @@ preds <- exp(predict(cal, newdata = unknown))
 
 ```
 
-Brønn 1: 407 bp Brønn 2: 401 bp Brønn 3: 396 bp og 296 bp
+Resultatet fra denne estimeringen var `r preds`, med residuell standard feil (RSE) på 0,098 og determinasjonskoeffisient (R<sup>2</sup>) på 0,9886 (98,9 %). I tabellen under vises resultatene fra hver enkelt brønn. 
+
+| Brønn | bp |
+| :---: | :---: |
+| 1 | 407 |
+| 2 | 401 | 
+| 3 | 396 og 296 |
+
+
 
 ### Diskusjon
 
-Denne analysen viser at ingen av genene våre har helt riktig størelse i forhold til genene vi testet for - R/R (413bp) og X/X (318bp). Vi er likevel i nærheten som kan tyde på at allelene for brønn 1 og 2 er R/R og brønn 3 er R/X. Avviket kan forklares med unøyaktighet under DNA-testen (sansynlig ettersom validitetskontrollen i prøveresultatet ikke kom fram) og med dårlig kvalitet på bildet som vi brukte i denne oppgaven. I rapporten fra forsøket tolket vi prøvene annerledes og trodde at brønn 1, 2 og 3 alle hadde alleler litt over 300bp og at brønn 3 i tillegg hadde en feil med en ukjent allel som var på 250bp. Dette viser at det er mye unæyaktighet ved å bruke kun øynene til å tolke resultatet.
+Den lave RSE-verdien vi får her tuder på at det er liten sansynlighet for at det har skjedd store feil i denne analysen. Den høyre R<sup>2</sup>-verdien tyder samtidig på at estimeringen er god og pålitelig.
+
+Denne analysen viser likevel at ingen av genene våre har helt riktig størelse i forhold til genene vi testet for - R/R (413bp) og X/X (318bp). Selv om vi i nærheten som kan tyde på at allelene for brønn 1 og 2 er R/R og brønn 3 er R/X er det et betydelig avvik. Avviket kan forklares med unøyaktighet under DNA-testen (sansynlig ettersom validitetskontrollen i prøveresultatet ikke kom fram) og med dårlig kvalitet på bildet som vi brukte i denne oppgaven. I rapporten fra forsøket tolket vi prøvene annerledes og trodde at brønn 1, 2 og 3 alle hadde alleler litt over 300bp og at brønn 3 i tillegg hadde en feil med en ukjent allel som var på 250bp. Dette viser at det er mye unæyaktighet ved å bruke kun øynene til å tolke resultatet.
 
 ## Del 3: Tolkning av regresjonsmodell
 
@@ -233,6 +269,10 @@ Denne analysen viser at ingen av genene våre har helt riktig størelse i forhol
 I denne delen av oppgaven har vi valgt å se nærmere på variablene FAST_NUCLEI_T1 og TRAINING_AGE i datasettet `hypertrofi`, som er en del av `exscidata` pakken. For utforming av tabeller, figurer og grafer bruker vi `tidyverse`, `broom` og `gt`.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 # Laster inn nødvendige biblioteker
 library(exscidata)
 library(tidyverse)
@@ -249,6 +289,10 @@ I `?hypertrofi` er FAST_NUCLEI_T1 beskrevet som antall myonuclei per type-II mus
 Under i @fig-plot-training-age-myonuclei er `FAST_NUCLEI_T1` satt som den avhengige variabelen på y-aksen, mens `TRAINING_AGE` er valgt som den uavhengige variabelen på x-aksen. Grafen er ment for å gi oss et raskt overblikk av dataene.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 #| label: fig-plot-training-age-myonuclei
 #| fig.cap: "Sammenheng mellom treningalder og myonuclei per fiber CSA i Type-II"
 
@@ -277,6 +321,10 @@ ved hjelp av `geom_smooth` har vi lagt inn den best tilpassede linjen til datapu
 For å presentere regresjonslinjen, har vi laget en lineær statistisk modell for hjelp til videre tolkning mellom forholdet av dei to variablene. Oppsummering av de statistiske parametrene som vi har valgt å fokusere på i diskusjonen vår er listet opp i @tbl-regresjon under.
 
 ```{r, results ='asis'}
+#| echo: false
+#| message: false
+#| warning: false
+
 #| label: tbl-regresjon
 #| tbl-cap: "Sammenheng mellom treningserfaring og myonuklei per muskelfiber type-II "
 

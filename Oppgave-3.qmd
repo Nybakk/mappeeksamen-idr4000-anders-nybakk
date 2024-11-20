@@ -1,6 +1,6 @@
 ---
 title: "Slutninger fra statistiske modeller og statistisk styrke"
-author: "Kandidatnymmer: 503"
+author: "Kandidatnummer: 503"
 format: 
   html:
     code-fold: true
@@ -18,6 +18,9 @@ I denne oppgaven skal se på statistisk forskning. Vi skal simulere to forskning
 ## Simulasjon
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
 library(tidyverse)
 
@@ -45,12 +48,49 @@ summary(m2)
 
 Over kan vi se resultatene av simuleringen. og vi får følgende resultater:
 
-|               | m1    | m2      |
-|---------------|-------|---------|
-| Estimat       | 1.84  | 1.5642  |
-| Standard feil | 1.251 | 0.4774  |
-| t-verdi       | 1.47  | 3.276   |
-| p-verdi       | 0.185 | 0.00221 |
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Laste nødvendige pakker
+library(tidyverse)
+library(gt)
+
+# Oppsummering av modellene
+m1_summary <- summary(m1)
+m2_summary <- summary(m2)
+
+# Trekke ut relevante verdier fra modellene
+model_results <- tibble(
+  Modell = c("M1", "M2"),
+  Estimat = c(m1_summary$coefficients[1, 1], m2_summary$coefficients[1, 1]),
+  `Standard Feil` = c(m1_summary$coefficients[1, 2], m2_summary$coefficients[1, 2]),
+  `t-verdi` = c(m1_summary$coefficients[1, 3], m2_summary$coefficients[1, 3]),
+  `p-verdi` = c(m1_summary$coefficients[1, 4], m2_summary$coefficients[1, 4])
+)
+
+# Lage tabellen med gt
+model_results %>%
+  gt() %>%
+  tab_header(
+    title = "Oppsummering av modellresultater",
+    subtitle = "Estimat, standard feil, t-verdi og p-verdi for M1 og M2"
+  ) %>%
+  fmt_number(
+    columns = c(Estimat, `Standard Feil`, `t-verdi`, `p-verdi`),
+    decimals = 3
+  ) %>%
+  cols_label(
+    Estimat = "Estimat",
+    `Standard Feil` = "Standard Feil",
+    `t-verdi` = "t-verdi",
+    `p-verdi` = "p-verdi"
+  )
+
+```
+
+Vi kan se at i m2, med flere deltakere kommer estimatet nærmere det forhåndsbestemte gjennomsnittet på 1,5. Samtidig ser vi at standardfeil går ned, som tyder på at det mindre sannsynlig at estimatet i m2 er feil enn i m1. T-verdien blir også høyere som viser at det kommer fram en tydligere forskjell mellom null-hypotesen og den nye hypotesen. P-verdien sier noe om hvor sannsynlig det er at forskjellen er tilfeldig eller ikke. Lav p-verdi tyder på at det er lite sjanse for tilfeldigheter i resultatet [@spiegelhalter2019]. Jeg kommer tilbake til dette i neste oppgave, men vi kan allerede se her at det blir høyere reliabilitet i en studie med mange deltakere enn i en studie med få.
 
 ### Oppgave 2.
 
@@ -58,7 +98,7 @@ Over kan vi se resultatene av simuleringen. og vi får følgende resultater:
 
 Når vi øker størelsen på utvalget ser vi at dette påvirker resultatene. I en faktisk forskning vil vi jo ikke vite det faktiske gjennomsnittet i en populasjon. I denne simuleringen derimot har vi bestemt at gjennomsnittet (mean) er 1.5. Når vi har et utvalg på 8 observasjoner får vi resultatet 1.84, og med 40 observasjoner får vi 1.56 som estimat. Ved å øke antall faktiske observasjoner kan vi altså gjøre et mer presist estimat av hva som er gjennomsnittet i en populasjon.
 
-På samme måte vil størelsen på utvalget påvirke standard feilen i forsøket. Standard feil beregnes ved å dele standard avvik, som i denne simuleringen er 3 på kvadratroten av antall observasjoner. I denne simuleringen blir det altså tre delt på kvadratroten av 8 i m1, og kvadratroten av 40 i m2. Som vi kan se får vi da lavere standers feil i m2 hvor utvalget er større. Standard feil handler nemlig om hvor sannsynlig det er at utvalger er representativt for populasjonene. Lav standard feil betyr at det er stor sansynlighet for at utvalget er representativt.
+På samme måte vil størelsen på utvalget påvirke standard feilen i forsøket. Standard feil beregnes ved å dele standard avvik, som i denne simuleringen er 3 på kvadratroten av antall observasjoner. I denne simuleringen blir det altså tre delt på kvadratroten av 8 i m1, og kvadratroten av 40 i m2. Som vi kan se får vi da lavere standard feil i m2 hvor utvalget er større. Standard feil er et estimat av spredingenn i en populasjon, lav standard feil tyder på lav spredning og kan derfor tolkes som at utvalget er representativt for populasjonene. Lav standard feil betyr at det er stor sansynlighet for at utvalget er representativt.
 
 T-verdien beregnes ved å dele estimatet med standard feil og forteller oss om forskjellen i gruppene er signifikant [@spiegelhalter2019]. Videre sier Spieghalter at en t-verdi over 2 tilsvarer en p-verdi, som er et mål på forskjellen mellom innsamlet data og null-hypotesen, under 0,05 som igjen vil bety at statisitkken er signifikant. I vår simulering kan vi se at dette blir avgjørende. I simuleringen med 8 i utvalger får vi en t-verdi på 1.47 som tilsvarer en p-verdi på 0.185 altså ikke signifikant. I utvalget med 40 derimot er t-verdien 3,276 og p-verdien 0.00221 som vil si at resultatet er signifikant. I forsøket med 8 observasjoner ville det altså ha blitt gjort en type II feil, altså a avvise en korrekt alternativ hypotese fordi testresultatet støtter null-hypotesen [@spiegelhalter2019].
 
@@ -71,6 +111,10 @@ Grafen viser en tosidig p-verdi for m1. Midt i grafen ser vi det estimerte gjenn
 ## Many studies
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
 library(tidyverse)
 
 set.seed(1)
@@ -123,9 +167,12 @@ results <- bind_rows(results_8, results_40)
 
 **Calculate the standard deviation of the estimate variable, and the average of the se variable for each of the study sample sizes (8 and 40). Explain why these numbers are very similar. How can you define the Standard Error (SE) in light of these calculations?**
 
-m1: 8
-
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(gt)
 library(dplyr)
 
 # Beregn standardavviket til estimate og gjennomsnittet av se for hver utvalgsstørrelse
@@ -137,19 +184,37 @@ results_summary <- results %>%
     avg_se = mean(se)             # Gjennomsnittet av standardfeilen
   )
 
-# Vis sammendraget av resultatene
-print(results_summary)
+# Lag tabellen med gt
+results_summary %>%
+  gt() %>%
+  tab_header(
+    title = "Oppsummering av Resultater for Estimater og Standardfeil",
+    subtitle = "Gjennomsnitt og standardavvik for estimater og gjennomsnitt standardfeil"
+  ) %>%
+  fmt_number(
+    columns = c(mean, std_estimate, avg_se),
+    decimals = 3
+  ) %>%
+  cols_label(
+    mean = "Gj.snitt av Estimater",
+    std_estimate = "SD av Estimater",
+    avg_se = "Gj.snitt SE"
+  )
+
 ```
+
 
 Som vi kan se over er standard avvik og gjennomsnitlig standard feil svært like. Forskjellen er 0,05 i m1 og 0,014 i m2. Grunnen til at standard avvik og standard feil er så like er på grunn av de henger sammen. Standard feil finner vi som tidligere nevn ved å dele standard avvik på kvadratroten av utvalget. Begge disse verdiene blir brukt for å lage kurvemodeller som viser p-verdi og t-verdi. Når vi får lavere standard avvik og standard feil vil kurven bli smalere og spissere, fordi estimatet kommer nærmere det faktiske gjennomsnittet. hvis vi skulle laget en kurve ut fra utvalgene m1 og m2, ville altså m1 være bredere og rundere enn m2 som ville være smal og spiss.
 
-beregne kurven
 
 ### Oppgave 5.
 
 **Create a histogram (see example code below) of the p-values from each study sample-size. How do you interpret these histograms, what do they tell you about the effect of sample size on statistical power?**
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
 # Example code for copy and paste
 
@@ -169,14 +234,36 @@ I denne oppgaven kan vi se hva jeg snakket om i forrige oppgave. Et større utva
 **Calculate the number of studies from each sample size that declare a statistical significant effect (specify a threshold for, your significance level).**
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
-# Count the proportion of tests below a certain p-value for each 
-results %>%
+library(gt)
+library(dplyr)
+
+# Beregn andelen signifikante resultater (p-val < 0.05) for hver utvalgsstørrelse
+significant_results <- results %>%
   filter(pval < 0.05) %>%
   group_by(n) %>%
-  summarise(sig_results = n()/1000)
+  summarise(sig_results = n()/1000)  # Andelen signifikante resultater som desimaltall
+
+# Lag tabellen med gt som viser tallverdien (uten prosent)
+significant_results %>%
+  gt() %>%
+  tab_header(
+    title = "Andel Signifikante Resultater",
+    subtitle = "Tallverdi av tester med p-valg under 0.05 for hver utvalgsstørrelse"
+  ) %>%
+  fmt_number(
+    columns = sig_results,
+    decimals = 3  # Formaterer til tre desimaler for bedre lesbarhet
+  ) %>%
+  cols_label(
+    sig_results = "Andel Signifikante Resultater (Tall)"
+  )
 
 ```
+
 
 I denne beregningen skal jeg finne ut hvor mange studier med utvalgsstørelser 8 (lik m1) og 40 (lik m2) som vil få statistisk signifikante resultat med en p-verdi \< 0,05. Her får jeg resultatene 0,227 for m1, og 0,865 for m2. Dette kan vi gjøre om til prosentverier: m1: 22,7 % og m2: 86,5 %. Det er altså stor forskjell på den betydelige effekten på de forskjellige studiene. I studier med 8 deltakere vil det bare vaære 22,7 % sjanse for a få et statistisk sikgnifikant resultat, mens det i studier med 40 vil være 86,5 % sjanse for å få et statistisk signifikant resultat.
 
@@ -185,6 +272,9 @@ I denne beregningen skal jeg finne ut hvor mange studier med utvalgsstørelser 8
 **Using the pwr package, calculate the power of a one-sample t-test, with a effect size of 1.5/3, your specified significance level and sample sizes 8 and 40. Explain the results in the light of your simulations.**
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
 # Using the pwr package
 library(pwr)
@@ -196,7 +286,6 @@ pwr.t.test(n = 40, sig.level = 0.05, d = 1.5/3, type = "one.sample")
 
 Statistisk styrke er sannsynligheten for å korrekt avvise null-hypotesen, gitt at den alternative hypotesen er sann [@spiegelhalter2019]. Lav statistisk styrke øker sannsynligheten for å begå type I feil som vil si at man feilaktiv avviser en korrekt null-hypotese [@spiegelhalter2019]. Her får m1 en statistisk styrke på 0,232. Dette stemmer bra med simuleringen i oppgave 6. I m2 derimot får vi en statistisk styrke på 0,869 som er en ganske høy statistisk styrke. I studien m2 er det altså lav sannsynlighet for å begå en type I feil. Dette støtter igjen det jeg har kommet fram til i tidligere oppgaver om at større utvalg øker sannsynligheten for et korrekt resultat, og at hvis vi skulle stole på resultatene fra m1 ville vi begå en type II feil.
 
-
 ## Many studies without population effect
 
 ### Oppgave 8.
@@ -204,6 +293,9 @@ Statistisk styrke er sannsynligheten for å korrekt avvise null-hypotesen, gitt 
 **With a significance level of 5%, how many studies would give you a “false positive” result if you did many repeated studies?**
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
 population <- rnorm(1000000, mean = 0, sd = 3)
 
@@ -252,7 +344,11 @@ results_null <- bind_rows(results_8, results_40)
 ```
 
 
+
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
 # Calculate number of false positives
 
@@ -261,12 +357,35 @@ false_positives <- results_null %>%
   group_by(n) %>%
   summarise(sig_results = n() / 1000)
 
-# Print results
-print(false_positives)
+# Lag tabellen med gt som viser tallverdien (uten prosent)
+false_positives %>%
+  gt() %>%
+  tab_header(
+    title = "Andel falske positive resultat",
+    subtitle = "Tallverdi av tester med falske positive resultat"
+  ) %>%
+  fmt_number(
+    columns = sig_results,
+    decimals = 3  # Formaterer til tre desimaler for bedre lesbarhet
+  ) %>%
+  cols_label(
+    sig_results = "Andel falske positive resultat (Tall)"
+  )
+
 
 ```
 
-Fra resultatene o simuleringen over kan vi se at vi får det samme resultatet for begge utvalgstørrelsene, nemlig 0,053. Dette vil si at ved å gjennomføre forsøkene gjenntatte ganger i den samme populasjonen vil 5,3 % av forsøkene gi falsk positivt resultat. Dette virker ved første øyenkast rart fordi et større utvalg skal i utgangspunkte redusere sjansen for å få falsk positivt svar fordi man tester en større andel av populajsonen. Men hvis vi gjennomfører det samme forsøket gjenntatte ganger innenfor samme populajson vil vi ende opp med samme resultet gitt at hypotesen stemmer, fordi det også på denne måten vil teste en større andel av populasjonen. 
+Fra resultatene i simuleringen over kan vi se at vi får det samme resultatet for begge utvalgstørrelsene, nemlig 0,053. Dette vil si at ved å gjennomføre forsøkene gjenntatte ganger i den samme populasjonen vil 5,3 % av forsøkene gi falsk positivt resultat. Dette virker ved første øyenkast rart fordi et større utvalg skal i utgangspunkte redusere sjansen for å få falsk positivt svar fordi man tester en større andel av populajsonen. Men hvis vi gjennomfører det samme forsøket gjenntatte ganger innenfor samme populajson vil vi ende opp med samme resultet gitt at hypotesen stemmer, fordi det også på denne måten vil teste en større andel av populasjonen.
 
-Likevel vil få få falsk positivt resultat så mye som 5,3 % av tilfellene. Dette kan forklares med at utvalgene er tilfeldig, og i noen utvalg vil vi da ha grupper som ikke stemmer med gjennomsnittet av populasjonen. Dette vil alltid skje med mindre vi faktisk tester hele populasjonen. Dette er grunnen til at vi ikke bare kan lene oss på testresultatene, men at vi også må støtte opp med statistisk analyse.
+Når vi utfører en statistisk test med signifikansnivå på 0,05 (5%) som i denne simuleringen forventer vi at ca. 5 % av resultatene vil være falske positive. Dette er et naturlig resultat av signifikansnivået vi har satt. Et resultat på 5,3 % er nært nok det satte signifikansnivået til at vi kan konkludere med at testen stemmer. Her er det snakk om repeterte gjennomføringer av det samme forsøkte, så hvis det hadde vært stor forskjell på resultatene som følge av ulikt antall deltakere i utvalgene kunne det ha tydet på at noe var feil med testen eller simuleringen.
+
+
+
+
+
+
+
+
+
+
 

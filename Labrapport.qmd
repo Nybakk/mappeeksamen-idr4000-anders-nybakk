@@ -21,7 +21,7 @@ I jakten på å bedre forstå de molekylære reaksjonene som er involvert i regu
 
 Tidligere har WB kun blitt assosiert med selve prosessen med å overføre proteinet fra en gel til en mer stabil membran, mens nå referer man til WB når man skal forklare hele prosessen [@bass2016].
 
-Formålet med vårt eksperimentet er å benytte seg av WB for å se på den totale mengden av p70S6K (t-p70) og mengden fosforisert p70S6K fra muskelvev. Med dette kan vi si noe om fosforyleringsnivået av p70S6K i muskulaturen, som reflekterer hvor stor andel av p70S6K som er aktiv i forhold til den totale proteinmengden i vevet. Muskelprøvene er hentet fra høgre og venstre ben til ulike testpersoner, der alle har gjennomgått styrketrening av de ene beinet ved ulike tidspunkt før selve biopsien:
+Formålet med vårt eksperimentet er å benytte seg av WB for å se på den totale mengden av p70S6K (t-p70) og mengden fosforisert p70S6K fra muskelvev. Med dette kan vi si noe om fosforyleringsnivået av p70S6K i muskulaturen, som reflekterer hvor stor andel av p70S6K som er aktiv i forhold til den totale proteinmengden i vevet. Muskelprøvene er hentet fra høgre og venstre ben til ulike testpersoner, der alle har gjennomgått styrketrening av det høyre beinet ved ulike tidspunkt før selve biopsien:
 
 -   Hennie (HE) = 10 min før biopsi
 -   Lars (LØ) = 30 min før biopsi
@@ -215,7 +215,7 @@ reuse 1 time
 
 Vi benyttet oss av WB-analyse for å kvantifisere total p70S6K og fosforlyert p70S6K, slik at vi kunne undersøke fosforyleringsnivået til proteinet i vastus lateralis til de ulike testpersonene. Intensiteten til fosforylert p70S6K (p-p70) og total p70S6K (t-p70) ble normalisert mot totalprotein fra membran blottet. Fosforyleringsnivået ble beregnet som forholdet mellom p-p70 og t-70 (p-p70 / t-p70). Intensitetsverdiene som presenteres i tabellene er basert på optisk tetthet fra Western blot-bildene. Verdiene representerer relative signalstyrker og har ingen absolutt måleenhet, da kalibreringskurve ikke ble benyttet. For å korrigere for variasjoner i proteinmengde mellom brønnene, f.eks grunnet pipeteringsfeil eller feil i total protein-målinger, ble intensitetene normalisert mot total proteinmengde (membran blot).
 
-I Tabell 1 vises de normaliserte intensitetsverdiene for fosforylert (p-p70) og total (t-p70) p70S6K for høyre og venstre bein hos hver testperson, basert på membran blottet. Fosforyleringsnivået er beregnet som forholdet mellom normalisert p-p70 og t-p70. Fosforyleringsnivået (p-p70/t-p70) varierte mellom prøvene, med høyest nivå i høyre bein hos testperson T (1.550) og lavest i venstre bein hos testperson LØ (0.920).
+I Tabell 1 vises de normaliserte intensitetsverdiene for fosforylert (p-p70) og total (t-p70) p70S6K for høyre (trent) og venstre (utrent) bein hos hver testperson, basert på membran blottet. Fosforyleringsnivået er beregnet som forholdet mellom normalisert p-p70 og t-p70. Fosforyleringsnivået (p-p70/t-p70) varierte mellom prøvene, med høyest nivå i høyre bein hos testperson T (1.550) og lavest i venstre bein hos testperson LØ (0.920).
 
 ```{r}
 #| echo: false
@@ -265,19 +265,19 @@ parameter_table <- data.frame(
     "Fosforyleringsnivå"
   ),
   `Hele gruppen (n = 20)` = c(
-    "Gj.sn: 0.3280<br>SD: 0.0366<br>CV = 11.16%",
-    "Gj.sn: 0.3908<br>SD: 0.1174<br>CV = 30.04%",
-    "Gj.sn: 1.168<br>SD: 0.248<br>CV = 21.23%"
+    "Gj.sn: 0.3280<br>SD: 0.0366",
+    "Gj.sn: 0.3908<br>SD: 0.1174",
+    "Gj.sn: 1.168<br>SD: 0.248"
   ),
   `Høyre bein (n = 10)` = c(
-    "Gj.sn: 0.3537<br>SD: 0.0396<br>CV = 11.19%",
-    "Gj.sn: 0.5049<br>SD: 0.1227<br>CV = 24.30%",
-    "Gj.sn: 1.426<br>SD: 0.147<br>CV = 10.31%"
+    "Gj.sn: 0.3537<br>SD: 0.0396",
+    "Gj.sn: 0.5049<br>SD: 0.1227",
+    "Gj.sn: 1.426<br>SD: 0.147"
   ),
   `Venstre bein (n = 10)` = c(
-    "Gj.sn: 0.3127<br>SD: 0.0298<br>CV = 9.53%",
-    "Gj.sn: 0.3148<br>SD: 0.0704<br>CV = 22.37%",
-    "Gj.sn: 0.986<br>SD: 0.090<br>CV = 9.13%"
+    "Gj.sn: 0.3127<br>SD: 0.0298",
+    "Gj.sn: 0.3148<br>SD: 0.0704",
+    "Gj.sn: 0.986<br>SD: 0.090"
   ),
   stringsAsFactors = FALSE  # Sørger for at tekst ikke behandles som faktorer
 )
@@ -292,9 +292,9 @@ kable(parameter_table, escape = FALSE, align = "l")
 
 ## Diskusjon
 
-Intensitetsverdiene gir oss et bilde av p70S6K-aktiviteten i prøvene, og selv om absolutt kvantifisering ikke ble utført, indikerer et høyere fosforyleringsnivå en økt aktivitet av mTOR-signalveien, som spiller en viktig rolle for proteinsyntesen. Det høyere fosforyleringsnivået i høyre bein (1.4261) sammenlignet med venstre (0.986) kan forklares ved at kun det ene beinet ble trent før biopsien. Dette viser til den akutte aktiveringen av mTOR-signalveien som respons av styrketrening, der den største aktiveringen ser ut til å forekomme kort tid etter trening, med en gradvis reduksjon over tid. Et høyere fosforyleringsnivå reflekterer potensielt et større kapasitet for proteinsyntese i det trente beinet. Nivå over 1.0 i flere prøver kan tyde på høy aktivering av p70S6K, men kan også være et resultat av tekniske faktorer.
+Intensitetsverdiene gir oss et bilde av p70S6K-aktiviteten i prøvene, og selv om absolutt kvantifisering ikke ble utført, indikerer et høyere fosforyleringsnivå en økt aktivitet av mTOR-signalveien, som spiller en viktig rolle for proteinsyntesen. Det høyere fosforyleringsnivået i høyre bein (1.4261) sammenlignet med venstre (0.986) kan forklares ved at det høyre beinet hos alle deltakerne ble trent før biopsien (med ulike tidspunkt før biopsien). Dette viser til den akutte aktiveringen av mTOR-signalveien som respons av styrketrening, der den største aktiveringen ser ut til å forekomme kort tid etter trening, med en gradvis reduksjon over tid. 
 
-Høyere variasjon i fosforylert p70S6K (CV = 30.04 %) sammenlignet med total p70S6K (CV = 11.16 %) kan skyldes biologisk variasjon i mTOR-signalveien mellom testpersoner. Samtidig kan tekniske faktorer som variasjoner i prøvehåndtering ha bidratt til dette. Lavere CV i høyre (10.31%) og venstre bein (9.13%) indikerer mer konsistens når prøvene analyseres separat. 
+Et høyere fosforyleringsnivå reflekterer kanskje også potensielt et større kapasitet for proteinsyntese i det trente beinet. Nivå over 1.0 i flere prøver kan tyde på høy aktivering av p70S6K, men kan også være et resultat av tekniske faktorer. Høyere variasjon i fosforylert p70S6K sammenlignet med total p70S6K kan skyldes biologisk variasjon i mTOR-signalveien mellom testpersoner. Samtidig kan tekniske faktorer som variasjoner i prøvehåndtering ha bidratt til dette.  
 
 
 
