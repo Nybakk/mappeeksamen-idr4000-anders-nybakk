@@ -42,7 +42,7 @@ Deltakerne er beskrevet i @tbl-participants
 #| warning: false
 #| label: tbl-participants
 #| tbl-cap: "Deltakeroversikt"
-
+#| fig-pos: "H"
 
 library(tidyverse); library(exscidata); library(gt)
 
@@ -72,9 +72,7 @@ exscidata::dxadata %>%
   cols_label(sex = "",
              age = "Age (years)",
              weight = "Body mass (kg)",
-             height = "Stature (cm)")
-
-
+             height = "Stature (cm)") 
 
 ```
 
@@ -82,7 +80,7 @@ exscidata::dxadata %>%
 
 #### Mål av muskelmasse (mål av regional lean mass)
 
-Muskeltverrsnitt av knestrekkerne (MTK; vastus lateralis, medialis, intermedius og rectus femoris) ble målt før og etter treningsintervensjonen ved hjelp av "*magnetic resonance imaging*" (MRI) i samsvar med produsentens protocol (S-Scan, Esaote Europe B.V., Maastricht, the Netherlands). Bildene ble analysert blindt av den samme teknikkeren ved hjelp av OsiriX (v.5.6, Pixmeo Sarl, Bernex, Switzerland). Tverrsnittet ble tatt med samme avstand til kneleddet og ved bruk av minst fire sammenhengende bilder (5 mm tykkelse, 10 mm atskillelse) hos alle deltakerne. Kroppssammensetnging hos deltakerne ble målt før og etter intervensjonen ved hjelp av "*Dual-energy x-ray absorptiometry*" (DXA) (Lunar Prodigy, GE Healthcare, Oslo, Norway), også dette i henhold til protokoll. I forkant av MRI- og DXA-målingen ble deltakerne bedt om å faste i minimum to timer før testing, og unngå hard fysisk aktivitet 48 timer føt testing. Etter siste treningsøkt under intervensjonen var det to dager til post-målingene med MRI og DXA.
+Kroppssammensetnging hos deltakerne ble målt før og etter intervensjonen ved hjelp av "*Dual-energy x-ray absorptiometry*" (DXA) (Lunar Prodigy, GE Healthcare, Oslo, Norway), i henhold til protokoll. I DXA-scanen ble total muskelmasse målt (lean body mass) av knestrekkerne (MTK; vastus lateralis, medialis, intermedius og rectus femoris), og også resten av kroppen i sammenheng med et utvidet studium. i tillegg ble det tatt muskeltverrsnitt av de samme musklene før og etter treningsintervensjonen ved hjelp av "*magnetic resonance imaging*" (MRI) i samsvar med produsentens protocol (S-Scan, Esaote Europe B.V., Maastricht, the Netherlands). Bildene ble analysert blindt av den samme teknikkeren ved hjelp av OsiriX (v.5.6, Pixmeo Sarl, Bernex, Switzerland). Tverrsnittet ble tatt med samme avstand til kneleddet og ved bruk av minst fire sammenhengende bilder (5 mm tykkelse, 10 mm atskillelse) hos alle deltakerne. I forkant av DXA- og MRI-målingen ble deltakerne bedt om å faste i minimum to timer før testing, og unngå hard fysisk aktivitet 48 timer føt testing. Etter siste treningsøkt under intervensjonen var det to dager til post-målingene med DXA og MRI.
 
 #### Mål av maksimal styrke
 
@@ -189,7 +187,7 @@ Tabellen @fig-lean-body-mass viser hva slags utvikling hver enkelt deltaker har 
 #| warning: false
 #| label: fig-lean-body-mass
 #| fig-cap: "Forskjell på endring av muskelmasse under intervensjonen mellom SSP og MSP hos manlige og kvinnelige deltakere"
-
+#| fig-pos: "H"
 
 library(ggtext)
 
@@ -309,7 +307,7 @@ Vi kan se en liknende tendens da det gjelder muskelstyrke. Den gjennomsnitlige f
 #| warning: false
 #| label: fig-strength-test
 #| fig-cap: "Forskjell på endring i styrke i legpress under intervensjon mellom SSP og MSP hos mannlige og kvinnelige deltakere"
-
+#| fig-pos: "H"
 
 library(ggtext)
 
@@ -333,10 +331,10 @@ str_plot
 
 ## Diskusjon
 
-I dette studiet fikk deltakerne en større økning i muskelmasse ved å følge treningsprotokoll med flere sett (MSP) enn med et enkelt sett (SSP). Dette stemmer over ens med anbefalingene fra [@progress2009] og funnene til [@schoenfeld2016]. Det som er overesakende i denne studien er at det ikke var stor nok forskjell til å si at funnet er statistisk signifikant med en *p*-verdi på 0.036. Fra tabellen kunne vi også se at noen deltakere ikke bare responderte like godt på SSP som MSP, men faktisk bedre. Selv om vi ser en tendens til at det i gjennomsnitt gir bedre effekt av MSP enn SSp kan vi altså ikke konkludere med dette ut fra denne studien.
+I dette studiet fikk deltakerne en større økning i muskelmasse ved å følge treningsprotokoll med flere sett (MSP) enn med et enkelt sett (SSP). Dette stemmer over ens med anbefalingene fra [@progress2009] og funnene til [@schoenfeld2016]. Med en *p*-verdi på 0,036 kan vi si at funnet fra denne studien er statistisk signifikant [@spiegelhalter2019]. Det er likevel viktig å påpeke at dette gjelder gjennomsnittsøkningen av muskelmasse. Som det kommer fram i grafen tidligere i artikkelen var det deltakere i utvalget som responderte like godt eller bedre på SSP som MSP. Selv om vi ser en tendens til at det i gjennomsnitt gir bedre effekt av MSP enn SSp kan vi altså ikke konkludere med dette som en fasit ut fra denne studien.
 
-Vi får litt samme resultat i resultane for muskelstyrkeøknin (1RM). Også her viser er det i gjennomsnitt en større økning i styrke ved MSP enn ved SSP, men *p*-verdien er enda lavere på 0,025, Så igjen er ikke funnene signifikante. På styrke kan vi se at det er enda mindre forskjell på effekten av SSP og MSP. Dette stemmer overens med studien til [@mitchell2012] om at det kan være vanskelig å si hva som gir best effekt av høyt og lavt treningsvolum.
+Vi får liknende resultat i resultane for muskelstyrkeøknin (1RM). Også her viser er det i gjennomsnitt en større økning i styrke ved MSP enn ved SSP, men *p*-verdien er enda lavere på 0,025, Så igjen er funnene signifikante faktisk med et tydeleigere resultat enn for muskelmasse [@spiegelhalter2019]. Den lave p-verdien sier ikke noe om størrelsen på endringen, men at det mindre sannsynlig at resultatene i denne studien er tilfeldig. Dette kan tyde på at gjennomsnittsøkningen her er enda mer representativ for muskelstyrke enn for hypertrofi. Dette er noe overraskende da tidligere studier indikerer at økt treningsvolum skal være viktigere for hypertrofi enn for muskelstyrke [@schoenfeld2019]. Også her er det viktig å påpeke at det var store forskjeller på hvordan deltakerne responderte og også her hadde noen like stort eller større utvytte av SSP enn MSP. Dette stemmer overens med studien til [@mitchell2012] om at det kan være vanskelig å si hva som gir best effekt av høyt og lavt treningsvolum.
 
-Selv om vi ser en tendens i denne studien til at det totale utbyttet av MSP er større enn SSP, er ikke forskjellen stor nok til å motbevise null-hypotesen om at det ikke er noen forksjell. Den tendensen vi kan se stemmer likevel med studien til [@schoenfeld2019], hvor de sier at treningsvolum er viktigere for hypertrofi enn for muskelstyrke. Så kan vi likevel bruke funnene? [@naclerio2013] sier i sin studie at selv om økt treningsvolum gir noe bedre effekt er ikke dette alltid anbefalt for konkurrenrende utøvere på grunn av det høye totalvolumet. Kanskje kan en liknende anbefaling gjelde for utrente personer slik som deltakerne i denne studien. Denne studien tyder på at lavt treningsvolum ikke har noen signifikant dårligere effekt en høyt treningsvolum. At et sett per øvelse gir nesten like godt resultat som tre vil være godt nytt for personer som sliter med motivasjon eller som ikke liker styrketrening. Dette kan være svært postitiv i et folkehelseperspektiv for å motivere flere til å trene og holde seg i form med litt trening. Dette stemmer også med meta-studien gjort av [@androulakis-korakakis2019].
+Selv om vi ser en tendens i denne studien til at det totale utbyttet av MSP er større enn SSP, er dette bassert på gjennomsnittet, ikke enkeltindivid. Å konkludere med at null-hypotesen om at det ikke er noen forksjell er motbevist vil ikke bli helt riktig. For gjennomsnittet vil MSP gi bedre resultat, men det finnes mange klare unntak. Så kan vi likevel bruke funnene? [@naclerio2013] sier i sin studie at selv om økt treningsvolum gir noe bedre effekt er ikke dette alltid anbefalt for konkurrenrende utøvere på grunn av det høye totalvolumet. Kanskje kan en liknende anbefaling gjelde for utrente personer slik som deltakerne i denne studien. Denne studien tyder på at lavt treningsvolum dårligere effekt en høyt treningsvolum, men kanskje ikke så mye som man skulle tro. MSP vil gi bedre resultat enn SSP for folk flest, men at et sett per øvelse fortsat gir et så godt resultat vil være godt nytt for personer som sliter med motivasjon eller som ikke liker styrketrening. Dette kan være svært postitiv i et folkehelseperspektiv for å motivere flere til å trene og holde seg i form med litt trening. Dette stemmer også med meta-studien gjort av [@androulakis-korakakis2019].
 
-Vi kan altså ikke komme med noen klar konklusjon i denne studien. Det var noe overraskende at hypotesen ikke stemte, spesielt med tanke på hypertrofi. Det kan tenkes at det er en forskjell på trente og godt trente i en slik situasjon så mer forskning innenfor dette feltet er nok nødvendig. Selv om hypotesen ikke stemte kan det som sagt likevel være positivt med tanke på folkehelse.
+Vi kan altså ikke komme med noen klar konklusjon i denne studien. Det var noe overraskende at vi fikk så så en tydeligere tendens ved muskelstyrke framfor hypertrofi. Det kan tenkes at det er en forskjell på trente og godt trente i en slik situasjon så mer forskning innenfor dette feltet er nok nødvendig. Selv om hypotesen ikke stemte kan det som sagt likevel være positivt med tanke på folkehelse.

@@ -15,23 +15,25 @@ editor_options:
 
 ## Introduksjon
 
-I vår studie har vi gjennomført VO<sub>2max</sub>-tester over fire forskjellige dager for å gjennomføre VO<sub>2max</sub>-tester. Formålet med disse testene var å undersøke hvor konsistente resultatene er under kontrollerte forhold. For å oppnå dette har vi forsøkt å standardisere flere variabler, inkludert treningsnivå og matinntak dagen før testene. Ifølge @halperin2015 er det avgjørende å bruke standardiserte protokoller for å oppnå pålitelige resultater i fysiologiske tester. 
+I vår studie har vi gjennomført VO<sub>2max</sub>-tester over fire forskjellige dager for å måle VO<sub>2max</sub>, laktat, watt og Respiratory exchange ratio (RER). Målet med dette studiet var å kunne gjennomføre forskningsstudier med høy reliabilitet, validitet og reproduserbarhet. For å oppnå dette har vi forsøkt å standardisere flere variabler, inkludert treningsnivå og matinntak dagen før testene. Ifølge @halperin2015 er det avgjørende å bruke standardiserte protokoller for å oppnå pålitelige resultater i fysiologiske tester.
 
-I tillegg har vi målt laktatnivåer umiddelbart etter avslutningen av hver test for å vurdere den fysiologiske responsen. Laktatmålinger tas etter VO<sub>2max</sub>-tester for å kontrollere at utøveren har presset seg til det ytterste. På den måten kan vi sikre oss reliabilitet under testen. Det er laktatnivået og Respiratory exchange ratio (RER) vi vil fokusere på i dette forsøket. Vi vil sammenlikne disse målingene, regne ut standard avvik (SD) for å teste reliabiliteten, og så presentere resultatene ved hjelp av tabeller og grafer. Tidligere forskning har vist at laktatnivåer kan gi verdifull informasjon om anaerob kapasitet og treningsintensitet, noe som er viktig for å forstå atletisk ytelse (@hopkins2000; @tanner2012). 
+I tillegg til VO<sub>2max</sub> har vi som sagt målt laktatnivåer. Dette gjorde vi umiddelbart etter avslutningen av hver test for å vurdere den fysiologiske responsen. Laktatmålinger tas etter VO<sub>2max</sub>-tester for å kontrollere at utøveren har presset seg til det ytterste. På den måten kan vi sikre oss reliabilitet under testen. Det er laktatnivået og RER vi vil fokusere på i dette forsøket. Vi vil sammenlikne disse målingene, regne ut standard avvik (SD) for å teste reliabiliteten, og så presentere resultatene ved hjelp av tabeller og grafer. Tidligere forskning har vist at laktatnivåer kan gi verdifull informasjon om anaerob kapasitet og treningsintensitet, noe som er viktig for å forstå atletisk ytelse (@hopkins2000; @tanner2012).
 
-Målet med forsøket er å lære seg å lede VO<sub>2max</sub>-tester på en reliabel og valid måte, føre og tolke data samt behandle disse i R og github for å lage reproduserbare rapporter. 
-
+For å dekke målet om reproduserbarhet har vi ført og tolkt data samt behandlet disse i R og github for å lage reproduserbare rapporter.
 
 ## Metode
 
 ### Deltakere
 
-Forsøket hadde i alt 14 deltakere mellom 20 og 40 år. Gruppen bestod av 3 kvinner og 11 menn. Treningsgrunnlaget til deltakerne var variert og selv om samtlige deltakere meddelte at de driver idrettsaktivitet jevnlig, er det noen som prmært trener styrketrening, ikke utholdenhet. 
+Forsøket hadde i alt 14 deltakere mellom 20 og 40 år. Gruppen bestod av 3 kvinner og 11 menn. Treningsgrunnlaget til deltakerne var variert og selv om samtlige deltakere meddelte at de driver idrettsaktivitet jevnlig, er det noen som prmært trener styrketrening, ikke utholdenhet. @tbl-deltakere viser en oversikt over deltakerene i denne studien.
 
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
+#| label: tbl-deltakere
+#| tbl-cap: "Deltakeroversikt"
+#| fig-pos: "H"
 
 # Last inn nødvendige biblioteker
 library(readxl)
@@ -82,10 +84,6 @@ summary_data <- dat %>%
 # Lag tabellen med gt
 summary_data %>%
   gt() %>%
-  tab_header(
-    title = "Oppsummering av Demografiske Data",
-    subtitle = "Gjennomsnitt og standardavvik per tidsperiode"
-  ) %>%
   cols_label(
     timepoint = "Tidspunkt",
     m.age = "Alder",
@@ -103,8 +101,7 @@ summary_data %>%
   tab_footnote(
     footnote = "Alle verdier er gjennomsnitt av utvalget og beregnet per tidsperiode.",
     locations = cells_column_labels(columns = everything())
-  )
-
+  ) 
 ```
 
 ### Metode:
@@ -129,7 +126,7 @@ Vi startet forberedelsene til testing med å gjøre klar laktatmaskinen ved å s
 
 **Kalibrere oksygenanalysator**
 
-Kjøre gasskalibrering, åpne gassflaske (lukkes når kalibrering er ferdig), sjekke at sensor er koblet i maskinen og starte kalibrering. Vi godtar 2% feilmargin, hvis den er høyere må man rekalibrere. Så kjører vi volumkalibrering - feilmargin på 0,2% eller under godtas. Kalibrere kammer, flytte sensor til kammer og skru av gass til slutt.
+Kjøre gasskalibrering; Åpne gassflaske (lukkes når kalibrering er ferdig), sjekke at sensor er koblet i maskinen og starte kalibrering. Vi godtar 2% feilmargin, hvis den er høyere må man rekalibrere. Så kjører vi volumkalibrering - feilmargin på 0,2% eller under godtas. Kalibrere kammer, flytte sensor til kammer og skru av gass til slutt.
 
 **Forberede utstyr**
 
@@ -166,8 +163,6 @@ Alle beregninger, grafer, tabeller og modeller er gjort i R [@R]. For å sikre r
 ### Mulige avvik
 
 Deltakerne klarte ikke å standardisere kosthold, trening og søvn. På t4 tydelig lavere luftfuktighet i test-laben. Tidspunktet for t3 og t4 ble endret pga dobbeltbooket lab, slik at det ikke skjedde på samme tid på dagen som de andre testene, det ble ulik restutisjonstid fra de andre testene, og dårligere tid til å gjennomføre testene - mulig stressfaktor. Laktat-prøve tatt for sent, eller unyaktig. Unøyaktighet med synkronisert start av test i vyntus og Lode. Glemt å starte stoppeklokke til deltaker. Datainnsamlingen og testene ble utført av fire ulike grupper, og vi har ikke kontroll over utførelsen til de andre gruppene. Plottefeil - byttet RER og laktat.
-
-
 
 ## Resultater
 
@@ -268,8 +263,6 @@ cv_percentRER <- round(cv$cv,1)
 
 ```
 
-
-
 ```{r}
 #| echo: false
 #| message: false
@@ -290,7 +283,9 @@ Vi valgte å se på laktat og RER i denne oppgaven. Når RER øker over 1.0 indi
 #| echo: false
 #| message: false
 #| warning: false
-
+#| label: tbl-oppsummering-resultat
+#| tbl-cap: "Oppsummering av resultat for laktat- og RER-målinger"
+#| fig-pos: "H"
 
 # Beregn oppsummering for laktat
 laktat_summary <- dat %>%
@@ -320,10 +315,6 @@ combined_summary <- laktat_summary %>%
 # Lag tabellen med gt
 combined_summary %>%
   gt() %>%
-  tab_header(
-    title = "Oppsummering av Laktat- og RER-målinger",
-    subtitle = "Gjennomsnitt, standardavvik og antall per tidsperiode"
-  ) %>%
   cols_label(
     timepoint = "Tidspunkt",
     m.la = "Laktat",
@@ -340,18 +331,19 @@ combined_summary %>%
   tab_footnote(
     footnote = "Laktat- og RER-verdiene er gjennomsnittet for utvalget. Alle verdier er beregnet per tidsperiode.",
     locations = cells_column_labels(columns = everything())
-  )
+  ) 
 
 ```
 
-I tabellen over vises gjennomsnittsverdiene for laktat og RER på hver av de fire testene samt SD for disse med variasjonskoeffisientene for laktat på: `r cv_percent`%, og `r cv_percentRER`% for RER.
-
-
+I @tbl-oppsummering-resultat vises gjennomsnittsverdiene for laktat og RER på hver av de fire testene samt SD for disse med variasjonskoeffisientene for laktat på: `r cv_percent`%, og `r cv_percentRER`% for RER.
 
 ```{r}
 #| echo: false
 #| message: false
 #| warning: false
+#| label: fig-laktat
+#| fig-cap: "Grafen viser de forskjellige laktatmålingene til hver enkelt deltaker, og forandring mellom målingene."
+#| fig-pos: "H"
 
 library(ggplot2)
 
@@ -365,18 +357,21 @@ ggplot(data = dat,
   geom_line() + 
   
   labs(
-    title = "Laktatmålinger",
-    subtitle = "Grafen viser de forskjellige laktatmålingene til hver enkelt deltaker, og forandring mellom målingene.",
     y = "Laktate max (mmol)",
     x = "Tidspunkt (testnummer)"
   )
 
 ```
 
+I @fig-laktat viser testresultatene for laktat forhver deltaker på hver enkelt test. Her kan vi se at noen få har relativt like målinger, men de fleste har svært varierende verdier.
+
 ```{r}
 #| echo: false
 #| message: false
 #| warning: false
+#| label: fig-RER
+#| fig-cap: "Grafen viser de forskjellige RER-målingene til hver enkelt deltaker, og forandring mellom målingene."
+#| fig-pos: "H"
 
 ggplot(data = dat,
        aes(y = rer.max,
@@ -388,8 +383,6 @@ ggplot(data = dat,
   geom_line() + 
   
   labs(
-    title = "RER-målinger",
-    subtitle = "Grafen viser de forskjellige RER-målingene til hver enkelt deltaker, og forandring mellom målingene",
     y = "RER max",
     x = "tidspunkt (testnummer)"
     )
@@ -397,7 +390,9 @@ ggplot(data = dat,
 
 ```
 
-Grafene viser testresultatene for hver deltaker på hver enkelt test. Her kan vi se at noen få har relativt like målinger, men de fleste har svært varierende verdier. Noe av dette kan forklares med at noen av deltakerne er aktive uttøvere som ikke ville gjennomføre flere maksimale tester på så kort tid i fare for å forstyrre treningsopplegget sitt. Noen har derfor bevisst testet submaksimalt på en eller flere tester. 
+I @fig-RER kan vi se tilsvarende resultat for RER-målingene som ble gjort. Også her kan vi se at noen få har relativt like målinger, men de fleste har svært varierende verdier.
+
+For begge målingene kan noe av dette kan forklares med at noen av deltakerne er aktive uttøvere som ikke ville gjennomføre flere maksimale tester på så kort tid i fare for å forstyrre treningsopplegget sitt. Noen har derfor bevisst testet submaksimalt på en eller flere tester.
 
 ## Diskusjon
 
@@ -405,9 +400,6 @@ Variasjonskoeffisientene for laktat på: `r cv_percent`%, og `r cv_percentRER`% 
 
 Med tanke på de demografiske variablene ser vi at det er noe forskjell i alder, høyde og vekt mellom tidspunktene og kjønnene. Det er også få kvinner med. Det er en særlig større variasjon i alder på t4 (`r round(sd_age_t4, 2)` år.). Dette har mest sannsynlig sammenheng med at de to siste og spesielt t4 hadde færre deltagere. Dette vil påvirke reltabiliteten negativt.
 
-Samlet sett viser dataen at RER-målingene er høyst reliable og at laktatmålingene er mindre konsistente. Dette gir mening ettersom det er liten sjanse for feil i målingene av RER som gjøres av vyntus. Måling av laktat er det testleder som gjør, og med manglende erfaring vil det naturlig nok være større sjanse for avvik i utførelsen. Vi tror en av de mest sannsynlige årsakene er vår uerfarenhent med å ta laktatprøver. Tid etter endt test før prøven ble tatt, forurensning av for eksempel svette i blod eller prøver med for lite eller for mye blod kan være mulige feilkilder. Det trenger likevel ikke å bety at laktatmålingene er helt ubrukelige, men at de bør tolkes med forsiktighet og i sammenheng med andre fysiologiske markører som RER. 
+Samlet sett viser dataen at RER-målingene er høyst reliable og at laktatmålingene er mindre konsistente. Dette gir mening ettersom det er liten sjanse for feil i målingene av RER som gjøres av vyntus. Måling av laktat er det testleder som gjør, og med manglende erfaring vil det naturlig nok være større sjanse for avvik i utførelsen. Vi tror en av de mest sannsynlige årsakene er vår uerfarenhent med å ta laktatprøver. Tid etter endt test før prøven ble tatt, forurensning av for eksempel svette i blod eller prøver med for lite eller for mye blod kan være mulige feilkilder. Det trenger likevel ikke å bety at laktatmålingene er helt ubrukelige, men at de bør tolkes med forsiktighet og i sammenheng med andre fysiologiske markører som RER.
 
 Den store variasjonen i resultatene for enkeltdeltakere som kommer fram i grafene tyder på at deltakerne har hatt stor variasjon i hvor mye de har presset seg under testene. Som vi skriver i protokollen er VO<sub>2max</sub>-tester prestasjonstester hvor maksimal ytelse er viktig for et reliabelt resultat. De varierende verdiene vi presenterer her tyder derfor på at reliabiliteten for VO<sub>2max</sub>-testene også trolig er lav. Dette gjør at det er vanskelig å si hva vi kan forvente av repeterte målinger i denne gruppen. En måte å bedre reliabiliteten på er å fjerne resultatene til deltakere som svinger mye i RER og laktatmålinger, eller å fortsette forsøket med økt fokus på maksimal ytelse i framtidige tester.
-
-
-

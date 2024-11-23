@@ -227,34 +227,40 @@ div.csl-indent {
 
 <section id="introduksjon" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="introduksjon"><span class="header-section-number">1.1</span> Introduksjon</h2>
-<p>I vår studie har vi gjennomført VO<sub>2max</sub>-tester over fire forskjellige dager for å gjennomføre VO<sub>2max</sub>-tester. Formålet med disse testene var å undersøke hvor konsistente resultatene er under kontrollerte forhold. For å oppnå dette har vi forsøkt å standardisere flere variabler, inkludert treningsnivå og matinntak dagen før testene. Ifølge <span class="citation" data-cites="halperin2015">Halperin <em>et al.</em> (<a href="#ref-halperin2015" role="doc-biblioref">2015</a>)</span> er det avgjørende å bruke standardiserte protokoller for å oppnå pålitelige resultater i fysiologiske tester.</p>
-<p>I tillegg har vi målt laktatnivåer umiddelbart etter avslutningen av hver test for å vurdere den fysiologiske responsen. Laktatmålinger tas etter VO<sub>2max</sub>-tester for å kontrollere at utøveren har presset seg til det ytterste. På den måten kan vi sikre oss reliabilitet under testen. Det er laktatnivået og Respiratory exchange ratio (RER) vi vil fokusere på i dette forsøket. Vi vil sammenlikne disse målingene, regne ut standard avvik (SD) for å teste reliabiliteten, og så presentere resultatene ved hjelp av tabeller og grafer. Tidligere forskning har vist at laktatnivåer kan gi verdifull informasjon om anaerob kapasitet og treningsintensitet, noe som er viktig for å forstå atletisk ytelse (<span class="citation" data-cites="hopkins2000">Hopkins (<a href="#ref-hopkins2000" role="doc-biblioref">2000</a>)</span>; <span class="citation" data-cites="tanner2012">Tanner &amp; Gore (<a href="#ref-tanner2012" role="doc-biblioref">2012</a>)</span>).</p>
-<p>Målet med forsøket er å lære seg å lede VO<sub>2max</sub>-tester på en reliabel og valid måte, føre og tolke data samt behandle disse i R og github for å lage reproduserbare rapporter.</p>
+<p>I vår studie har vi gjennomført VO<sub>2max</sub>-tester over fire forskjellige dager for å måle VO<sub>2max</sub>, laktat, watt og Respiratory exchange ratio (RER). Målet med dette studiet var å kunne gjennomføre forskningsstudier med høy reliabilitet, validitet og reproduserbarhet. For å oppnå dette har vi forsøkt å standardisere flere variabler, inkludert treningsnivå og matinntak dagen før testene. Ifølge <span class="citation" data-cites="halperin2015">Halperin <em>et al.</em> (<a href="#ref-halperin2015" role="doc-biblioref">2015</a>)</span> er det avgjørende å bruke standardiserte protokoller for å oppnå pålitelige resultater i fysiologiske tester.</p>
+<p>I tillegg til VO<sub>2max</sub> har vi som sagt målt laktatnivåer. Dette gjorde vi umiddelbart etter avslutningen av hver test for å vurdere den fysiologiske responsen. Laktatmålinger tas etter VO<sub>2max</sub>-tester for å kontrollere at utøveren har presset seg til det ytterste. På den måten kan vi sikre oss reliabilitet under testen. Det er laktatnivået og RER vi vil fokusere på i dette forsøket. Vi vil sammenlikne disse målingene, regne ut standard avvik (SD) for å teste reliabiliteten, og så presentere resultatene ved hjelp av tabeller og grafer. Tidligere forskning har vist at laktatnivåer kan gi verdifull informasjon om anaerob kapasitet og treningsintensitet, noe som er viktig for å forstå atletisk ytelse (<span class="citation" data-cites="hopkins2000">Hopkins (<a href="#ref-hopkins2000" role="doc-biblioref">2000</a>)</span>; <span class="citation" data-cites="tanner2012">Tanner &amp; Gore (<a href="#ref-tanner2012" role="doc-biblioref">2012</a>)</span>).</p>
+<p>For å dekke målet om reproduserbarhet har vi ført og tolkt data samt behandlet disse i R og github for å lage reproduserbare rapporter.</p>
 </section>
 <section id="metode" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="metode"><span class="header-section-number">1.2</span> Metode</h2>
 <section id="deltakere" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="deltakere"><span class="header-section-number">1.2.1</span> Deltakere</h3>
-<p>Forsøket hadde i alt 14 deltakere mellom 20 og 40 år. Gruppen bestod av 3 kvinner og 11 menn. Treningsgrunnlaget til deltakerne var variert og selv om samtlige deltakere meddelte at de driver idrettsaktivitet jevnlig, er det noen som prmært trener styrketrening, ikke utholdenhet.</p>
+<p>Forsøket hadde i alt 14 deltakere mellom 20 og 40 år. Gruppen bestod av 3 kvinner og 11 menn. Treningsgrunnlaget til deltakerne var variert og selv om samtlige deltakere meddelte at de driver idrettsaktivitet jevnlig, er det noen som prmært trener styrketrening, ikke utholdenhet. <a href="#tbl-deltakere" class="quarto-xref">Table&nbsp;<span>1.1</span></a> viser en oversikt over deltakerene i denne studien.</p>
 <div class="cell">
+<div id="tbl-deltakere" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-deltakere-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1.1: Deltakeroversikt
+</figcaption>
+<div aria-describedby="tbl-deltakere-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="dxnyvpggup" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dxnyvpggup table {
+<div id="twhqucmcyc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#twhqucmcyc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dxnyvpggup thead, #dxnyvpggup tbody, #dxnyvpggup tfoot, #dxnyvpggup tr, #dxnyvpggup td, #dxnyvpggup th {
+#twhqucmcyc thead, #twhqucmcyc tbody, #twhqucmcyc tfoot, #twhqucmcyc tr, #twhqucmcyc td, #twhqucmcyc th {
   border-style: none;
 }
 
-#dxnyvpggup p {
+#twhqucmcyc p {
   margin: 0;
   padding: 0;
 }
 
-#dxnyvpggup .gt_table {
+#twhqucmcyc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -280,12 +286,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_caption {
+#twhqucmcyc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dxnyvpggup .gt_title {
+#twhqucmcyc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -297,7 +303,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#dxnyvpggup .gt_subtitle {
+#twhqucmcyc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -309,7 +315,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#dxnyvpggup .gt_heading {
+#twhqucmcyc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -321,13 +327,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_bottom_border {
+#twhqucmcyc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_col_headings {
+#twhqucmcyc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -342,7 +348,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_col_heading {
+#twhqucmcyc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -362,7 +368,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#dxnyvpggup .gt_column_spanner_outer {
+#twhqucmcyc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -374,15 +380,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#dxnyvpggup .gt_column_spanner_outer:first-child {
+#twhqucmcyc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dxnyvpggup .gt_column_spanner_outer:last-child {
+#twhqucmcyc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dxnyvpggup .gt_column_spanner {
+#twhqucmcyc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -394,11 +400,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#dxnyvpggup .gt_spanner_row {
+#twhqucmcyc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dxnyvpggup .gt_group_heading {
+#twhqucmcyc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -424,7 +430,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#dxnyvpggup .gt_empty_group_heading {
+#twhqucmcyc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -439,15 +445,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#dxnyvpggup .gt_from_md > :first-child {
+#twhqucmcyc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dxnyvpggup .gt_from_md > :last-child {
+#twhqucmcyc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dxnyvpggup .gt_row {
+#twhqucmcyc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -466,7 +472,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#dxnyvpggup .gt_stub {
+#twhqucmcyc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -479,7 +485,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dxnyvpggup .gt_stub_row_group {
+#twhqucmcyc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -493,15 +499,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#dxnyvpggup .gt_row_group_first td {
+#twhqucmcyc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dxnyvpggup .gt_row_group_first th {
+#twhqucmcyc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dxnyvpggup .gt_summary_row {
+#twhqucmcyc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -511,16 +517,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dxnyvpggup .gt_first_summary_row {
+#twhqucmcyc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_first_summary_row.thick {
+#twhqucmcyc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dxnyvpggup .gt_last_summary_row {
+#twhqucmcyc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -530,7 +536,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_grand_summary_row {
+#twhqucmcyc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -540,7 +546,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dxnyvpggup .gt_first_grand_summary_row {
+#twhqucmcyc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -550,7 +556,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_last_grand_summary_row_top {
+#twhqucmcyc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -560,11 +566,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_striped {
+#twhqucmcyc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dxnyvpggup .gt_table_body {
+#twhqucmcyc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -573,7 +579,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_footnotes {
+#twhqucmcyc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -587,7 +593,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_footnote {
+#twhqucmcyc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -596,7 +602,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dxnyvpggup .gt_sourcenotes {
+#twhqucmcyc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -610,7 +616,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#dxnyvpggup .gt_sourcenote {
+#twhqucmcyc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -618,84 +624,78 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dxnyvpggup .gt_left {
+#twhqucmcyc .gt_left {
   text-align: left;
 }
 
-#dxnyvpggup .gt_center {
+#twhqucmcyc .gt_center {
   text-align: center;
 }
 
-#dxnyvpggup .gt_right {
+#twhqucmcyc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dxnyvpggup .gt_font_normal {
+#twhqucmcyc .gt_font_normal {
   font-weight: normal;
 }
 
-#dxnyvpggup .gt_font_bold {
+#twhqucmcyc .gt_font_bold {
   font-weight: bold;
 }
 
-#dxnyvpggup .gt_font_italic {
+#twhqucmcyc .gt_font_italic {
   font-style: italic;
 }
 
-#dxnyvpggup .gt_super {
+#twhqucmcyc .gt_super {
   font-size: 65%;
 }
 
-#dxnyvpggup .gt_footnote_marks {
+#twhqucmcyc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dxnyvpggup .gt_asterisk {
+#twhqucmcyc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dxnyvpggup .gt_indent_1 {
+#twhqucmcyc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dxnyvpggup .gt_indent_2 {
+#twhqucmcyc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dxnyvpggup .gt_indent_3 {
+#twhqucmcyc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dxnyvpggup .gt_indent_4 {
+#twhqucmcyc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dxnyvpggup .gt_indent_5 {
+#twhqucmcyc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dxnyvpggup .katex-display {
+#twhqucmcyc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dxnyvpggup div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#twhqucmcyc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header gt_heading">
-<th colspan="8" class="gt_heading gt_title gt_font_normal">Oppsummering av Demografiske Data</th>
-</tr>
-<tr class="odd gt_heading">
-<th colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Gjennomsnitt og standardavvik per tidsperiode</th>
-</tr>
 <tr class="header gt_col_headings">
 <th id="timepoint" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Tidspunkt<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
 <th id="m.age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Alder<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
@@ -759,6 +759,9 @@ div.csl-indent {
 </div>
 </div>
 </div>
+</figure>
+</div>
+</div>
 </section>
 <section id="metode-1" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="metode-1"><span class="header-section-number">1.2.2</span> Metode:</h3>
@@ -775,7 +778,7 @@ div.csl-indent {
 <h4 data-number="1.2.3.1" class="anchored" data-anchor-id="før-test"><span class="header-section-number">1.2.3.1</span> Før test:</h4>
 <p>Vi startet forberedelsene til testing med å gjøre klar laktatmaskinen ved å starte den, sjekke standard og evt, bytte den hvis det er tomt. Videre tok vi på hansker og monterte munnstykket til testingen, festet papir rundt og festet med neseklype for å unngå tilskitning, fant fram slangen og monterte disse til miksekammeret. Så slo vi på Lode-sykkelen, vyntus og Lode-PC</p>
 <p><strong>Kalibrere oksygenanalysator</strong></p>
-<p>Kjøre gasskalibrering, åpne gassflaske (lukkes når kalibrering er ferdig), sjekke at sensor er koblet i maskinen og starte kalibrering. Vi godtar 2% feilmargin, hvis den er høyere må man rekalibrere. Så kjører vi volumkalibrering - feilmargin på 0,2% eller under godtas. Kalibrere kammer, flytte sensor til kammer og skru av gass til slutt.</p>
+<p>Kjøre gasskalibrering; Åpne gassflaske (lukkes når kalibrering er ferdig), sjekke at sensor er koblet i maskinen og starte kalibrering. Vi godtar 2% feilmargin, hvis den er høyere må man rekalibrere. Så kjører vi volumkalibrering - feilmargin på 0,2% eller under godtas. Kalibrere kammer, flytte sensor til kammer og skru av gass til slutt.</p>
 <p><strong>Forberede utstyr</strong></p>
 <p>Lage ny pasient på Vyntus og Lode; “Idr4000_h24_g1_idx”. Veie personen i så lite klær som mulig (trekke fra 300g for klær). Lage plotteark, Stille inn krankarm (172,5) og kalibrere sykkel på Lode PC. Stille inn sykkel til deltaker og fullføre plotteark. Klargjøre laktatrør, papir og teip, samt teip til neseklype. Velge protokoll på Lode PC - dersom personen ikke har erfaring med sykkel må man bli enige om en Watt man tror kan passe.</p>
 </section>
@@ -798,7 +801,7 @@ div.csl-indent {
 <p>I dette forsøket valgte vi å standardisere matinntak og koffeininntak i forkant av testen. Vi ønsket at testdeltakerne skulle spise det samme de tre siste måltidene før testen, og ha likt koffeininntak samme dag som testen.</p>
 <p>Vi kunne også ha valgt å standardisere trening, men på grunn av forskjellig treningsopplegg hos deltakerne lot ikke dette seg gjøre.</p>
 <p>Standardisering av tidspunkt ble gjort for oss med reservasjon av laboratorium 2. Helt standardisert blir det likevel ikke fordi i testuke 1 er testdagene rett etter hverandre, mens i testuke to er det en hviledag mellom testene.</p>
-<p>Alle beregninger, grafer, tabeller og modeller er gjort i R <span class="citation" data-cites="R">(<a href="#ref-R" role="doc-biblioref">Anon, n.d.</a>)</span>. For å sikre reproduserbarhet har alt arbeidet blitt lagret som en repository i github.</p>
+<p>Alle beregninger, grafer, tabeller og modeller er gjort i R <span class="citation" data-cites="R">(<a href="#ref-R" role="doc-biblioref">R Core Team, 2024</a>)</span>. For å sikre reproduserbarhet har alt arbeidet blitt lagret som en repository i github.</p>
 </section>
 <section id="mulige-avvik" class="level3" data-number="1.2.5">
 <h3 data-number="1.2.5" class="anchored" data-anchor-id="mulige-avvik"><span class="header-section-number">1.2.5</span> Mulige avvik</h3>
@@ -809,24 +812,30 @@ div.csl-indent {
 <h2 data-number="1.3" class="anchored" data-anchor-id="resultater"><span class="header-section-number">1.3</span> Resultater</h2>
 <p>Vi valgte å se på laktat og RER i denne oppgaven. Når RER øker over 1.0 indikere det ofte at laktatproduksjonen øker. RER samfatter ofte med den anaerobe terskelen hvor laktatnivået begynner å stige raskt. Av de 14 deltakerne var det bare 8 (2 kvinner og 6 menn) som gjennomførte alle fire testene. Dette kom delvis som følge av at tidspunktene for t3 og t4 ble endret.</p>
 <div class="cell">
+<div id="tbl-oppsummering-resultat" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-oppsummering-resultat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1.2: Oppsummering av resultat for laktat- og RER-målinger
+</figcaption>
+<div aria-describedby="tbl-oppsummering-resultat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="thztxtyzkf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#thztxtyzkf table {
+<div id="xzcbmctcfm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xzcbmctcfm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#thztxtyzkf thead, #thztxtyzkf tbody, #thztxtyzkf tfoot, #thztxtyzkf tr, #thztxtyzkf td, #thztxtyzkf th {
+#xzcbmctcfm thead, #xzcbmctcfm tbody, #xzcbmctcfm tfoot, #xzcbmctcfm tr, #xzcbmctcfm td, #xzcbmctcfm th {
   border-style: none;
 }
 
-#thztxtyzkf p {
+#xzcbmctcfm p {
   margin: 0;
   padding: 0;
 }
 
-#thztxtyzkf .gt_table {
+#xzcbmctcfm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -852,12 +861,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_caption {
+#xzcbmctcfm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#thztxtyzkf .gt_title {
+#xzcbmctcfm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -869,7 +878,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#thztxtyzkf .gt_subtitle {
+#xzcbmctcfm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -881,7 +890,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#thztxtyzkf .gt_heading {
+#xzcbmctcfm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -893,13 +902,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_bottom_border {
+#xzcbmctcfm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_col_headings {
+#xzcbmctcfm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -914,7 +923,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_col_heading {
+#xzcbmctcfm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -934,7 +943,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#thztxtyzkf .gt_column_spanner_outer {
+#xzcbmctcfm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -946,15 +955,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#thztxtyzkf .gt_column_spanner_outer:first-child {
+#xzcbmctcfm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#thztxtyzkf .gt_column_spanner_outer:last-child {
+#xzcbmctcfm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#thztxtyzkf .gt_column_spanner {
+#xzcbmctcfm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -966,11 +975,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#thztxtyzkf .gt_spanner_row {
+#xzcbmctcfm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#thztxtyzkf .gt_group_heading {
+#xzcbmctcfm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -996,7 +1005,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#thztxtyzkf .gt_empty_group_heading {
+#xzcbmctcfm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1011,15 +1020,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#thztxtyzkf .gt_from_md > :first-child {
+#xzcbmctcfm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#thztxtyzkf .gt_from_md > :last-child {
+#xzcbmctcfm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#thztxtyzkf .gt_row {
+#xzcbmctcfm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1038,7 +1047,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#thztxtyzkf .gt_stub {
+#xzcbmctcfm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1051,7 +1060,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#thztxtyzkf .gt_stub_row_group {
+#xzcbmctcfm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1065,15 +1074,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#thztxtyzkf .gt_row_group_first td {
+#xzcbmctcfm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#thztxtyzkf .gt_row_group_first th {
+#xzcbmctcfm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#thztxtyzkf .gt_summary_row {
+#xzcbmctcfm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1083,16 +1092,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#thztxtyzkf .gt_first_summary_row {
+#xzcbmctcfm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_first_summary_row.thick {
+#xzcbmctcfm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#thztxtyzkf .gt_last_summary_row {
+#xzcbmctcfm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1102,7 +1111,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_grand_summary_row {
+#xzcbmctcfm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1112,7 +1121,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#thztxtyzkf .gt_first_grand_summary_row {
+#xzcbmctcfm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1122,7 +1131,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_last_grand_summary_row_top {
+#xzcbmctcfm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1132,11 +1141,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_striped {
+#xzcbmctcfm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#thztxtyzkf .gt_table_body {
+#xzcbmctcfm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1145,7 +1154,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_footnotes {
+#xzcbmctcfm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1159,7 +1168,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_footnote {
+#xzcbmctcfm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1168,7 +1177,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#thztxtyzkf .gt_sourcenotes {
+#xzcbmctcfm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1182,7 +1191,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#thztxtyzkf .gt_sourcenote {
+#xzcbmctcfm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1190,84 +1199,78 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#thztxtyzkf .gt_left {
+#xzcbmctcfm .gt_left {
   text-align: left;
 }
 
-#thztxtyzkf .gt_center {
+#xzcbmctcfm .gt_center {
   text-align: center;
 }
 
-#thztxtyzkf .gt_right {
+#xzcbmctcfm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#thztxtyzkf .gt_font_normal {
+#xzcbmctcfm .gt_font_normal {
   font-weight: normal;
 }
 
-#thztxtyzkf .gt_font_bold {
+#xzcbmctcfm .gt_font_bold {
   font-weight: bold;
 }
 
-#thztxtyzkf .gt_font_italic {
+#xzcbmctcfm .gt_font_italic {
   font-style: italic;
 }
 
-#thztxtyzkf .gt_super {
+#xzcbmctcfm .gt_super {
   font-size: 65%;
 }
 
-#thztxtyzkf .gt_footnote_marks {
+#xzcbmctcfm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#thztxtyzkf .gt_asterisk {
+#xzcbmctcfm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#thztxtyzkf .gt_indent_1 {
+#xzcbmctcfm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#thztxtyzkf .gt_indent_2 {
+#xzcbmctcfm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#thztxtyzkf .gt_indent_3 {
+#xzcbmctcfm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#thztxtyzkf .gt_indent_4 {
+#xzcbmctcfm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#thztxtyzkf .gt_indent_5 {
+#xzcbmctcfm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#thztxtyzkf .katex-display {
+#xzcbmctcfm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#thztxtyzkf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xzcbmctcfm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header gt_heading">
-<th colspan="7" class="gt_heading gt_title gt_font_normal">Oppsummering av Laktat- og RER-målinger</th>
-</tr>
-<tr class="odd gt_heading">
-<th colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Gjennomsnitt, standardavvik og antall per tidsperiode</th>
-</tr>
 <tr class="header gt_col_headings">
 <th id="timepoint" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Tidspunkt<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
 <th id="m.la" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Laktat<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
@@ -1326,26 +1329,41 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>I tabellen over vises gjennomsnittsverdiene for laktat og RER på hver av de fire testene samt SD for disse med variasjonskoeffisientene for laktat på: 7.6%, og 1.6% for RER.</p>
+</figure>
+</div>
+</div>
+<p>I <a href="#tbl-oppsummering-resultat" class="quarto-xref">Table&nbsp;<span>1.2</span></a> vises gjennomsnittsverdiene for laktat og RER på hver av de fire testene samt SD for disse med variasjonskoeffisientene for laktat på: 7.6%, og 1.6% for RER.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Oppgave-1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-laktat" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-laktat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oppgave-1_files/figure-html/fig-laktat-1.png" class="img-fluid figure-img" data-fig-pos="H" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-laktat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1: Grafen viser de forskjellige laktatmålingene til hver enkelt deltaker, og forandring mellom målingene.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>I <a href="#fig-laktat" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> viser testresultatene for laktat forhver deltaker på hver enkelt test. Her kan vi se at noen få har relativt like målinger, men de fleste har svært varierende verdier.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Oppgave-1_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-RER" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-RER-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oppgave-1_files/figure-html/fig-RER-1.png" class="img-fluid figure-img" data-fig-pos="H" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RER-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.2: Grafen viser de forskjellige RER-målingene til hver enkelt deltaker, og forandring mellom målingene.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Grafene viser testresultatene for hver deltaker på hver enkelt test. Her kan vi se at noen få har relativt like målinger, men de fleste har svært varierende verdier. Noe av dette kan forklares med at noen av deltakerne er aktive uttøvere som ikke ville gjennomføre flere maksimale tester på så kort tid i fare for å forstyrre treningsopplegget sitt. Noen har derfor bevisst testet submaksimalt på en eller flere tester.</p>
+<p>I <a href="#fig-RER" class="quarto-xref">Figure&nbsp;<span>1.2</span></a> kan vi se tilsvarende resultat for RER-målingene som ble gjort. Også her kan vi se at noen få har relativt like målinger, men de fleste har svært varierende verdier.</p>
+<p>For begge målingene kan noe av dette kan forklares med at noen av deltakerne er aktive uttøvere som ikke ville gjennomføre flere maksimale tester på så kort tid i fare for å forstyrre treningsopplegget sitt. Noen har derfor bevisst testet submaksimalt på en eller flere tester.</p>
 </section>
 <section id="diskusjon" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="diskusjon"><span class="header-section-number">1.4</span> Diskusjon</h2>
@@ -1356,14 +1374,14 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-R" class="csl-entry" role="listitem">
-Anon (n.d.). <em>R: A language and environment for statistical computing</em>.
-</div>
 <div id="ref-halperin2015" class="csl-entry" role="listitem">
 Halperin I, Pyne DB &amp; Martin DT (2015). <a href="https://doi.org/10.1123/ijspp.2014-0566">Threats to internal validity in exercise science: A review of overlooked confounding variables</a>. <em>Int J Sports Physiol Perform</em> <strong>10,</strong> 823–829.
 </div>
 <div id="ref-hopkins2000" class="csl-entry" role="listitem">
 Hopkins WG (2000). <a href="http://www.ncbi.nlm.nih.gov/pubmed/10907753">Measures of reliability in sports medicine and science</a>. <em>Sports Med</em> <strong>30,</strong> 1–15.
+</div>
+<div id="ref-R" class="csl-entry" role="listitem">
+R Core Team (2024). R: A language and environment for statistical computing. Available at: <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>
 <div id="ref-tanner2012" class="csl-entry" role="listitem">
 Tanner RK &amp; Gore CJ (2012). <em>Physiological tests for elite athletes</em>, 2nd edn. Human Kinetics. Available at: <a href="https://books.google.no/books?id=0OPIiMks58MC">https://books.google.no/books?id=0OPIiMks58MC</a>.

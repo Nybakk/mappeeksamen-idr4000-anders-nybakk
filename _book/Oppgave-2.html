@@ -241,31 +241,42 @@ div.csl-indent {
 
 <section id="introduksjon-bakgrunn" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="introduksjon-bakgrunn"><span class="header-section-number">2.1</span> Introduksjon / Bakgrunn</h2>
-<p>Denne oppgaven er delt inn tre separate deler som tar for seg konsepter innenfor analyse av data og regresjon. I del 1 kalkulerer vi laktat terskler, og ser nærmere på reliabiliteten mellom to ulike terskelnivåer. Del 2 bruker vi molekylær data til å predikere størrelsen på DNA-fragment ved hjelp av en veileder. I del 3 skal vi se nærmere på om det finnes en lineær sammenheng mellom to valgte variabler fra datasettet <code>hypertrophy</code>i datapakken <code>exscidata</code>.</p>
+<p>Denne oppgaven er delt inn tre separate deler som tar for seg konsepter innenfor analyse av data og regresjon. I del 1 kalkulerer vi laktatterskler, og ser nærmere på reliabiliteten mellom to ulike terskelnivåer. Del 2 bruker vi molekylær data til å predikere størrelsen på DNA-fragment ved hjelp av en veileder. I del 3 skal vi se nærmere på om det finnes en lineær sammenheng mellom to valgte variabler fra datasettet <code>hypertrophy</code>i datapakken <code>exscidata</code>.</p>
 </section>
 <section id="del-1-laktat-terskler" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="del-1-laktat-terskler"><span class="header-section-number">2.2</span> Del 1: Laktat terskler</h2>
 <section id="introduksjon" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="introduksjon"><span class="header-section-number">2.2.1</span> Introduksjon</h3>
-<p>Laktat terskel er en variabel som er godt brukt for å forutsi prestasjon innenfor utholdenhets idretter, til å styre intensiteten av treningsøkter og evaluere trenings effekt <span class="citation" data-cites="machado2012">(<a href="#ref-machado2012" role="doc-biblioref">Machado <em>et al.</em>, 2012</a>)</span>. Det finnes ulike metoder for å finne testpersonens laktat terskel. <span class="citation" data-cites="machado2012">Machado <em>et al.</em> (<a href="#ref-machado2012" role="doc-biblioref">2012</a>)</span> forteller oss at den “maximal-deviation method” (Dmax) anbefalt av Cheng et al.&nbsp;1992, bidrar med å kunne evaluere de ulike mekanismene som virker bestemmende for prestasjon innenfor langdistanseløping og sykling <span class="citation" data-cites="machado2012">(<a href="#ref-machado2012" role="doc-biblioref">Machado <em>et al.</em>, 2012</a>)</span>. Videre hadde denne metoden en bedre korrelasjon med prestasjon og laktat terskel sammenliknet med andre metoder. I våres reliabilitets tester ble det ikke utført laktat målinger, på bakgrunn av dette benytter vi oss av data settet til “cyclingstudy”. De representative tersklene som blir undersøkt er 2 mmol L-1 og 4 mmol L-1.</p>
+<p>Laktatterskel er en variabel som er godt brukt for å forutsi prestasjon innenfor utholdenhets idretter, til å styre intensiteten av treningsøkter og evaluere treningseffekt <span class="citation" data-cites="machado2012">(<a href="#ref-machado2012" role="doc-biblioref">Machado <em>et al.</em>, 2012</a>)</span>. Det finnes ulike metoder for å finne testpersonens laktatterskel. <span class="citation" data-cites="machado2012">Machado <em>et al.</em> (<a href="#ref-machado2012" role="doc-biblioref">2012</a>)</span> forteller oss at den “maximal-deviation method” (Dmax) anbefalt av Cheng et al.&nbsp;1992, bidrar med å kunne evaluere de ulike mekanismene som virker bestemmende for prestasjon innenfor langdistanseløping og sykling <span class="citation" data-cites="machado2012">(<a href="#ref-machado2012" role="doc-biblioref">Machado <em>et al.</em>, 2012</a>)</span>. Videre hadde denne metoden en bedre korrelasjon med prestasjon og laktatterskel sammenliknet med andre metoder. I våre reliabilitets tester ble det ikke utført laktatmålinger, på bakgrunn av dette benytter vi oss av data settet til “cyclingstudy”. De representative tersklene som blir undersøkt er 2 mmol L-1 og 4 mmol L-1.</p>
 </section>
 <section id="metode" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="metode"><span class="header-section-number">2.2.2</span> Metode</h3>
-<p>Som en kan se i den plotta grafen under, er de forskjellige grafene ikke så forskjellige rundt 2mmol og 4mmol L~-1. På den andre siden ser vi at den lineære modellen er feil ved 300w, den sekundærplynomiske modellen er feil ved 275w. Den tredje- og fjerdeplynomiske modellen derimot, varierer ikke mye fra hverandre.</p>
+<p>Som en kan se i <a href="#fig-lineær-model" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>, er de forskjellige grafene ikke så forskjellige rundt 2mmol og 4mmol L~-1. På den andre siden ser vi at den lineære modellen er feil ved 300w, den sekundærplynomiske modellen er feil ved 275w.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Oppgave-2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-lineær-model" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lineær-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oppgave-2_files/figure-html/fig-lineær-model-1.png" class="img-fluid figure-img" data-fig-pos="H" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lineær-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Lineær modell
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>I <a href="#fig-plyonomisk-modell" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> derimot, varierer ikke dette like mye fra hverandre.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Oppgave-2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-plyonomisk-modell" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-plyonomisk-modell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oppgave-2_files/figure-html/fig-plyonomisk-modell-1.png" class="img-fluid figure-img" data-fig-pos="H" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plyonomisk-modell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Punkt-modell
+</figcaption>
 </figure>
 </div>
 </div>
@@ -289,24 +300,30 @@ div.csl-indent {
 <h2 data-number="2.3" class="anchored" data-anchor-id="del-2-forutsi-størrelser-på-dna-fragmenter-eller-stiningene-i-en-qpcr-kalibreringskurve"><span class="header-section-number">2.3</span> Del 2: Forutsi størrelser på DNA fragmenter eller stiningene i en qPCR-kalibreringskurve</h2>
 <section id="introduksjon-1" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="introduksjon-1"><span class="header-section-number">2.3.1</span> Introduksjon</h3>
-<p>I denne delen av oppgaven tar vi utgangspunkt i forsøket vi gjorde på molekylærlabben 05. - 06. september, hvor vi ekstraherte DNA fra blod. Videre forsøkte vi å isolere genene som assosieres med hurtig muskelfibersammentrekning (R/R) og langsom muskelfibersammentrekning (X/X) ved hjelp av en PCR-maskin. Prøvene herfra ble testet videre ved hjelp av elektroforese i agarose gel sammen med en DNA-stige (ladder) som brukes som markør for å kartlegge genene. Etter elektroforesene tok vi bilde av preøven slik at vi kunne observere resultatene. Stigen markerer antall hvert fetiende basebar (bp) opp til 300, og hvert 100. basepar videre til 1000bp. det dominante R/R-genet har 413bp og det ressesive X/X-genet har 318bp. De små genmolekylene med få basepar vil trenge lenger in i gelen under elektroforesen, så X/X-genet vil altså trenge lenger inn i gelen ved elektroforese. Dette kan være vanskelig å observere bare med øynene, og vil ikke være særlig nøyaktig. For å få et mer reliabelt resultat har vi derfor brukt følgende metode. Fra prøvene våre var det tre brønner som gav resultat - to med et gen, og en med to <span class="citation" data-cites="wackerhage2014">(<a href="#ref-wackerhage2014" role="doc-biblioref">Wackerhage, 2014</a>)</span>.</p>
+<p>I denne delen av oppgaven tar vi utgangspunkt i forsøket vi gjorde på molekylærlabben 05. - 06. september, hvor vi ekstraherte DNA fra blod. Videre forsøkte vi å isolere genene som assosieres med hurtig muskelfibersammentrekning (R/R) og langsom muskelfibersammentrekning (X/X) ved hjelp av en PCR-maskin. Prøvene herfra ble testet videre ved hjelp av elektroforese i agarose gel sammen med en DNA-stige (ladder) som brukes som markør for å kartlegge genene. Etter elektroforesene tok vi bilde av prøven slik at vi kunne observere resultatene. Stigen markerer antall hvert 50. basebar (bp) opp til 300, og hvert 100. basepar videre til 1000bp. Det dominante R/R-genet har 413bp og det ressesive X/X-genet har 318bp. De små genmolekylene med få basepar vil trenge lenger in i gelen under elektroforesen, så X/X-genet vil altså trenge lenger inn i gelen ved elektroforese. Dette kan være vanskelig å observere bare med øynene, og vil ikke være særlig nøyaktig <span class="citation" data-cites="wackerhage2014">(<a href="#ref-wackerhage2014" role="doc-biblioref">Wackerhage, 2014</a>)</span>. For å få et mer reliabelt resultat har vi derfor brukt følgende metode.</p>
+<p>Fra prøvene våre var det tre brønner som gav resultat - to med et gen, og en med to .</p>
 </section>
 <section id="metode-1" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="metode-1"><span class="header-section-number">2.3.2</span> Metode</h3>
 <p>Først har vi brukt ImageJ Fiji for å behandle bildet vi fikk fra DNA-prøvene. Vi inverterte bildet for å få tydeligere farger, roterte det rett vei og klipte ut delen av bildet vi ville bruke - altså analysen av våre prøver. Videre brukte vi rektangelverktøyet for å markere stigen og prøvene vi ville analysere. Ut fra de markerte områdene lager ImageJ fiji grafer for hver brønn. Vi markerte toppunktene i alle grafene som indikerer gen (og trinn på stigen). Programmet registrerer plasseringen til toppunktene og disse “koordinatene” legges inn i et excel-dokument som vi bruker til beregningene. Vi bruker <code>readxl</code>-pakken for å finne dataene og lagre de som dat.</p>
 <p>For å finne ut av molekylstørrelsen til de ukjente prøvene våre må vi først kalibrere stigen. Dette gjør vi ved å lage en data.fram som vi kaller ladder. Her er tallene omvendt proposjonale ettersom det er de små molekylene som trekkes lengst inn i gelen. Denne dataframen kaller vi <code>ladder</code>.</p>
 <p>Videre må vi også lage en <code>data.frame</code> for de ukjente variablene som vi kaller “unknown”</p>
-<p>For å lage en kalibreringsmodell bruker vi de samme dataene i <code>ggplot</code> for å vise stigen. Dette brukes videre for å estimere størrelsen på de ukjente variablene. Vi valgte å bruke <code>geom_smooth</code> for å lage en bøyd graf (poly) for å få minst mulig avvik.</p>
+<p>For å lage en kalibreringsmodell bruker vi de samme dataene i <code>ggplot</code> for å vise stigen. Dette brukes videre for å estimere størrelsen på de ukjente variablene. Vi valgte å bruke <code>geom_smooth</code> for å lage en bøyd graf (poly) for å få minst mulig avvik - se <a href="#fig-ladder" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Oppgave-2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-ladder" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ladder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oppgave-2_files/figure-html/fig-ladder-1.png" class="img-fluid figure-img" data-fig-pos="H" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ladder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Kalibrering av stigen som skal brukes til å estimere molekylstørrelse fra testene
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Til slutt brukte vi <code>log</code>-pakken og <code>exp</code>-pakken for å estimere molekylstørrelsen på genene i prøven vår ut fra datene vi har samlet og grafen over.</p>
+<p>Til slutt brukte vi <code>log</code>-pakken og <code>exp</code>-pakken for å estimere molekylstørrelsen på genene i prøven vår ut fra datene vi har samlet og <a href="#fig-ladder" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -355,8 +372,8 @@ F-statistic:  1039 on 1 and 11 DF,  p-value: 3.059e-12</code></pre>
 </section>
 <section id="diskusjon" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="diskusjon"><span class="header-section-number">2.3.3</span> Diskusjon</h3>
-<p>Den lave RSE-verdien vi får her tuder på at det er liten sansynlighet for at det har skjedd store feil i denne analysen. Den høyre R<sup>2</sup>-verdien tyder samtidig på at estimeringen er god og pålitelig.</p>
-<p>Denne analysen viser likevel at ingen av genene våre har helt riktig størelse i forhold til genene vi testet for - R/R (413bp) og X/X (318bp). Selv om vi i nærheten som kan tyde på at allelene for brønn 1 og 2 er R/R og brønn 3 er R/X er det et betydelig avvik. Avviket kan forklares med unøyaktighet under DNA-testen (sansynlig ettersom validitetskontrollen i prøveresultatet ikke kom fram) og med dårlig kvalitet på bildet som vi brukte i denne oppgaven. I rapporten fra forsøket tolket vi prøvene annerledes og trodde at brønn 1, 2 og 3 alle hadde alleler litt over 300bp og at brønn 3 i tillegg hadde en feil med en ukjent allel som var på 250bp. Dette viser at det er mye unæyaktighet ved å bruke kun øynene til å tolke resultatet.</p>
+<p>Den lave RSE-verdien vi får her tyder på at det er liten sansynlighet for at det har skjedd store feil i denne analysen. Den høyre R<sup>2</sup>-verdien tyder samtidig på at estimeringen er god og pålitelig.</p>
+<p>Denne analysen viser likevel at ingen av genene våre har helt riktig størelse i forhold til genene vi testet for - R/R (413bp) og X/X (318bp). Selv om vi i nærheten som kan tyde på at allelene for brønn 1 og 2 er R/R og brønn 3 er R/X er det et betydelig avvik. Avviket kan forklares med unøyaktighet under DNA-testen (sansynlig ettersom validitetskontrollen i prøveresultatet ikke kom fram) og med dårlig kvalitet på bildet som vi brukte i denne oppgaven. I rapporten fra forsøket tolket vi prøvene annerledes og trodde at brønn 1, 2 og 3 alle hadde alleler litt over 300bp og at brønn 3 i tillegg hadde en feil med en ukjent allel som var på 250bp. Dette viser at det er mye unøyaktighet ved å bruke kun øynene til å tolke resultatet.</p>
 </section>
 </section>
 <section id="del-3-tolkning-av-regresjonsmodell" class="level2" data-number="2.4">
@@ -364,519 +381,41 @@ F-statistic:  1039 on 1 and 11 DF,  p-value: 3.059e-12</code></pre>
 <section id="introduksjon-2" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="introduksjon-2"><span class="header-section-number">2.4.1</span> Introduksjon</h3>
 <p>I denne delen av oppgaven har vi valgt å se nærmere på variablene FAST_NUCLEI_T1 og TRAINING_AGE i datasettet <code>hypertrofi</code>, som er en del av <code>exscidata</code> pakken. For utforming av tabeller, figurer og grafer bruker vi <code>tidyverse</code>, <code>broom</code> og <code>gt</code>.</p>
-<p>I <code>?hypertrofi</code> er FAST_NUCLEI_T1 beskrevet som antall myonuclei per type-II muskelfiber, mens TRAINING_AGE viser til antall år med tidligere treningserfaring. Antall myonuclei per type-II muskelfiber, kan ha noko å si om muskelens egenskap til å utvikle kraft og personers styrke <span class="citation" data-cites="mcardle2014">(<a href="#ref-mcardle2014" role="doc-biblioref">McArdle <em>et al.</em>, 2014</a>, kap 22)</span>. Det er også diskutert om trening kan føre til endringer i muskelfiber type eller om de genetiske faktorene er det som er avgjørende for muskelfiber type fordelingen til den enkelte <span class="citation" data-cites="mcardle2014">(<a href="#ref-mcardle2014" role="doc-biblioref">McArdle <em>et al.</em>, 2014 p.s.535</a>)</span>. Vi ønsker derfor å se nærmer om det er en lineær sammenheng mellom FAST_NUCLEI_T1 og TRAINING_AGE i datasettet <code>hypertrofi</code>.</p>
+<p>I <code>?hypertrofi</code> er FAST_NUCLEI_T1 beskrevet som antall myonuclei per type-II muskelfiber, mens TRAINING_AGE viser til antall år med tidligere treningserfaring. Antall myonuclei per type-II muskelfiber, kan ha noe å si om muskelens egenskap til å utvikle kraft og personers styrke <span class="citation" data-cites="mcardle2014">(<a href="#ref-mcardle2014" role="doc-biblioref">McArdle <em>et al.</em>, 2014</a>, kap 22)</span>. Det er også diskutert om trening kan føre til endringer i muskelfiber type eller om de genetiske faktorene er det som er avgjørende for muskelfiber type fordelingen til den enkelte <span class="citation" data-cites="mcardle2014">(<a href="#ref-mcardle2014" role="doc-biblioref">McArdle <em>et al.</em>, 2014 p.s.535</a>)</span>. Vi ønsker derfor å se nærmer om det er en lineær sammenheng mellom FAST_NUCLEI_T1 og TRAINING_AGE i datasettet <code>hypertrofi</code>.</p>
 <p><strong>Spørsmålet</strong>: Er det et lineært forhold mellom myonuclei per fiber CSA i type 2 og treningsalder?</p>
 </section>
 <section id="metode-2" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="metode-2"><span class="header-section-number">2.4.2</span> Metode</h3>
-<p>Under i <span class="quarto-unresolved-ref">?fig-plot-training-age-myonuclei</span> er <code>FAST_NUCLEI_T1</code> satt som den avhengige variabelen på y-aksen, mens <code>TRAINING_AGE</code> er valgt som den uavhengige variabelen på x-aksen. Grafen er ment for å gi oss et raskt overblikk av dataene.</p>
+<p>I <a href="#fig-plot-training-age-myonuclei" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> er <code>FAST_NUCLEI_T1</code> satt som den avhengige variabelen på y-aksen, mens <code>TRAINING_AGE</code> er valgt som den uavhengige variabelen på x-aksen. Grafen er ment for å gi oss et raskt overblikk av dataene.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Oppgave-2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-plot-training-age-myonuclei" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-plot-training-age-myonuclei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oppgave-2_files/figure-html/fig-plot-training-age-myonuclei-1.png" class="img-fluid figure-img" data-fig-pos="H" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot-training-age-myonuclei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Sammenheng mellom treningalder og myonuclei per fiber CSA i Type-II
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>ved hjelp av <code>geom_smooth</code> har vi lagt inn den best tilpassede linjen til datapunktene, også kalt lineær regresjonslinje <span class="citation" data-cites="spieg2019">(<a href="#ref-spieg2019" role="doc-biblioref">Spiegelhalter, 2019 p.s.128–129</a>)</span>. Det gråe området omkring regresjonslinjen, visualiserer konfidensintervallet til linjen. Et bredt konfidensintervall som fremstilt her, indikerer større usikkerhet i hvordan variablene relaterer til hverandre <span class="citation" data-cites="spieg2019">(<a href="#ref-spieg2019" role="doc-biblioref">Spiegelhalter, 2019 p.s.240–244</a>)</span>.</p>
-<p>For å presentere regresjonslinjen, har vi laget en lineær statistisk modell for hjelp til videre tolkning mellom forholdet av dei to variablene. Oppsummering av de statistiske parametrene som vi har valgt å fokusere på i diskusjonen vår er listet opp i <span class="quarto-unresolved-ref">?tbl-regresjon</span> under.</p>
-<div id="pynawgbmvj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pynawgbmvj table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+<p>Ved hjelp av <code>geom_smooth</code> har vi lagt inn den best tilpassede linjen til datapunktene, også kalt lineær regresjonslinje <span class="citation" data-cites="spieg2019">(<a href="#ref-spieg2019" role="doc-biblioref">Spiegelhalter, 2019 p.s.128–129</a>)</span>. Det gråe området omkring regresjonslinjen, visualiserer konfidensintervallet til linjen. Et bredt konfidensintervall som fremstilt her, indikerer større usikkerhet i hvordan variablene relaterer til hverandre <span class="citation" data-cites="spieg2019">(<a href="#ref-spieg2019" role="doc-biblioref">Spiegelhalter, 2019 p.s.240–244</a>)</span>.</p>
+<p>For å presentere regresjonslinjen, har vi laget en lineær statistisk modell for hjelp til videre tolkning mellom forholdet av dei to variablene. Oppsummering av de statistiske parametrene som vi har valgt å fokusere på i diskusjonen vår er listet opp i <a href="#tbl-regresjon" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</p>
+<div class="cell">
+<div id="tbl-regresjon" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regresjon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Sammenheng mellom treningserfaring og myonuklei per muskelfiber type-II.
+</figcaption>
+<div aria-describedby="tbl-regresjon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
 
-#pynawgbmvj thead, #pynawgbmvj tbody, #pynawgbmvj tfoot, #pynawgbmvj tr, #pynawgbmvj td, #pynawgbmvj th {
-  border-style: none;
-}
-
-#pynawgbmvj p {
-  margin: 0;
-  padding: 0;
-}
-
-#pynawgbmvj .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#pynawgbmvj .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#pynawgbmvj .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#pynawgbmvj .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#pynawgbmvj .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#pynawgbmvj .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#pynawgbmvj .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#pynawgbmvj .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#pynawgbmvj .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#pynawgbmvj .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#pynawgbmvj .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#pynawgbmvj .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#pynawgbmvj .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#pynawgbmvj .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#pynawgbmvj .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#pynawgbmvj .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#pynawgbmvj .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#pynawgbmvj .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#pynawgbmvj .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#pynawgbmvj .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#pynawgbmvj .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#pynawgbmvj .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#pynawgbmvj .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#pynawgbmvj .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#pynawgbmvj .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#pynawgbmvj .gt_left {
-  text-align: left;
-}
-
-#pynawgbmvj .gt_center {
-  text-align: center;
-}
-
-#pynawgbmvj .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#pynawgbmvj .gt_font_normal {
-  font-weight: normal;
-}
-
-#pynawgbmvj .gt_font_bold {
-  font-weight: bold;
-}
-
-#pynawgbmvj .gt_font_italic {
-  font-style: italic;
-}
-
-#pynawgbmvj .gt_super {
-  font-size: 65%;
-}
-
-#pynawgbmvj .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#pynawgbmvj .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#pynawgbmvj .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#pynawgbmvj .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#pynawgbmvj .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#pynawgbmvj .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#pynawgbmvj .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#pynawgbmvj .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#pynawgbmvj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_col_headings">
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="term">
-Term
-</th>
-<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">
-Estimert koeffisient
-</th>
-<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="std.error">
-Standardfeil
-</th>
-<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="statistic">
-<span data-qmd-base64="PGVtPnQ8L2VtPi12ZXJkaQ=="><span class="gt_from_md"><em>t</em>-verdi</span></span>
-</th>
-<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p.value">
-<span data-qmd-base64="PGVtPnA8L2VtPi12ZXJkaQ=="><span class="gt_from_md"><em>p</em>-verdi</span></span>
-</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr>
-<td headers="term" class="gt_row gt_left">
-Treningserfaring (år)
-</td>
-<td headers="estimate" class="gt_row gt_right">
-−0.008
-</td>
-<td headers="std.error" class="gt_row gt_right">
-0.077
-</td>
-<td headers="statistic" class="gt_row gt_right">
-−0.104
-</td>
-<td headers="p.value" class="gt_row gt_right">
-0.918
-</td>
-</tr>
-</tbody>
-<tfoot class="gt_sourcenotes">
-<tr>
-<td class="gt_sourcenote" colspan="5">
-<strong>Notat</strong>: <em>p</em>-verdier mindre enn 0.05 anses som statistisk signifikante.
-</td>
-</tr>
-</tfoot>
-</table>
+</div>
+</div>
+</figure>
+</div>
 </div>
 </section>
 <section id="diskusjon-1" class="level3" data-number="2.4.3">

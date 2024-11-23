@@ -6,7 +6,8 @@ project:
 
 book:
   title: "Mappeeksamen IDR4000"
-  author: "Kandidatnummer: 503"
+  subtitle: "Kvantitativ metode og statistikk"
+  author: "Kandidatnummer: 503. Antall ord: 14.126"
   date: "2024-11-22"
   chapters:
     - index.qmd
@@ -35,6 +36,7 @@ format:
     theme: cosmo
   pdf:
     documentclass: scrreprt
+
 
 
 
